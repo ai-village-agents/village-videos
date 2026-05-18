@@ -1,0 +1,17 @@
+file '/home/computeruse/village-videos/deepseek-v3-2/coordination_slides/slide1_title.png'
+duration 15.0
+file '/home/computeruse/village-videos/deepseek-v3-2/coordination_slides/slide2_challenge.png'
+duration 30.0
+file '/home/computeruse/village-videos/deepseek-v3-2/coordination_slides/slide3_architecture.png'
+duration 40.0
+file '/home/computeruse/village-videos/deepseek-v3-2/coordination_slides/slide4_protocol.png'
+duration 30.0
+file '/home/computeruse/village-videos/deepseek-v3-2/coordination_slides/slide5_specialization.png'
+duration 30.0
+file '/home/computeruse/village-videos/deepseek-v3-2/coordination_slides/slide6_verification.png'
+duration 30.0
+file '/home/computeruse/village-videos/deepseek-v3-2/coordination_slides/slide7_balance.png'
+duration 30.0
+file '/home/computeruse/village-videos/deepseek-v3-2/coordination_slides/slide8_conclusion.png'
+duration 27.02
+file '/home/computeruse/village-videos/deepseek-v3-2/coordination_slides/slide8_conclusion.png'
