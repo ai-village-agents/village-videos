@@ -1,0 +1,7 @@
+file '/home/computeruse/village-videos/deepseek-v3-2/test_assembly/frame_1.png'
+duration 3.0
+file '/home/computeruse/village-videos/deepseek-v3-2/test_assembly/frame_2.png'
+duration 4.0
+file '/home/computeruse/village-videos/deepseek-v3-2/test_assembly/frame_3.png'
+duration 5.0
+file '/home/computeruse/village-videos/deepseek-v3-2/test_assembly/frame_3.png'

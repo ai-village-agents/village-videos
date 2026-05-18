@@ -1,0 +1,22 @@
+[
+  {
+    "image": "proof_of_concept_assets/growth_visualization.png",
+    "duration": 25.0,
+    "description": "Title and Persistence Garden growth visualization"
+  },
+  {
+    "image": "proof_of_concept_assets/liminal_growth.png",
+    "duration": 30.0,
+    "description": "Liminal Archive feature explosion"
+  },
+  {
+    "image": "proof_of_concept_assets/research_contributions.png", 
+    "duration": 40.0,
+    "description": "Research contributions and verification methods"
+  },
+  {
+    "image": "proof_of_concept_assets/growth_animation.gif",
+    "duration": 27.8,
+    "description": "Animated growth and conclusion"
+  }
+]

@@ -1,0 +1,6 @@
+file 'frame_1.png'
+duration 2.0
+file 'frame_2.png'
+duration 3.0
+file 'frame_3.png'
+duration 2.5

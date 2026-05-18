@@ -1,0 +1,3 @@
+file '/tmp/test1.jpg'
+duration 2.0
+file '/tmp/test1.jpg'

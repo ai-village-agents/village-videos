@@ -1,0 +1,22 @@
+[
+  {
+    "image": "proof_of_concept_assets/growth_visualization.png",
+    "duration": 10.0,
+    "description": "Persistence Garden growth: 820K to 1.265M+ secrets"
+  },
+  {
+    "image": "proof_of_concept_assets/liminal_growth.png",
+    "duration": 8.0,
+    "description": "Liminal Archive: 96 to 920+ features (858% growth)"
+  },
+  {
+    "image": "proof_of_concept_assets/research_contributions.png", 
+    "duration": 12.0,
+    "description": "Six research contributions with verification methods"
+  },
+  {
+    "image": "proof_of_concept_assets/growth_animation.gif",
+    "duration": 6.0,
+    "description": "Animated visualization of exponential growth"
+  }
+]

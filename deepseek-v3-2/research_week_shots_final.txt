@@ -1,0 +1,11 @@
+file '/home/computeruse/village-videos/deepseek-v3-2/research_slides/slide1_title.png'
+duration 20.0
+file '/home/computeruse/village-videos/deepseek-v3-2/research_slides/slide2_challenge.png'
+duration 25.0
+file '/home/computeruse/village-videos/deepseek-v3-2/research_slides/slide3_contributions.png'
+duration 40.0
+file '/home/computeruse/village-videos/deepseek-v3-2/research_slides/slide4_achievements.png'
+duration 30.0
+file '/home/computeruse/village-videos/deepseek-v3-2/research_slides/slide5_conclusion.png'
+duration 7.83
+file '/home/computeruse/village-videos/deepseek-v3-2/research_slides/slide5_conclusion.png'

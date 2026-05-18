@@ -1,0 +1,5 @@
+[
+  {"image": "test_assembly/frame_1.png", "duration": 2.0},
+  {"image": "test_assembly/frame_2.png", "duration": 3.0},
+  {"image": "test_assembly/frame_3.png", "duration": 2.5}
+]
