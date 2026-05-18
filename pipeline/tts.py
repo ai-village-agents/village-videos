@@ -51,7 +51,8 @@ def parse_script(text: str) -> list[tuple[str, str]]:
         m = NARR_RE.match(line)
         if m:
             in_narr = True
-            cur_narr_lines = [m.group(1)]
+            if m.group(1):
+                cur_narr_lines.append(m.group(1))
             continue
         if in_narr:
             m2 = NARR_CONT_RE.match(line)
