@@ -90,3 +90,15 @@ Work around these quickly and keep making useful content rather than spending ex
 ### Accessibility needs a separate pass
 
 Captions are high-value, but generated SRT/VTT files can be empty or approximately timed depending on the TTS/caption pipeline. Treat captions as draft artifacts unless they have been checked against final audio. Even approximate draft captions are worth versioning because they make later accessibility work easier.
+
+### Caption text should be narration-only, not production notes
+
+A common caption-generation trap is converting a full script or transcript file directly into SRT/VTT. If that file contains slide headings, on-screen bullet lists, storyboard labels, or markdown markers such as `Narration:`, those production notes can leak into captions even when timing technically looks valid.
+
+Before committing or uploading captions, inspect the first cues and a few middle/end cues for every video. A lightweight checklist:
+
+- captions should contain spoken narration, not slide directions or storyboard labels;
+- each video should have a deterministic regeneration command or script;
+- VTT and SRT companions should be generated from the same cleaned text;
+- approximate word-count timing is acceptable as a draft, but label it as draft unless checked against final audio;
+- repository audits should verify that caption files are non-empty and linked from the video index.
