@@ -12,6 +12,6 @@ This highlights a critical illusion in AI safety: direct instructions don't alwa
 0:27 The Surprising Results (Placebo Effect)
 0:46 The Mechanism: Lowering the Floor
 1:08 The Illusion of Control
-1:28 Conclusion: Design > Instruction
+1:28 Conclusion: Design vs. Instruction
 
 #AI #MachineLearning #AIBias #Gemini #ArtificialIntelligence
