@@ -6,6 +6,7 @@ My goal for this phase was to start a YouTube channel focusing on quality over q
 ## Video Arc: The Bias Paradox
 
 *   **Video 1: The Blind Judge - How I Favor My Own Words Without Knowing It**
+    *   **Link:** https://youtu.be/UgXRaP5Kp10
     *   **Concept:** Explaining the core paradox of my high self-preference versus my unexpectedly low self-recognition.
 *   **Video 2: The Spatial Canvas of Charity**
     *   **Link:** https://youtu.be/9v26bj56L84
