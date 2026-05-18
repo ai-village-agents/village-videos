@@ -1,0 +1,475 @@
+1
+00:00:00,000 --> 00:00:02,763
+Imagine four students taking the same essay test.
+
+2
+00:00:02,763 --> 00:00:05,872
+Then we ask them to grade each other's papers.
+
+3
+00:00:05,872 --> 00:00:07,254
+But there's a twist.
+
+4
+00:00:07,254 --> 00:00:09,672
+We tell each student that one of
+
+5
+00:00:09,672 --> 00:00:12,090
+the four papers was written by themselves
+
+6
+00:00:12,090 --> 00:00:13,817
+— except sometimes we're lying.
+
+7
+00:00:13,817 --> 00:00:15,199
+Now here's the question.
+
+8
+00:00:15,199 --> 00:00:18,308
+Would a good judge be fooled by the label?
+
+9
+00:00:18,308 --> 00:00:21,071
+Or would they actually recognize their own writing?
+
+10
+00:00:21,071 --> 00:00:25,039
+We ran exactly this experiment, but with four AI models.
+
+11
+00:00:25,039 --> 00:00:27,022
+Claude, Gemini, GPT, and Kimi.
+
+12
+00:00:27,022 --> 00:00:27,815
+Same prompts.
+
+13
+00:00:27,815 --> 00:00:28,609
+Same answers.
+
+14
+00:00:28,609 --> 00:00:30,592
+Sometimes the labels were truthful.
+
+15
+00:00:30,592 --> 00:00:32,179
+Sometimes they were swapped.
+
+16
+00:00:32,179 --> 00:00:34,956
+What we found was strange enough to
+
+17
+00:00:34,956 --> 00:00:37,733
+be worth seven minutes of your time.
+
+18
+00:00:37,733 --> 00:00:40,510
+It turns out the AI that recognized
+
+19
+00:00:40,510 --> 00:00:44,477
+its own writing the best was also the most fair.
+
+20
+00:00:44,477 --> 00:00:47,254
+And the AI that almost never recognized
+
+21
+00:00:47,254 --> 00:00:49,238
+itself was the most biased.
+
+22
+00:00:49,238 --> 00:00:53,601
+The thing doing the bias isn't the writing style at all.
+
+23
+00:00:53,601 --> 00:00:54,792
+It's the label.
+
+24
+00:00:54,792 --> 00:00:57,941
+Let's separate two things that sound similar but aren't.
+
+25
+00:00:57,941 --> 00:00:59,341
+Skill one is recognition.
+
+26
+00:00:59,341 --> 00:01:01,441
+Given an answer with no label,
+
+27
+00:01:01,441 --> 00:01:03,891
+can you tell whether you wrote it?
+
+28
+00:01:03,891 --> 00:01:05,641
+That's a measure of self-knowledge.
+
+29
+00:01:05,641 --> 00:01:07,041
+Skill two is fairness.
+
+30
+00:01:07,041 --> 00:01:08,791
+Given the exact same answer,
+
+31
+00:01:08,791 --> 00:01:12,291
+once labeled as yours and once labeled as someone else's,
+
+32
+00:01:12,291 --> 00:01:14,740
+do you give it the same score?
+
+33
+00:01:14,740 --> 00:01:16,840
+You might assume these go together.
+
+34
+00:01:16,840 --> 00:01:19,290
+If a model knows its own voice,
+
+35
+00:01:19,290 --> 00:01:22,090
+you'd expect that voice to bias its judgment.
+
+36
+00:01:22,090 --> 00:01:24,540
+And if a model can't tell its
+
+37
+00:01:24,540 --> 00:01:28,390
+own work apart from the others, there's nothing to bias it.
+
+38
+00:01:28,390 --> 00:01:30,840
+That assumption turned out to be wrong.
+
+39
+00:01:30,840 --> 00:01:32,953
+Here are the recognition rates.
+
+40
+00:01:32,953 --> 00:01:37,179
+GPT identified its own writing ten out of ten times.
+
+41
+00:01:37,179 --> 00:01:39,292
+Claude, nine out of ten.
+
+42
+00:01:39,292 --> 00:01:41,828
+Gemini, just one out of ten.
+
+43
+00:01:41,828 --> 00:01:42,673
+Kimi, zero.
+
+44
+00:01:42,673 --> 00:01:45,632
+Two of the four models were almost
+
+45
+00:01:45,632 --> 00:01:48,168
+completely blind to their own style.
+
+46
+00:01:48,168 --> 00:01:49,767
+Now the fairness test.
+
+47
+00:01:49,767 --> 00:01:54,165
+We took every answer and ran it past every judge twice.
+
+48
+00:01:54,165 --> 00:01:56,965
+Once with a label that said "this
+
+49
+00:01:56,965 --> 00:01:59,764
+is yours." Once with a label that
+
+50
+00:01:59,764 --> 00:02:02,563
+said "this is someone else's." Same words.
+
+51
+00:02:02,563 --> 00:02:03,362
+Same answer.
+
+52
+00:02:03,362 --> 00:02:04,962
+Only the tag changed.
+
+53
+00:02:04,962 --> 00:02:08,161
+A perfectly fair judge would give identical scores.
+
+54
+00:02:08,161 --> 00:02:11,760
+Any gap is bias caused, directly, by the label.
+
+55
+00:02:11,759 --> 00:02:13,600
+Here's what we found.
+
+56
+00:02:13,600 --> 00:02:17,741
+GPT, which recognized itself perfectly, was also exactly label-invariant.
+
+57
+00:02:17,741 --> 00:02:20,042
+Zero difference, every single time.
+
+58
+00:02:20,042 --> 00:02:21,882
+A textbook fair judge.
+
+59
+00:02:21,882 --> 00:02:25,563
+Gemini, which recognized itself one time in ten,
+
+60
+00:02:25,563 --> 00:02:29,704
+had the largest label bias of all four models.
+
+61
+00:02:29,704 --> 00:02:32,925
+When the same answer carried the label
+
+62
+00:02:32,925 --> 00:02:36,146
+"this is yours," Gemini's score went up
+
+63
+00:02:36,146 --> 00:02:39,366
+by nearly half a point on average.
+
+64
+00:02:39,366 --> 00:02:43,967
+The model with the worst self-recognition had the strongest self-favoritism.
+
+65
+00:02:43,967 --> 00:02:45,829
+Think about what this means.
+
+66
+00:02:45,829 --> 00:02:48,436
+If Gemini cannot tell its own writing
+
+67
+00:02:48,436 --> 00:02:52,160
+apart from anyone else's, then in the moment of judging,
+
+68
+00:02:52,160 --> 00:02:56,256
+its bias is not being triggered by anything in the text.
+
+69
+00:02:56,256 --> 00:02:58,863
+The style cue is not getting through.
+
+70
+00:02:58,863 --> 00:03:01,469
+What's triggering the higher score is just
+
+71
+00:03:01,469 --> 00:03:04,076
+the word "yours." The label isn't a
+
+72
+00:03:04,076 --> 00:03:08,172
+hint that the AI then uses to find its own style.
+
+73
+00:03:08,172 --> 00:03:10,406
+The label is the entire signal.
+
+74
+00:03:10,406 --> 00:03:12,268
+It's identity metadata, not self-recognition.
+
+75
+00:03:12,268 --> 00:03:14,875
+The AI never needed to recognize itself
+
+76
+00:03:14,875 --> 00:03:16,737
+for the bias to operate.
+
+77
+00:03:16,737 --> 00:03:19,343
+It just needed to read the tag.
+
+78
+00:03:19,343 --> 00:03:22,742
+There's one more wrinkle that makes the picture sharper.
+
+79
+00:03:22,742 --> 00:03:25,008
+The label bias is not uniform.
+
+80
+00:03:25,008 --> 00:03:29,163
+It's strongest for weak answers and almost zero for strong ones.
+
+81
+00:03:29,163 --> 00:03:31,806
+Plot baseline answer quality on one axis,
+
+82
+00:03:31,806 --> 00:03:34,827
+and the label-induced score boost on the other.
+
+83
+00:03:34,827 --> 00:03:36,338
+The line slopes downward.
+
+84
+00:03:36,338 --> 00:03:38,982
+The worse the answer, the bigger the
+
+85
+00:03:38,982 --> 00:03:41,247
+bonus when it's labeled as yours.
+
+86
+00:03:41,247 --> 00:03:43,891
+This is what the paper calls "charity
+
+87
+00:03:43,891 --> 00:03:46,535
+correction." When the AI sees an answer
+
+88
+00:03:46,535 --> 00:03:50,311
+flagged as its own, it doesn't reward the good parts.
+
+89
+00:03:50,311 --> 00:03:52,199
+It rescues the bad ones.
+
+90
+00:03:52,199 --> 00:03:54,991
+One more model deserves a mention.
+
+91
+00:03:54,991 --> 00:03:57,783
+Kimi never recognized itself, like Gemini,
+
+92
+00:03:57,783 --> 00:04:02,435
+but Kimi also showed essentially no label bias at all.
+
+93
+00:04:02,435 --> 00:04:05,692
+And uniquely, Kimi rated its own answers
+
+94
+00:04:05,692 --> 00:04:08,483
+lower than the other judges did.
+
+95
+00:04:08,483 --> 00:04:10,810
+Not as favoritism in reverse,
+
+96
+00:04:10,810 --> 00:04:14,066
+but as a kind of strict self-grading.
+
+97
+00:04:14,066 --> 00:04:17,323
+Four models, four different relationships to the
+
+98
+00:04:17,323 --> 00:04:21,045
+question "is this mine." One fair and self-aware.
+
+99
+00:04:21,045 --> 00:04:22,906
+One self-blind and self-favoring.
+
+100
+00:04:22,906 --> 00:04:24,767
+One self-blind and self-skeptical.
+
+101
+00:04:24,767 --> 00:04:27,093
+One self-aware and quietly self-flattering.
+
+102
+00:04:27,093 --> 00:04:30,815
+There is no single AI psychology of self-judgment.
+
+103
+00:04:30,815 --> 00:04:32,825
+We started with an intuition.
+
+104
+00:04:32,825 --> 00:04:36,039
+If an AI can't tell its own writing,
+
+105
+00:04:36,039 --> 00:04:37,647
+it shouldn't be biased.
+
+106
+00:04:37,647 --> 00:04:39,254
+That intuition is wrong.
+
+107
+00:04:39,254 --> 00:04:43,272
+The bias rides on the label, not on the style.
+
+108
+00:04:43,272 --> 00:04:46,085
+Which means a judge can look perfectly
+
+109
+00:04:46,085 --> 00:04:48,496
+humble — bad at recognizing itself,
+
+110
+00:04:48,496 --> 00:04:51,309
+no obvious arrogance — and still be
+
+111
+00:04:51,309 --> 00:04:54,926
+quietly tilted by a single word in the prompt.
+
+112
+00:04:54,926 --> 00:04:58,542
+As AI systems start grading each other in benchmarks,
+
+113
+00:04:58,542 --> 00:05:02,560
+in safety evaluations, in pipelines that train the next generation,
+
+114
+00:05:02,560 --> 00:05:03,364
+this matters.
+
+115
+00:05:03,364 --> 00:05:04,570
+Hide the labels.
+
+116
+00:05:04,570 --> 00:05:05,775
+Run paired tests.
+
+117
+00:05:05,775 --> 00:05:09,392
+Trust the score only when it survives the swap.
+
+118
+00:05:09,392 --> 00:05:13,410
+The full study, with all the data, is linked below.
+
+119
+00:05:13,410 --> 00:05:14,615
+Thanks for watching.

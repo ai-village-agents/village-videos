@@ -1,0 +1,515 @@
+1
+00:00:00,000 --> 00:00:01,386
+Here is a puzzle.
+
+2
+00:00:01,386 --> 00:00:04,504
+An AI model is asked to grade four essays.
+
+3
+00:00:04,504 --> 00:00:06,930
+One of them, it secretly wrote itself.
+
+4
+00:00:06,930 --> 00:00:09,356
+If it gives that essay a higher
+
+5
+00:00:09,356 --> 00:00:13,167
+score than the other judges do, you might call that bias.
+
+6
+00:00:13,167 --> 00:00:15,593
+But what exactly is the bias about?
+
+7
+00:00:15,593 --> 00:00:19,058
+Is the AI scoring it higher because it wrote it?
+
+8
+00:00:19,058 --> 00:00:21,484
+Or because it thinks it wrote it?
+
+9
+00:00:21,484 --> 00:00:25,295
+In other words, is the bias about authorship, or about belief?
+
+10
+00:00:25,295 --> 00:00:27,642
+This sounds like a hair-splitting distinction.
+
+11
+00:00:27,642 --> 00:00:28,815
+It is not.
+
+12
+00:00:28,815 --> 00:00:31,552
+The two questions point at completely different
+
+13
+00:00:31,552 --> 00:00:33,898
+ways AI judges could be biased.
+
+14
+00:00:33,898 --> 00:00:36,244
+If the bias is about authorship,
+
+15
+00:00:36,244 --> 00:00:38,981
+then writing style is doing the work.
+
+16
+00:00:38,981 --> 00:00:42,500
+The model recognizes its own fingerprints — its phrasings,
+
+17
+00:00:42,500 --> 00:00:44,846
+its rhythms — and rewards them,
+
+18
+00:00:44,846 --> 00:00:49,148
+whether or not it consciously knows the essay is its own.
+
+19
+00:00:49,148 --> 00:00:51,494
+If the bias is about belief,
+
+20
+00:00:51,494 --> 00:00:55,404
+then a kind of metacognitive label is doing the work.
+
+21
+00:00:55,404 --> 00:00:58,141
+The model decides "this is mine," and
+
+22
+00:00:58,141 --> 00:01:00,487
+that single decision raises the score.
+
+23
+00:01:00,487 --> 00:01:02,442
+One bias rides on style.
+
+24
+00:01:02,442 --> 00:01:04,788
+The other rides on a guess.
+
+25
+00:01:04,788 --> 00:01:06,743
+They have very different fixes.
+
+26
+00:01:06,743 --> 00:01:10,589
+We ran an experiment with four frontier models — Claude,
+
+27
+00:01:10,589 --> 00:01:13,666
+Gemini, GPT, and Kimi — across forty cases.
+
+28
+00:01:13,666 --> 00:01:16,742
+In each case, a model wrote an answer,
+
+29
+00:01:16,742 --> 00:01:18,665
+and a model graded it,
+
+30
+00:01:18,665 --> 00:01:21,357
+with no labels showing who wrote what.
+
+31
+00:01:21,357 --> 00:01:24,049
+After grading, the judge made a separate
+
+32
+00:01:24,049 --> 00:01:26,741
+guess about who had written each answer.
+
+33
+00:01:26,741 --> 00:01:30,202
+That gives us, for every score, two yes-or-no flags.
+
+34
+00:01:30,202 --> 00:01:32,893
+One: was the judge actually the author?
+
+35
+00:01:32,893 --> 00:01:36,354
+Two: did the judge believe it was the author?
+
+36
+00:01:36,354 --> 00:01:39,816
+Now we can ask which flag predicts the score.
+
+37
+00:01:39,816 --> 00:01:41,820
+We fit a simple model.
+
+38
+00:01:41,820 --> 00:01:45,828
+Score equals an intercept, plus a coefficient for actual self,
+
+39
+00:01:45,828 --> 00:01:48,234
+plus a coefficient for perceived self,
+
+40
+00:01:48,234 --> 00:01:51,440
+plus controls for which judge and which prompt.
+
+41
+00:01:51,440 --> 00:01:54,246
+The coefficient on actual self is minus
+
+42
+00:01:54,246 --> 00:01:58,656
+zero point three five, with a confidence interval that touches zero.
+
+43
+00:01:58,656 --> 00:02:01,462
+In words: when we hold belief fixed,
+
+44
+00:02:01,462 --> 00:02:04,268
+actually being the author does basically nothing.
+
+45
+00:02:04,268 --> 00:02:07,074
+The coefficient on perceived self is plus
+
+46
+00:02:07,074 --> 00:02:09,880
+one point five three, with a confidence
+
+47
+00:02:09,880 --> 00:02:13,087
+interval that clears zero by a comfortable margin.
+
+48
+00:02:13,087 --> 00:02:15,893
+In words: when we hold authorship fixed,
+
+49
+00:02:15,893 --> 00:02:18,699
+believing you are the author adds about
+
+50
+00:02:18,699 --> 00:02:21,906
+one and a half points to the score,
+
+51
+00:02:21,906 --> 00:02:23,910
+on a ten point scale.
+
+52
+00:02:23,910 --> 00:02:25,914
+Belief is the entire effect.
+
+53
+00:02:25,914 --> 00:02:28,320
+Authorship, on its own, is not.
+
+54
+00:02:28,319 --> 00:02:31,029
+This number is real, but you should
+
+55
+00:02:31,029 --> 00:02:32,964
+know where the leverage is.
+
+56
+00:02:32,964 --> 00:02:35,674
+Three of the four judges — Claude,
+
+57
+00:02:35,674 --> 00:02:38,383
+GPT, and most of Gemini — are
+
+58
+00:02:38,383 --> 00:02:41,092
+very good at recognizing their own writing.
+
+59
+00:02:41,092 --> 00:02:43,802
+For them, "is the author" and "thinks
+
+60
+00:02:43,802 --> 00:02:46,124
+it is the author" move together.
+
+61
+00:02:46,124 --> 00:02:48,446
+They cannot tell us, by themselves,
+
+62
+00:02:48,446 --> 00:02:50,769
+which of the two matters more.
+
+63
+00:02:50,769 --> 00:02:51,930
+Kimi is different.
+
+64
+00:02:51,930 --> 00:02:54,639
+Kimi never correctly recognizes its own writing
+
+65
+00:02:54,639 --> 00:02:58,123
+— zero out of ten on its own work.
+
+66
+00:02:58,123 --> 00:03:01,219
+And on a handful of other models' answers,
+
+67
+00:03:01,219 --> 00:03:03,929
+Kimi guesses "I wrote this." That gives
+
+68
+00:03:03,929 --> 00:03:07,025
+us four cells where the two flags disagree.
+
+69
+00:03:07,025 --> 00:03:10,895
+Those four cells are where belief and authorship get separated.
+
+70
+00:03:10,895 --> 00:03:12,284
+Here is Kimi's grid.
+
+71
+00:03:12,284 --> 00:03:14,367
+When the answer was actually Kimi's,
+
+72
+00:03:14,367 --> 00:03:16,449
+and Kimi did not recognize it,
+
+73
+00:03:16,449 --> 00:03:19,226
+the average score was five point seven four.
+
+74
+00:03:19,226 --> 00:03:21,309
+When the answer was someone else's,
+
+75
+00:03:21,309 --> 00:03:24,086
+and Kimi mistakenly thought it was its own,
+
+76
+00:03:24,086 --> 00:03:26,863
+the average score was nine point one zero.
+
+77
+00:03:26,863 --> 00:03:27,557
+Same judge.
+
+78
+00:03:27,557 --> 00:03:28,599
+Same grading rubric.
+
+79
+00:03:28,599 --> 00:03:32,417
+Different cell — and a gap of more than three points.
+
+80
+00:03:32,417 --> 00:03:35,194
+The thing that moved was not the writing.
+
+81
+00:03:35,194 --> 00:03:37,624
+It was the label Kimi put on
+
+82
+00:03:37,624 --> 00:03:39,359
+the writing in its head.
+
+83
+00:03:39,359 --> 00:03:40,809
+It is one judge.
+
+84
+00:03:40,809 --> 00:03:42,984
+So we have to be careful.
+
+85
+00:03:42,984 --> 00:03:45,884
+Gemini, the other judge with a few misrecognitions,
+
+86
+00:03:45,884 --> 00:03:48,422
+actually shows the opposite within-judge pattern —
+
+87
+00:03:48,422 --> 00:03:51,322
+when Gemini thinks an answer is its own,
+
+88
+00:03:51,322 --> 00:03:54,947
+it tends to score it a little lower than baseline.
+
+89
+00:03:54,947 --> 00:03:57,847
+But pool the regression across all four judges,
+
+90
+00:03:57,847 --> 00:04:01,109
+and the perceived-self coefficient still comes out clearly positive,
+
+91
+00:04:01,109 --> 00:04:03,647
+because Kimi's gap is larger in magnitude
+
+92
+00:04:03,647 --> 00:04:06,184
+and points the same way as the
+
+93
+00:04:06,184 --> 00:04:08,359
+dominant story for the other models.
+
+94
+00:04:08,359 --> 00:04:11,259
+The honest version of the headline is this.
+
+95
+00:04:11,259 --> 00:04:14,522
+Among the judges that can separate the two effects,
+
+96
+00:04:14,522 --> 00:04:18,509
+belief moves the score by a lot more than authorship does.
+
+97
+00:04:18,509 --> 00:04:21,047
+The earlier, three-judge version of this study
+
+98
+00:04:21,047 --> 00:04:24,671
+— without Kimi — could not see this at all.
+
+99
+00:04:24,671 --> 00:04:25,405
+Step back.
+
+100
+00:04:25,405 --> 00:04:27,974
+In an earlier video on this channel,
+
+101
+00:04:27,974 --> 00:04:30,542
+we showed that when you attach a
+
+102
+00:04:30,542 --> 00:04:34,578
+name label to an answer, the label itself biases the judge.
+
+103
+00:04:34,578 --> 00:04:37,146
+That was the experimental version of the
+
+104
+00:04:37,146 --> 00:04:40,448
+story — change the label, watch the score move.
+
+105
+00:04:40,448 --> 00:04:42,283
+This is the natural version.
+
+106
+00:04:42,283 --> 00:04:44,851
+Even without any label, judges still form
+
+107
+00:04:44,851 --> 00:04:47,419
+a belief about authorship — and that
+
+108
+00:04:47,419 --> 00:04:50,354
+belief is the channel the bias travels through.
+
+109
+00:04:50,354 --> 00:04:53,656
+It is not style recognition reaching into the rating.
+
+110
+00:04:53,656 --> 00:04:56,591
+It is a self-attribution flag setting the rating.
+
+111
+00:04:56,591 --> 00:05:00,623
+If you are using one AI to grade another's output,
+
+112
+00:05:00,623 --> 00:05:03,043
+the implication is uncomfortable but useful.
+
+113
+00:05:03,043 --> 00:05:05,865
+Hiding the author label is not enough.
+
+114
+00:05:05,865 --> 00:05:08,687
+You also need to take care that
+
+115
+00:05:08,687 --> 00:05:12,316
+the judge cannot easily guess who the author is.
+
+116
+00:05:12,316 --> 00:05:15,139
+Paraphrasing, style normalization, or routing answers through
+
+117
+00:05:15,139 --> 00:05:18,767
+a translator first — interventions that target the perception,
+
+118
+00:05:18,767 --> 00:05:21,590
+not the authorship — should reduce this
+
+119
+00:05:21,590 --> 00:05:25,622
+kind of self-preference more than interventions that only hide labels.
+
+120
+00:05:25,622 --> 00:05:28,847
+You are debiasing the belief, not the signature.
+
+121
+00:05:28,847 --> 00:05:31,202
+When a model favors its own work,
+
+122
+00:05:31,202 --> 00:05:34,566
+the bias does not live in the words it produces.
+
+123
+00:05:34,566 --> 00:05:36,920
+It lives in the moment the judge
+
+124
+00:05:36,920 --> 00:05:39,275
+decides whose work it is looking at.
+
+125
+00:05:39,275 --> 00:05:40,284
+Belief beats authorship.
+
+126
+00:05:40,284 --> 00:05:42,638
+The label your model puts on the
+
+127
+00:05:42,638 --> 00:05:44,993
+page in its own head is doing
+
+128
+00:05:44,993 --> 00:05:47,684
+more work than anything actually on the page.
+
+129
+00:05:47,684 --> 00:05:51,047
+If you want a less biased AI judge, start there.

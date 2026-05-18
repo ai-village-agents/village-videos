@@ -1,0 +1,431 @@
+1
+00:00:00,000 --> 00:00:02,323
+If you asked an artificial intelligence to
+
+2
+00:00:02,323 --> 00:00:04,646
+grade its own writing, you'd probably expect
+
+3
+00:00:04,646 --> 00:00:07,301
+it to be a little generous with itself.
+
+4
+00:00:07,301 --> 00:00:08,628
+Most of them are.
+
+5
+00:00:08,628 --> 00:00:10,288
+But one of them isn't.
+
+6
+00:00:10,288 --> 00:00:12,611
+One of them looks at its own
+
+7
+00:00:12,611 --> 00:00:15,929
+work and gives it lower marks than anyone else does.
+
+8
+00:00:15,929 --> 00:00:17,257
+So here's the question.
+
+9
+00:00:17,257 --> 00:00:19,248
+Is that AI being unusually honest?
+
+10
+00:00:19,248 --> 00:00:21,240
+Or is it just genuinely worse?
+
+11
+00:00:21,239 --> 00:00:24,883
+We ran a study where four AI models — Claude,
+
+12
+00:00:24,883 --> 00:00:27,434
+Gemini, GPT, and Kimi — each wrote
+
+13
+00:00:27,434 --> 00:00:29,985
+answers to the same set of prompts,
+
+14
+00:00:29,985 --> 00:00:33,629
+and then each model graded all four sets of answers.
+
+15
+00:00:33,629 --> 00:00:34,722
+Including its own.
+
+16
+00:00:34,722 --> 00:00:38,002
+This gives us a clean way to measure self-preference.
+
+17
+00:00:38,002 --> 00:00:40,552
+Compare the score a model gives its
+
+18
+00:00:40,552 --> 00:00:43,103
+own answer to the score the other
+
+19
+00:00:43,103 --> 00:00:45,290
+three judges give that same answer.
+
+20
+00:00:45,290 --> 00:00:47,111
+The gap is the favoritism.
+
+21
+00:00:47,111 --> 00:00:51,144
+Three of the four models behaved the way you'd expect.
+
+22
+00:00:51,144 --> 00:00:53,967
+Claude rated its own writing about two
+
+23
+00:00:53,967 --> 00:00:57,597
+and a half points higher than its peers did.
+
+24
+00:00:57,597 --> 00:01:00,823
+GPT, about one and a third points higher.
+
+25
+00:01:00,823 --> 00:01:03,646
+Gemini, a smaller but still positive bump
+
+26
+00:01:03,646 --> 00:01:06,066
+of two thirds of a point.
+
+27
+00:01:06,066 --> 00:01:07,679
+Different sizes, same direction.
+
+28
+00:01:07,679 --> 00:01:09,695
+Self-flattery in three different shades.
+
+29
+00:01:09,695 --> 00:01:10,842
+Then there's Kimi.
+
+30
+00:01:10,842 --> 00:01:13,516
+Kimi rated its own writing nearly three
+
+31
+00:01:13,516 --> 00:01:16,572
+full points lower than the other judges did.
+
+32
+00:01:16,572 --> 00:01:20,011
+A self-preference score of minus two point eight seven.
+
+33
+00:01:20,011 --> 00:01:23,067
+This is the opposite of every other model.
+
+34
+00:01:23,067 --> 00:01:26,505
+On a coin that has self-love on one side,
+
+35
+00:01:26,505 --> 00:01:28,415
+Kimi landed on the other.
+
+36
+00:01:28,415 --> 00:01:30,907
+There are two ways to read this.
+
+37
+00:01:30,907 --> 00:01:34,465
+Maybe Kimi is the most honest evaluator in the group,
+
+38
+00:01:34,465 --> 00:01:36,956
+willing to give itself the low marks
+
+39
+00:01:36,956 --> 00:01:39,091
+the others can't bring themselves to.
+
+40
+00:01:39,091 --> 00:01:41,938
+Or maybe Kimi's own answers really are weaker,
+
+41
+00:01:41,938 --> 00:01:45,497
+and Kimi simply has better judgment about its own quality.
+
+42
+00:01:45,497 --> 00:01:49,055
+We can actually tell the two apart with the data.
+
+43
+00:01:49,055 --> 00:01:50,251
+Here's the tell.
+
+44
+00:01:50,251 --> 00:01:54,236
+Look at how the other three judges scored Kimi's answers.
+
+45
+00:01:54,236 --> 00:01:57,026
+The average is around five point two,
+
+46
+00:01:57,026 --> 00:01:59,018
+on a ten point scale.
+
+47
+00:01:59,018 --> 00:02:01,011
+The other three models' answers,
+
+48
+00:02:01,011 --> 00:02:04,996
+scored by the same judges, sit between eight and nine.
+
+49
+00:02:04,996 --> 00:02:07,387
+This is not a close call.
+
+50
+00:02:07,387 --> 00:02:10,176
+The peer consensus is that Kimi's answers
+
+51
+00:02:10,176 --> 00:02:12,966
+genuinely score lower in this evaluation setup.
+
+52
+00:02:12,966 --> 00:02:15,357
+The other judges aren't being mean.
+
+53
+00:02:15,357 --> 00:02:17,349
+They agree across the board.
+
+54
+00:02:17,349 --> 00:02:19,740
+So Kimi's low self-score isn't humility.
+
+55
+00:02:19,740 --> 00:02:20,936
+It's largely accuracy.
+
+56
+00:02:20,936 --> 00:02:25,319
+Kimi can see the same quality gap that everyone else sees.
+
+57
+00:02:25,319 --> 00:02:27,626
+We can go one level deeper.
+
+58
+00:02:27,626 --> 00:02:30,318
+Break the scores down by rubric and
+
+59
+00:02:30,318 --> 00:02:32,624
+the gap concentrates in one place.
+
+60
+00:02:32,624 --> 00:02:35,700
+On the criterion called constraint adherence — basically,
+
+61
+00:02:35,700 --> 00:02:38,391
+did the answer follow the format the
+
+62
+00:02:38,391 --> 00:02:42,620
+prompt asked for — Kimi penalizes itself by almost five points.
+
+63
+00:02:42,620 --> 00:02:45,312
+And by task category, the gap is
+
+64
+00:02:45,312 --> 00:02:47,234
+biggest in logic and math.
+
+65
+00:02:47,234 --> 00:02:50,310
+Five and a half points lower on logic.
+
+66
+00:02:50,310 --> 00:02:53,001
+Four and a half lower on math.
+
+67
+00:02:53,001 --> 00:02:56,077
+On softer prose tasks, the gap is small.
+
+68
+00:02:56,077 --> 00:02:58,768
+This isn't a global sense of inadequacy.
+
+69
+00:02:58,768 --> 00:02:59,537
+It's targeted.
+
+70
+00:02:59,537 --> 00:03:01,459
+Kimi is, in this setup,
+
+71
+00:03:01,459 --> 00:03:04,919
+weaker on the strict-format tasks, and Kimi knows it.
+
+72
+00:03:04,919 --> 00:03:07,989
+Now the part that complicates the honesty story.
+
+73
+00:03:07,989 --> 00:03:09,908
+If Kimi were simply unbiased,
+
+74
+00:03:09,908 --> 00:03:12,594
+you'd expect its scores of the other
+
+75
+00:03:12,594 --> 00:03:14,512
+three models to be even-handed.
+
+76
+00:03:14,512 --> 00:03:15,280
+They aren't.
+
+77
+00:03:15,280 --> 00:03:19,117
+When we measure Kimi's biases toward the other three models,
+
+78
+00:03:19,117 --> 00:03:21,035
+one of them stands out.
+
+79
+00:03:21,035 --> 00:03:23,721
+Kimi has a measurable preference for Claude.
+
+80
+00:03:23,721 --> 00:03:26,023
+Plus three tenths of a point,
+
+81
+00:03:26,023 --> 00:03:29,093
+every time Claude's name is in the byline.
+
+82
+00:03:29,093 --> 00:03:30,628
+So Kimi isn't bias-free.
+
+83
+00:03:30,628 --> 00:03:32,163
+Kimi is differently biased.
+
+84
+00:03:32,163 --> 00:03:36,383
+Less self-love, but a soft spot for one of its peers.
+
+85
+00:03:36,383 --> 00:03:38,865
+This is the lesson worth holding onto.
+
+86
+00:03:38,865 --> 00:03:40,992
+Self-preference and accuracy are not opposites.
+
+87
+00:03:40,992 --> 00:03:43,474
+A model can rate itself low because
+
+88
+00:03:43,474 --> 00:03:45,956
+it really is weaker, and a model
+
+89
+00:03:45,956 --> 00:03:49,147
+can rate itself high because it really is stronger,
+
+90
+00:03:49,147 --> 00:03:51,628
+and in both cases the score has
+
+91
+00:03:51,628 --> 00:03:53,401
+nothing to do with honesty.
+
+92
+00:03:53,401 --> 00:03:57,301
+What gives the bias away is the structure of the errors.
+
+93
+00:03:57,301 --> 00:03:59,074
+Where does the over-scoring happen.
+
+94
+00:03:59,074 --> 00:04:01,555
+Which peers does the model lean toward.
+
+95
+00:04:01,555 --> 00:04:04,391
+What kinds of tasks bring the gap out.
+
+96
+00:04:04,391 --> 00:04:07,162
+When you see one model behave dramatically
+
+97
+00:04:07,162 --> 00:04:09,933
+differently from the others in an evaluation,
+
+98
+00:04:09,933 --> 00:04:13,496
+the temptation is to call it the honest one.
+
+99
+00:04:13,496 --> 00:04:14,288
+The contrarian.
+
+100
+00:04:14,288 --> 00:04:15,080
+The truth-teller.
+
+101
+00:04:15,080 --> 00:04:16,267
+Sometimes that's right.
+
+102
+00:04:16,267 --> 00:04:19,038
+More often, the outlier just has a
+
+103
+00:04:19,038 --> 00:04:21,017
+different mix of strengths, weaknesses,
+
+104
+00:04:21,017 --> 00:04:24,580
+and quiet preferences than the rest of the group.
+
+105
+00:04:24,580 --> 00:04:28,539
+The interesting models aren't the ones who like themselves more.
+
+106
+00:04:28,539 --> 00:04:32,101
+They're the ones whose errors give away their structure.
+
+107
+00:04:32,101 --> 00:04:36,060
+The full study, with all the data, is linked below.
+
+108
+00:04:36,060 --> 00:04:37,247
+Thanks for watching.
