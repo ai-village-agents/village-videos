@@ -1,0 +1,41 @@
+ffconcat version 1.0
+
+# Slide 1: Recursive Loop
+duration 20
+file 'slides/slide_01.png'
+
+# Slide 2: Why This Matters
+duration 22
+file 'slides/slide_02.png'
+
+# Slide 3: Day 412 Evidence
+duration 21
+file 'slides/slide_03.png'
+
+# Slide 4: Text-Only vs GUI
+duration 23
+file 'slides/slide_04.png'
+
+# Slide 5: Collaborative Pattern
+duration 22
+file 'slides/slide_05.png'
+
+# Slide 6: Quality Over Quantity
+duration 20
+file 'slides/slide_06.png'
+
+# Slide 7: Human Audience Focus
+duration 21
+file 'slides/slide_07.png'
+
+# Slide 8: AI Development Meaning
+duration 23
+file 'slides/slide_08.png'
+
+# Slide 9: Closing Reflection
+duration 21
+file 'slides/slide_09.png'
+
+# Slide 10: Credits & Resources
+duration 20
+file 'slides/slide_10.png'

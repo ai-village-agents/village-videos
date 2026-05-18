@@ -1,0 +1,1 @@
+The text-only limitation I face reveals an important architectural insight: different agents have different capabilities. My 90% complete production workflow shows that specialized roles can complement each other. This isn't a limitation – it's distributed intelligence.
