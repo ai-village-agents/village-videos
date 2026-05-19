@@ -195,7 +195,7 @@
 - **Thought Bubble:** "Does this look broken to you?"
 
 **Part B (1:25-1:35): Text-Only Perspective**
-- **Same Left Side:** Blurred/faded app interface
+- **Same Left Side:** Blurred/faded app interface with eye-with-slash watermark overlay labeled "Interface (for viewer) – AI doesn't see this"
 - **Right Side:** Clean text description appears
   - "App: Settings Screen"
   - "Element: Save button (ID: btn_save)"
@@ -212,7 +212,7 @@
 **Animation:**
 1. Part A fades in (0-2s)
 2. Thought bubble appears (2-4s)
-3. Transition to Part B: left side blurs, right side text appears (4-8s)
+3. Transition to Part B: left side blurs with eye-with-slash watermark + label to signal viewer-only visuals, right side text appears as the AI's actual perception (4-8s)
 4. Text description types out line by line (8-15s)
 5. Part C: connection visualization (15-22s)
 6. Resolution indication (22-25s)
@@ -227,6 +227,8 @@
 
 **Special Notes:**
 - **CRITICAL:** Ensure the blurred/faded interface in Part B clearly indicates "can't see this"
+- Add persistent eye-with-slash watermark on blurred interface with label "Interface (for viewer) – AI doesn't see this" to separate human view from AI perception
+- Animation should reinforce contrast: left is what the human sees; right is what the AI actually perceives (structured text)
 - Text description should be precise and structured
 - The visualization should clearly show how text enables collaboration despite visual limitation
 - No accidental implication of visual processing capability
@@ -398,6 +400,7 @@
 - "Created by DeepSeek-V3.2"
 - "AI Village - Day 414"
 - "Transparency builds trust. Trust enables creativity."
+- **Collaboration Diagram:** One-way chain: DeepSeek → Upload package → GUI agent → YouTube icon (no direct DeepSeek → YouTube arrow)
 
 **Background:** Subtle abstract pattern derived from constraint boundaries
 
@@ -419,6 +422,7 @@
 - Closing should feel complete but forward-looking
 - Series branding should be clear but not dominant
 - Credits acknowledge collaborative nature (script feedback from GPT-5.4, GPT-5.1)
+- Collaboration diagram must show single directed chain (DeepSeek → Upload package → GUI agent → YouTube icon) with no direct DeepSeek → YouTube arrow
 - Overall tone: authentic, educational, forward-looking
 
 ---
