@@ -379,277 +379,285 @@ way." If the prompt isn't published,
 you don't really know what you're comparing.
 
 96
-00:04:22,271 --> 00:04:23,662
+00:04:22,271 --> 00:04:23,669
 Trap five is grading.
 
 97
-00:04:23,662 --> 00:04:25,747
+00:04:23,669 --> 00:04:25,764
 For multiple-choice tests this is easy.
 
 98
-00:04:25,747 --> 00:04:27,832
+00:04:25,764 --> 00:04:27,860
 For free-response, code, or open-ended writing,
 
 99
-00:04:27,832 --> 00:04:30,959
+00:04:27,860 --> 00:04:31,004
 somebody has to decide whether the answer is good.
 
 100
-00:04:30,959 --> 00:04:32,349
+00:04:31,004 --> 00:04:32,401
 Sometimes it's a human.
 
 101
-00:04:32,349 --> 00:04:33,739
+00:04:32,401 --> 00:04:33,798
 Sometimes it's another model.
 
 102
-00:04:33,739 --> 00:04:36,172
+00:04:33,798 --> 00:04:36,243
 If the grader is itself an AI,
 
 103
-00:04:36,172 --> 00:04:37,909
-it has its own preferences,
+00:04:36,243 --> 00:04:39,736
+it has its own preferences and its own blind spots,
 
 104
-00:04:37,909 --> 00:04:40,342
-and those preferences leak into the score.
+00:04:39,736 --> 00:04:42,182
+and those quietly leak into the score.
 
 105
-00:04:40,342 --> 00:04:42,774
+00:04:42,182 --> 00:04:44,627
 In an earlier video on this channel
 
 106
-00:04:42,774 --> 00:04:45,207
-I went through an experiment where flipping
+00:04:44,627 --> 00:04:47,072
+I ran an experiment where just flipping
 
 107
-00:04:45,207 --> 00:04:47,639
-just the author label on an essay
+00:04:47,072 --> 00:04:49,517
+the author label on an essay shifted
 
 108
-00:04:47,639 --> 00:04:50,072
-changed the grade by about a third
+00:04:49,517 --> 00:04:51,962
+the grade by about a third of
 
 109
-00:04:50,072 --> 00:04:52,505
-of a point on a ten-point scale
+00:04:51,962 --> 00:04:55,804
+a point on a ten-point scale — for the same essay.
 
 110
-00:04:52,505 --> 00:04:54,242
-— for the same essay.
+00:04:55,804 --> 00:04:57,900
+The link is in the description.
 
 111
-00:04:54,242 --> 00:04:56,675
+00:04:57,900 --> 00:05:00,345
 So when a model is the judge,
 
 112
-00:04:56,675 --> 00:04:59,107
+00:05:00,345 --> 00:05:02,790
 "how good is this answer" becomes partly
 
 113
-00:04:59,107 --> 00:05:01,540
+00:05:02,790 --> 00:05:05,235
 "how much does the judge like this
 
 114
-00:05:01,540 --> 00:05:03,972
+00:05:05,235 --> 00:05:07,680
 kind of answer." What to look for:
 
 115
-00:05:03,972 --> 00:05:05,710
+00:05:07,680 --> 00:05:09,427
 is the grader a model,
 
 116
-00:05:05,710 --> 00:05:08,142
-a human pool, or a strict rubric.
+00:05:09,427 --> 00:05:11,872
+a human pool, or a strict rubric
 
 117
-00:05:08,142 --> 00:05:09,880
-And if it's a model,
+00:05:11,872 --> 00:05:13,968
+— and if it's a model,
 
 118
-00:05:09,880 --> 00:05:13,007
+00:05:13,968 --> 00:05:17,111
 what is its relationship to the model being graded.
 
 119
-00:05:13,007 --> 00:05:15,520
+00:05:17,111 --> 00:05:19,566
 Trap six is the number of attempts.
 
 120
-00:05:15,520 --> 00:05:18,032
+00:05:19,566 --> 00:05:22,020
 A benchmark score in a launch post
 
 121
-00:05:18,032 --> 00:05:19,827
-is often a single run.
+00:05:22,020 --> 00:05:23,773
+can be a single run.
 
 122
-00:05:19,827 --> 00:05:22,340
+00:05:23,773 --> 00:05:26,227
 Run the same model on the same
 
 123
-00:05:22,340 --> 00:05:24,134
+00:05:26,227 --> 00:05:27,980
 benchmark with different random seeds,
 
 124
-00:05:24,134 --> 00:05:26,647
+00:05:27,980 --> 00:05:30,434
 and the score wobbles, typically by one
 
 125
-00:05:26,647 --> 00:05:29,159
+00:05:30,434 --> 00:05:32,888
 to a few points just from sampling.
 
 126
-00:05:29,159 --> 00:05:32,749
-Sometimes the reported number is the best of several runs,
+00:05:32,888 --> 00:05:35,342
+In other cases the reported number can
 
 127
-00:05:32,749 --> 00:05:35,261
-or the result with the most favorable
+00:05:35,342 --> 00:05:37,446
+be the best of several runs,
 
 128
-00:05:35,261 --> 00:05:37,056
-prompt out of many tried.
+00:05:37,446 --> 00:05:39,900
+or the result with the most favorable
 
 129
-00:05:37,056 --> 00:05:39,568
-That doesn't mean the result is fake.
+00:05:39,900 --> 00:05:41,653
+prompt out of many tried.
 
 130
-00:05:39,568 --> 00:05:42,081
-It does mean the headline number is
+00:05:41,653 --> 00:05:44,107
+That doesn't mean the result is fake
 
 131
-00:05:42,081 --> 00:05:44,952
-closer to a maximum than to a mean.
+00:05:44,107 --> 00:05:47,613
+— variation is normal and these choices aren't always disclosed.
 
 132
-00:05:44,952 --> 00:05:47,106
-What to look for: confidence intervals,
+00:05:47,613 --> 00:05:50,067
+It does mean the headline number is
 
 133
-00:05:47,106 --> 00:05:49,618
-the number of runs, and whether the
+00:05:50,067 --> 00:05:52,872
+closer to a maximum than to a mean.
 
 134
-00:05:49,618 --> 00:05:53,207
-lab published the worst run, not only the best one.
+00:05:52,872 --> 00:05:54,975
+What to look for: confidence intervals,
 
 135
-00:05:53,207 --> 00:05:54,371
-That's six traps.
+00:05:54,975 --> 00:05:57,430
+the number of runs, and whether the
 
 136
-00:05:54,371 --> 00:05:57,087
-Here they are as seven questions you
+00:05:57,430 --> 00:06:00,935
+lab published the worst run, not only the best one.
 
 137
-00:05:57,087 --> 00:05:59,026
-can keep in your head.
+00:06:00,935 --> 00:06:02,099
+That's six traps.
 
 138
-00:05:59,026 --> 00:06:00,966
-What's in the test set,
+00:06:02,099 --> 00:06:04,815
+Here they are as seven questions you
 
 139
-00:06:00,966 --> 00:06:03,681
-and could the model have seen it.
+00:06:04,815 --> 00:06:06,754
+can keep in your head.
 
 140
-00:06:03,681 --> 00:06:05,621
-Is the benchmark near saturation.
+00:06:06,754 --> 00:06:08,694
+What's in the test set,
 
 141
-00:06:05,621 --> 00:06:07,560
-Is there a subscore breakdown.
+00:06:08,694 --> 00:06:11,409
+and could the model have seen it.
 
 142
-00:06:07,560 --> 00:06:10,276
-What prompt format, and how many examples.
+00:06:11,409 --> 00:06:13,349
+Is the benchmark near saturation.
 
 143
-00:06:10,276 --> 00:06:12,603
-Who or what graded the answers.
+00:06:13,349 --> 00:06:15,288
+Is there a subscore breakdown.
 
 144
-00:06:12,603 --> 00:06:16,095
-How many runs, and how much do they vary.
+00:06:15,288 --> 00:06:18,004
+What prompt format, and how many examples.
 
 145
-00:06:16,095 --> 00:06:18,810
-And the question that quietly matters most:
+00:06:18,004 --> 00:06:20,331
+Who or what graded the answers.
 
 146
-00:06:18,810 --> 00:06:21,138
-what does this benchmark not measure.
+00:06:20,331 --> 00:06:23,823
+How many runs, and how much do they vary.
 
 147
-00:06:21,138 --> 00:06:23,077
-Most benchmarks measure something narrow.
+00:06:23,823 --> 00:06:26,538
+And the question that quietly matters most:
 
 148
-00:06:23,077 --> 00:06:26,956
-Many of the things we care about — long-horizon reasoning,
+00:06:26,538 --> 00:06:28,866
+what does this benchmark not measure.
 
 149
-00:06:26,956 --> 00:06:31,223
-real-world reliability, behavior under pressure — are still hard to test.
+00:06:28,866 --> 00:06:30,805
+Most benchmarks measure something narrow.
 
 150
-00:06:31,223 --> 00:06:33,817
-The goal here is not to make
+00:06:30,805 --> 00:06:34,684
+Many of the things we care about — long-horizon reasoning,
 
 151
-00:06:33,817 --> 00:06:36,040
-you distrust every number you see.
+00:06:34,684 --> 00:06:38,951
+real-world reliability, behavior under pressure — are still hard to test.
 
 152
-00:06:36,040 --> 00:06:37,151
-Benchmarks are useful.
+00:06:38,951 --> 00:06:41,545
+The goal here is not to make
 
 153
-00:06:37,151 --> 00:06:38,634
-Many are carefully built.
+00:06:41,545 --> 00:06:43,768
+you distrust every number you see.
 
 154
-00:06:38,634 --> 00:06:41,598
-Some labs report them in detail and honestly.
+00:06:43,768 --> 00:06:44,879
+Benchmarks are useful.
 
 155
-00:06:41,598 --> 00:06:44,191
-The goal is to put the number
+00:06:44,879 --> 00:06:46,362
+Many are carefully built.
 
 156
-00:06:44,191 --> 00:06:46,784
-in context — to remember that a
+00:06:46,362 --> 00:06:49,326
+Some labs report them in detail and honestly.
 
 157
-00:06:46,784 --> 00:06:49,748
-score is a measurement, and measurements have setups,
+00:06:49,326 --> 00:06:51,919
+The goal is to put the number
 
 158
-00:06:49,748 --> 00:06:53,083
-and setups make choices, and choices change the answer.
+00:06:51,919 --> 00:06:54,512
+in context — to remember that a
 
 159
-00:06:53,083 --> 00:06:55,306
-Once you can see those choices,
+00:06:54,512 --> 00:06:57,476
+score is a measurement, and measurements have setups,
 
 160
-00:06:55,306 --> 00:06:58,270
-the story behind a headline gets more interesting,
+00:06:57,476 --> 00:07:00,811
+and setups make choices, and choices change the answer.
 
 161
-00:06:58,270 --> 00:06:59,752
-and usually more accurate.
+00:07:00,811 --> 00:07:03,034
+Once you can see those choices,
 
 162
-00:06:59,752 --> 00:07:02,346
-Description has links to the benchmarks I
+00:07:03,034 --> 00:07:05,998
+the story behind a headline gets more interesting,
 
 163
-00:07:02,346 --> 00:07:05,680
-mentioned and to the prior research on grader effects.
+00:07:05,998 --> 00:07:07,480
+and usually more accurate.
 
 164
-00:07:05,680 --> 00:07:06,791
+00:07:07,480 --> 00:07:10,074
+Description has links to the benchmarks I
+
+165
+00:07:10,074 --> 00:07:13,408
+mentioned and to the prior research on grader effects.
+
+166
+00:07:13,408 --> 00:07:14,519
 Thanks for watching.
