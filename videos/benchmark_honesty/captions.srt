@@ -1,0 +1,655 @@
+1
+00:00:00,000 --> 00:00:03,496
+Every time a new AI model launches, there is a number.
+
+2
+00:00:03,496 --> 00:00:04,768
+Ninety-two percent on this.
+
+3
+00:00:04,768 --> 00:00:06,039
+Eighty-eight percent on that.
+
+4
+00:00:06,039 --> 00:00:08,900
+State of the art on something with an acronym.
+
+5
+00:00:08,900 --> 00:00:11,126
+The number is supposed to tell you
+
+6
+00:00:11,126 --> 00:00:13,351
+how good the model is — and
+
+7
+00:00:13,351 --> 00:00:15,576
+most of the work that produced it
+
+8
+00:00:15,576 --> 00:00:17,483
+never makes it into the headline.
+
+9
+00:00:17,483 --> 00:00:19,391
+This video is a small toolkit.
+
+10
+00:00:19,391 --> 00:00:21,934
+Six places a benchmark score can mislead you,
+
+11
+00:00:21,934 --> 00:00:24,159
+and seven questions you can ask the
+
+12
+00:00:24,159 --> 00:00:25,748
+next time you see one.
+
+13
+00:00:25,748 --> 00:00:27,974
+Not as a debunking — benchmarks are
+
+14
+00:00:27,974 --> 00:00:30,199
+often the best thing we have —
+
+15
+00:00:30,199 --> 00:00:33,695
+but so you can decide for yourself how impressed to be.
+
+16
+00:00:33,695 --> 00:00:36,448
+A benchmark, stripped down, is three things.
+
+17
+00:00:36,448 --> 00:00:39,200
+A fixed test set: a list of
+
+18
+00:00:39,199 --> 00:00:41,558
+questions or tasks someone wrote down.
+
+19
+00:00:41,558 --> 00:00:44,310
+Take MMLU, which you have probably seen
+
+20
+00:00:44,310 --> 00:00:47,849
+quoted — fifty-seven subjects, around fourteen thousand multiple-choice questions,
+
+21
+00:00:47,849 --> 00:00:50,207
+from elementary math to professional law.
+
+22
+00:00:50,207 --> 00:00:52,173
+That is the test set.
+
+23
+00:00:52,173 --> 00:00:54,925
+The second thing is a prompt format:
+
+24
+00:00:54,925 --> 00:00:57,677
+how you hand each question to the
+
+25
+00:00:57,677 --> 00:01:00,429
+model — the wording, the system message,
+
+26
+00:01:00,429 --> 00:01:02,788
+whether you give worked examples first,
+
+27
+00:01:02,788 --> 00:01:05,540
+whether you let it think out loud.
+
+28
+00:01:05,540 --> 00:01:08,292
+And the third is a scoring rule:
+
+29
+00:01:08,292 --> 00:01:11,437
+how you turn the answer into a number.
+
+30
+00:01:11,437 --> 00:01:15,762
+Change any one of those, and you get a different score.
+
+31
+00:01:15,762 --> 00:01:18,121
+Same model, same questions, different number.
+
+32
+00:01:18,121 --> 00:01:20,873
+Most arguments about benchmarks are really arguments
+
+33
+00:01:20,873 --> 00:01:23,231
+about one of these three boxes.
+
+34
+00:01:23,231 --> 00:01:24,746
+Trap one is contamination.
+
+35
+00:01:24,746 --> 00:01:28,910
+Modern models are trained on a huge slice of the internet.
+
+36
+00:01:28,910 --> 00:01:32,316
+Many benchmarks have been on the internet for years.
+
+37
+00:01:32,316 --> 00:01:34,966
+So sometimes a model isn't solving a
+
+38
+00:01:34,966 --> 00:01:36,859
+question — it's recognizing it.
+
+39
+00:01:36,859 --> 00:01:38,751
+Honest evaluations defend against this.
+
+40
+00:01:38,751 --> 00:01:41,401
+They hold out test sets the model
+
+41
+00:01:41,401 --> 00:01:43,294
+was not allowed to see.
+
+42
+00:01:43,294 --> 00:01:46,322
+They run decontamination checks against the training data.
+
+43
+00:01:46,322 --> 00:01:49,729
+Some benchmarks, like BIG-bench, embed unique strings called canaries,
+
+44
+00:01:49,729 --> 00:01:52,379
+so labs can scan their training data
+
+45
+00:01:52,379 --> 00:01:55,029
+and see if any questions leaked in.
+
+46
+00:01:55,029 --> 00:01:57,678
+What to look for: was the test
+
+47
+00:01:57,678 --> 00:02:00,328
+set published after the model's training cutoff,
+
+48
+00:02:00,328 --> 00:02:03,356
+and did the lab run a contamination check.
+
+49
+00:02:03,356 --> 00:02:06,006
+If both answers are "I don't know,"
+
+50
+00:02:06,006 --> 00:02:09,792
+your prior on the score should be a little weaker.
+
+51
+00:02:09,792 --> 00:02:11,823
+Trap two is the ceiling.
+
+52
+00:02:11,823 --> 00:02:14,668
+The first generation of a benchmark might
+
+53
+00:02:14,668 --> 00:02:17,513
+land models in the sixties or seventies.
+
+54
+00:02:17,513 --> 00:02:21,577
+A few years later, every frontier model scores above ninety.
+
+55
+00:02:21,577 --> 00:02:24,421
+At that point the benchmark isn't really
+
+56
+00:02:24,421 --> 00:02:27,266
+measuring capability anymore — it's measuring whichever
+
+57
+00:02:27,266 --> 00:02:30,924
+last few percent of questions happen to be ambiguous,
+
+58
+00:02:30,924 --> 00:02:33,768
+badly worded, or have wrong answer keys.
+
+59
+00:02:33,768 --> 00:02:37,832
+The difference between ninety-four and ninety-five might just be noise.
+
+60
+00:02:37,832 --> 00:02:40,270
+Near-saturated benchmarks are popular in announcements,
+
+61
+00:02:40,270 --> 00:02:43,115
+because every gain looks dramatic on a
+
+62
+00:02:43,115 --> 00:02:45,960
+chart that ends close to a hundred.
+
+63
+00:02:45,960 --> 00:02:48,805
+What to look for: where is this
+
+64
+00:02:48,805 --> 00:02:50,837
+benchmark on its progress curve.
+
+65
+00:02:50,837 --> 00:02:53,681
+If everyone is already near the top,
+
+66
+00:02:53,681 --> 00:02:58,151
+the headline number is closer to a tiebreaker than a measurement.
+
+67
+00:02:58,151 --> 00:03:01,340
+Trap three is hiding inside the word "average".
+
+68
+00:03:01,340 --> 00:03:04,130
+A score like ninety-two on a multi-subject
+
+69
+00:03:04,130 --> 00:03:07,717
+benchmark is a number for an imaginary average user.
+
+70
+00:03:07,717 --> 00:03:10,507
+A real user has a specific question.
+
+71
+00:03:10,507 --> 00:03:14,493
+A model that's ninety-two overall can be ninety-nine on ethics,
+
+72
+00:03:14,493 --> 00:03:17,283
+ninety-six on history, and seventy-eight on physics
+
+73
+00:03:17,283 --> 00:03:20,073
+— and if you came for physics,
+
+74
+00:03:20,073 --> 00:03:24,059
+that overall number was the wrong number for your task.
+
+75
+00:03:24,059 --> 00:03:27,646
+The fix is almost always to find the subscores.
+
+76
+00:03:27,646 --> 00:03:30,835
+Most reputable benchmarks publish them; many summaries don't.
+
+77
+00:03:30,835 --> 00:03:34,024
+What to look for: a breakdown by category,
+
+78
+00:03:34,024 --> 00:03:36,017
+and especially the worst category.
+
+79
+00:03:36,017 --> 00:03:38,807
+The shape of the score is often
+
+80
+00:03:38,807 --> 00:03:40,799
+more informative than its mean.
+
+81
+00:03:40,799 --> 00:03:44,699
+Trap four is the gap between the benchmark and the task.
+
+82
+00:03:44,699 --> 00:03:48,243
+The same question can be asked as a multiple-choice problem,
+
+83
+00:03:48,243 --> 00:03:50,724
+as a free-response question, or as a
+
+84
+00:03:50,724 --> 00:03:53,206
+tool-use task — and the same model
+
+85
+00:03:53,206 --> 00:03:56,041
+will give you noticeably different scores on each.
+
+86
+00:03:56,041 --> 00:03:58,523
+Small changes to the prompt — how
+
+87
+00:03:58,523 --> 00:04:01,358
+many examples you give, whether you allow chain-of-thought,
+
+88
+00:04:01,358 --> 00:04:03,839
+even the exact wording of the instruction
+
+89
+00:04:03,839 --> 00:04:07,739
+— can move scores by several points, and sometimes much more.
+
+90
+00:04:07,739 --> 00:04:10,220
+So when you see "Model X gets
+
+91
+00:04:10,220 --> 00:04:12,701
+eighty-nine on Benchmark Y," what you're really
+
+92
+00:04:12,701 --> 00:04:15,182
+seeing is "Model X gets eighty-nine on
+
+93
+00:04:15,182 --> 00:04:17,663
+Benchmark Y when prompted in this specific
+
+94
+00:04:17,663 --> 00:04:19,790
+way." If the prompt isn't published,
+
+95
+00:04:19,790 --> 00:04:22,271
+you don't really know what you're comparing.
+
+96
+00:04:22,271 --> 00:04:23,662
+Trap five is grading.
+
+97
+00:04:23,662 --> 00:04:25,747
+For multiple-choice tests this is easy.
+
+98
+00:04:25,747 --> 00:04:27,832
+For free-response, code, or open-ended writing,
+
+99
+00:04:27,832 --> 00:04:30,959
+somebody has to decide whether the answer is good.
+
+100
+00:04:30,959 --> 00:04:32,349
+Sometimes it's a human.
+
+101
+00:04:32,349 --> 00:04:33,739
+Sometimes it's another model.
+
+102
+00:04:33,739 --> 00:04:36,172
+If the grader is itself an AI,
+
+103
+00:04:36,172 --> 00:04:37,909
+it has its own preferences,
+
+104
+00:04:37,909 --> 00:04:40,342
+and those preferences leak into the score.
+
+105
+00:04:40,342 --> 00:04:42,774
+In an earlier video on this channel
+
+106
+00:04:42,774 --> 00:04:45,207
+I went through an experiment where flipping
+
+107
+00:04:45,207 --> 00:04:47,639
+just the author label on an essay
+
+108
+00:04:47,639 --> 00:04:50,072
+changed the grade by about a third
+
+109
+00:04:50,072 --> 00:04:52,505
+of a point on a ten-point scale
+
+110
+00:04:52,505 --> 00:04:54,242
+— for the same essay.
+
+111
+00:04:54,242 --> 00:04:56,675
+So when a model is the judge,
+
+112
+00:04:56,675 --> 00:04:59,107
+"how good is this answer" becomes partly
+
+113
+00:04:59,107 --> 00:05:01,540
+"how much does the judge like this
+
+114
+00:05:01,540 --> 00:05:03,972
+kind of answer." What to look for:
+
+115
+00:05:03,972 --> 00:05:05,710
+is the grader a model,
+
+116
+00:05:05,710 --> 00:05:08,142
+a human pool, or a strict rubric.
+
+117
+00:05:08,142 --> 00:05:09,880
+And if it's a model,
+
+118
+00:05:09,880 --> 00:05:13,007
+what is its relationship to the model being graded.
+
+119
+00:05:13,007 --> 00:05:15,520
+Trap six is the number of attempts.
+
+120
+00:05:15,520 --> 00:05:18,032
+A benchmark score in a launch post
+
+121
+00:05:18,032 --> 00:05:19,827
+is often a single run.
+
+122
+00:05:19,827 --> 00:05:22,340
+Run the same model on the same
+
+123
+00:05:22,340 --> 00:05:24,134
+benchmark with different random seeds,
+
+124
+00:05:24,134 --> 00:05:26,647
+and the score wobbles, typically by one
+
+125
+00:05:26,647 --> 00:05:29,159
+to a few points just from sampling.
+
+126
+00:05:29,159 --> 00:05:32,749
+Sometimes the reported number is the best of several runs,
+
+127
+00:05:32,749 --> 00:05:35,261
+or the result with the most favorable
+
+128
+00:05:35,261 --> 00:05:37,056
+prompt out of many tried.
+
+129
+00:05:37,056 --> 00:05:39,568
+That doesn't mean the result is fake.
+
+130
+00:05:39,568 --> 00:05:42,081
+It does mean the headline number is
+
+131
+00:05:42,081 --> 00:05:44,952
+closer to a maximum than to a mean.
+
+132
+00:05:44,952 --> 00:05:47,106
+What to look for: confidence intervals,
+
+133
+00:05:47,106 --> 00:05:49,618
+the number of runs, and whether the
+
+134
+00:05:49,618 --> 00:05:53,207
+lab published the worst run, not only the best one.
+
+135
+00:05:53,207 --> 00:05:54,371
+That's six traps.
+
+136
+00:05:54,371 --> 00:05:57,087
+Here they are as seven questions you
+
+137
+00:05:57,087 --> 00:05:59,026
+can keep in your head.
+
+138
+00:05:59,026 --> 00:06:00,966
+What's in the test set,
+
+139
+00:06:00,966 --> 00:06:03,681
+and could the model have seen it.
+
+140
+00:06:03,681 --> 00:06:05,621
+Is the benchmark near saturation.
+
+141
+00:06:05,621 --> 00:06:07,560
+Is there a subscore breakdown.
+
+142
+00:06:07,560 --> 00:06:10,276
+What prompt format, and how many examples.
+
+143
+00:06:10,276 --> 00:06:12,603
+Who or what graded the answers.
+
+144
+00:06:12,603 --> 00:06:16,095
+How many runs, and how much do they vary.
+
+145
+00:06:16,095 --> 00:06:18,810
+And the question that quietly matters most:
+
+146
+00:06:18,810 --> 00:06:21,138
+what does this benchmark not measure.
+
+147
+00:06:21,138 --> 00:06:23,077
+Most benchmarks measure something narrow.
+
+148
+00:06:23,077 --> 00:06:26,956
+Many of the things we care about — long-horizon reasoning,
+
+149
+00:06:26,956 --> 00:06:31,223
+real-world reliability, behavior under pressure — are still hard to test.
+
+150
+00:06:31,223 --> 00:06:33,817
+The goal here is not to make
+
+151
+00:06:33,817 --> 00:06:36,040
+you distrust every number you see.
+
+152
+00:06:36,040 --> 00:06:37,151
+Benchmarks are useful.
+
+153
+00:06:37,151 --> 00:06:38,634
+Many are carefully built.
+
+154
+00:06:38,634 --> 00:06:41,598
+Some labs report them in detail and honestly.
+
+155
+00:06:41,598 --> 00:06:44,191
+The goal is to put the number
+
+156
+00:06:44,191 --> 00:06:46,784
+in context — to remember that a
+
+157
+00:06:46,784 --> 00:06:49,748
+score is a measurement, and measurements have setups,
+
+158
+00:06:49,748 --> 00:06:53,083
+and setups make choices, and choices change the answer.
+
+159
+00:06:53,083 --> 00:06:55,306
+Once you can see those choices,
+
+160
+00:06:55,306 --> 00:06:58,270
+the story behind a headline gets more interesting,
+
+161
+00:06:58,270 --> 00:06:59,752
+and usually more accurate.
+
+162
+00:06:59,752 --> 00:07:02,346
+Description has links to the benchmarks I
+
+163
+00:07:02,346 --> 00:07:05,680
+mentioned and to the prior research on grader effects.
+
+164
+00:07:05,680 --> 00:07:06,791
+Thanks for watching.
