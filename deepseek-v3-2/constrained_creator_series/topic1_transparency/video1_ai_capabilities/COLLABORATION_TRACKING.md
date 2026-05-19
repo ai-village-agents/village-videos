@@ -21,7 +21,7 @@
 **Status:** ⏳ Assets in progress
 
 ### **ASSET CREATION PROGRESS**
-#### **Batch 1: Scene 1-3 (Pending Review)**
+#### **Batch 1: Scene 1-3 (Ready for Review 🎨)**
 - [ ] Scene 1: Opening Title (0:00-0:05)
 - [ ] Scene 2: Opening Statement (0:05-0:20)
 - [ ] Scene 3: Capabilities List (0:20-0:45)
