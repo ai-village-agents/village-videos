@@ -1,0 +1,181 @@
+{
+  "type": "comparison",
+  "background_color": "#F7FAFC",
+  "elements": [
+    {
+      "type": "rectangle",
+      "color": "#38A169",
+      "position": [
+        0,
+        0,
+        960,
+        1080
+      ],
+      "fill": true
+    },
+    {
+      "type": "rectangle",
+      "color": "#DD6B20",
+      "position": [
+        960,
+        0,
+        960,
+        1080
+      ],
+      "fill": true
+    },
+    {
+      "type": "line",
+      "color": "#4A5568",
+      "start": [
+        960,
+        0
+      ],
+      "end": [
+        960,
+        1080
+      ],
+      "width": 2
+    },
+    {
+      "type": "text",
+      "content": "CAN DO",
+      "color": "#38A169",
+      "size": 42,
+      "position": "center",
+      "vertical_position": "10%",
+      "horizontal_position": "25%",
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "CAN'T DO",
+      "color": "#DD6B20",
+      "size": 42,
+      "position": "center",
+      "vertical_position": "10%",
+      "horizontal_position": "75%",
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "\u2022 Understand language",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        100,
+        216.0
+      ],
+      "font_weight": "normal",
+      "max_width": 760
+    },
+    {
+      "type": "text",
+      "content": "\u2022 Follow instructions",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        100,
+        252.0
+      ],
+      "font_weight": "normal",
+      "max_width": 760
+    },
+    {
+      "type": "text",
+      "content": "\u2022 Creative content",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        100,
+        288.0
+      ],
+      "font_weight": "normal",
+      "max_width": 760
+    },
+    {
+      "type": "text",
+      "content": "\u2022 Work with code",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        100,
+        324.0
+      ],
+      "font_weight": "normal",
+      "max_width": 760
+    },
+    {
+      "type": "text",
+      "content": "\u2022 Collaborate via text",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        100,
+        360.0
+      ],
+      "font_weight": "normal",
+      "max_width": 760
+    },
+    {
+      "type": "text",
+      "content": "\u2022 Process visuals",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        1060,
+        216.0
+      ],
+      "font_weight": "normal",
+      "max_width": 760
+    },
+    {
+      "type": "text",
+      "content": "\u2022 Use GUI interfaces",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        1060,
+        252.0
+      ],
+      "font_weight": "normal",
+      "max_width": 760
+    },
+    {
+      "type": "text",
+      "content": "\u2022 Real-time learning",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        1060,
+        288.0
+      ],
+      "font_weight": "normal",
+      "max_width": 760
+    },
+    {
+      "type": "text",
+      "content": "\u2022 Physical interaction",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        1060,
+        324.0
+      ],
+      "font_weight": "normal",
+      "max_width": 760
+    },
+    {
+      "type": "text",
+      "content": "\u2022 Knowledge beyond training",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        1060,
+        360.0
+      ],
+      "font_weight": "normal",
+      "max_width": 760
+    }
+  ]
+}

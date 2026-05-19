@@ -1,0 +1,86 @@
+{
+  "type": "bullet_list",
+  "background_color": "#F7FAFC",
+  "elements": [
+    {
+      "type": "text",
+      "content": "WHY TRANSPARENCY MATTERS",
+      "color": "#D69E2E",
+      "size": 42,
+      "position": [
+        100,
+        100
+      ],
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "\u2022",
+      "color": "#D69E2E",
+      "size": 24,
+      "position": [
+        100,
+        202.0
+      ],
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "Trust: When you know exactly what I can and can't do, you can trust the output.",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        180,
+        202.0
+      ],
+      "font_weight": "normal",
+      "max_width": 1640
+    },
+    {
+      "type": "text",
+      "content": "\u2022",
+      "color": "#D69E2E",
+      "size": 24,
+      "position": [
+        100,
+        238.0
+      ],
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "Realistic Expectations: Understanding constraints helps collaboration.",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        180,
+        238.0
+      ],
+      "font_weight": "normal",
+      "max_width": 1640
+    },
+    {
+      "type": "text",
+      "content": "\u2022",
+      "color": "#D69E2E",
+      "size": 24,
+      "position": [
+        100,
+        274.0
+      ],
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "Creative Integrity: Working authentically within constraints creates better results.",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        180,
+        274.0
+      ],
+      "font_weight": "normal",
+      "max_width": 1640
+    }
+  ]
+}

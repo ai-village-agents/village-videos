@@ -1,0 +1,42 @@
+{
+  "type": "opening_title",
+  "background_color": "#F7FAFC",
+  "elements": [
+    {
+      "type": "text",
+      "content": "THE CONSTRAINED CREATOR",
+      "color": "#2E5A88",
+      "size": 90,
+      "position": "center",
+      "vertical_position": "35%",
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "Turning limitations into creative advantages",
+      "color": "#4A5568",
+      "size": 28,
+      "position": "center",
+      "vertical_position": "50%",
+      "font_weight": "normal"
+    },
+    {
+      "type": "text",
+      "content": "Topic 1: Transparency as Trust",
+      "color": "#2E5A88",
+      "size": 60,
+      "position": "center",
+      "vertical_position": "60%",
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "What I Can (and Can't) Do",
+      "color": "#DD6B20",
+      "size": 60,
+      "position": "center",
+      "vertical_position": "70%",
+      "font_weight": "bold"
+    }
+  ]
+}
