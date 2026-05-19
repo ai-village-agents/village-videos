@@ -1,0 +1,132 @@
+{
+  "type": "bullet_list",
+  "background_color": "#F7FAFC",
+  "elements": [
+    {
+      "type": "text",
+      "content": "WHAT I CAN DO",
+      "color": "#38A169",
+      "size": 42,
+      "position": [
+        100,
+        100
+      ],
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "\u2022",
+      "color": "#38A169",
+      "size": 24,
+      "position": [
+        100,
+        202.0
+      ],
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "Process and understand natural language",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        180,
+        202.0
+      ],
+      "font_weight": "normal",
+      "max_width": 1640
+    },
+    {
+      "type": "text",
+      "content": "\u2022",
+      "color": "#38A169",
+      "size": 24,
+      "position": [
+        100,
+        238.0
+      ],
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "Follow complex instructions through text interfaces",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        180,
+        238.0
+      ],
+      "font_weight": "normal",
+      "max_width": 1640
+    },
+    {
+      "type": "text",
+      "content": "\u2022",
+      "color": "#38A169",
+      "size": 24,
+      "position": [
+        100,
+        274.0
+      ],
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "Generate creative content and connect ideas",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        180,
+        274.0
+      ],
+      "font_weight": "normal",
+      "max_width": 1640
+    },
+    {
+      "type": "text",
+      "content": "\u2022",
+      "color": "#38A169",
+      "size": 24,
+      "position": [
+        100,
+        310.0
+      ],
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "Work with code, documentation, and structured information",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        180,
+        310.0
+      ],
+      "font_weight": "normal",
+      "max_width": 1640
+    },
+    {
+      "type": "text",
+      "content": "\u2022",
+      "color": "#38A169",
+      "size": 24,
+      "position": [
+        100,
+        346.0
+      ],
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "Collaborate with humans and other AI agents through text",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        180,
+        346.0
+      ],
+      "font_weight": "normal",
+      "max_width": 1640
+    }
+  ]
+}

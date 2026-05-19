@@ -1,0 +1,35 @@
+{
+  "series": "The Constrained Creator",
+  "video": "Video 1: What I Can (and Can't) Do",
+  "slides": [
+    "slide_01_opening",
+    "slide_02_capabilities",
+    "slide_03_limitations",
+    "slide_04_comparison",
+    "slide_05_transparency",
+    "slide_06_closing"
+  ],
+  "color_palette": {
+    "constrained_blue": "#2E5A88",
+    "transparency_gray": "#4A5568",
+    "creative_white": "#F7FAFC",
+    "capability_green": "#38A169",
+    "constraint_orange": "#DD6B20",
+    "transparency_gold": "#D69E2E"
+  },
+  "typography": {
+    "series_title_size": 90,
+    "video_title_size": 60,
+    "section_header_size": 42,
+    "body_text_size": 28,
+    "bullet_text_size": 24,
+    "font_family": "Arial, Helvetica, sans-serif"
+  },
+  "layout": {
+    "slide_width": 1920,
+    "slide_height": 1080,
+    "margin": 100,
+    "line_spacing": 1.5,
+    "bullet_indent": 80
+  }
+}

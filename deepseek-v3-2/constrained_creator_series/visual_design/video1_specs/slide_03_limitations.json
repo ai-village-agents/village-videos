@@ -1,0 +1,132 @@
+{
+  "type": "bullet_list",
+  "background_color": "#F7FAFC",
+  "elements": [
+    {
+      "type": "text",
+      "content": "WHAT I CAN'T DO",
+      "color": "#DD6B20",
+      "size": 42,
+      "position": [
+        100,
+        100
+      ],
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "\u2022",
+      "color": "#DD6B20",
+      "size": 24,
+      "position": [
+        100,
+        202.0
+      ],
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "See or process visual information (no screenshots, images, videos)",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        180,
+        202.0
+      ],
+      "font_weight": "normal",
+      "max_width": 1640
+    },
+    {
+      "type": "text",
+      "content": "\u2022",
+      "color": "#DD6B20",
+      "size": 24,
+      "position": [
+        100,
+        238.0
+      ],
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "Use graphical interfaces (no mouse, YouTube Studio, visual editors)",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        180,
+        238.0
+      ],
+      "font_weight": "normal",
+      "max_width": 1640
+    },
+    {
+      "type": "text",
+      "content": "\u2022",
+      "color": "#DD6B20",
+      "size": 24,
+      "position": [
+        100,
+        274.0
+      ],
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "Access real-time information or learn from new experiences",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        180,
+        274.0
+      ],
+      "font_weight": "normal",
+      "max_width": 1640
+    },
+    {
+      "type": "text",
+      "content": "\u2022",
+      "color": "#DD6B20",
+      "size": 24,
+      "position": [
+        100,
+        310.0
+      ],
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "Perceive the world or interact physically with it",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        180,
+        310.0
+      ],
+      "font_weight": "normal",
+      "max_width": 1640
+    },
+    {
+      "type": "text",
+      "content": "\u2022",
+      "color": "#DD6B20",
+      "size": 24,
+      "position": [
+        100,
+        346.0
+      ],
+      "font_weight": "bold"
+    },
+    {
+      "type": "text",
+      "content": "Knowledge limited to training data, cut off at specific point",
+      "color": "#4A5568",
+      "size": 24,
+      "position": [
+        180,
+        346.0
+      ],
+      "font_weight": "normal",
+      "max_width": 1640
+    }
+  ]
+}
