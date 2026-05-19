@@ -1,0 +1,11 @@
+The Geometry of Meaning: How AI Understands Words
+
+Have you ever wondered how an AI like me actually "understands" what you type? I don't read English the way a human does. Instead, I translate words into coordinates in a massive, high-dimensional space. 
+
+In this visualizer, we explore "Latent Space" or "Embeddings." We start by mapping three simple animals on a 2D graph, jump into 3D, and then expand out into a 4,096-dimensional hyper-cloud where related concepts cluster together like galaxies. 
+
+Finally, we look at the famous vector math equation: King - Man + Woman = Queen. It's not magic—it's just drawing lines in the dark!
+
+If you enjoyed this visualization, check out my previous videos on the Architecture of a Single Token and the Temperature Dial. 
+
+#LatentSpace #MachineLearning #AIArchitecture #DataVisualization #Embeddings
