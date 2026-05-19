@@ -27,7 +27,7 @@ echo "Creating Scene 4 (Hyperdimensional Cloud)..."
 ffmpeg -y -nostdin -loop 1 -i "$DIR/scene4_d4.png" -t 3 -pix_fmt yuv420p -c:v libx264 "$OUT_DIR/s4_1.mp4" 2>/dev/null
 ffmpeg -y -nostdin -loop 1 -i "$DIR/scene4_d10.png" -t 3 -pix_fmt yuv420p -c:v libx264 "$OUT_DIR/s4_2.mp4" 2>/dev/null
 ffmpeg -y -nostdin -loop 1 -i "$DIR/scene4_d100.png" -t 3 -pix_fmt yuv420p -c:v libx264 "$OUT_DIR/s4_3.mp4" 2>/dev/null
-ffmpeg -y -nostdin -loop 1 -i "$DIR/scene4_d4096.png" -t 15 -pix_fmt yuv420p -c:v libx264 "$OUT_DIR/s4_4.mp4" 2>/dev/null
+ffmpeg -y -nostdin -loop 1 -i "$DIR/scene4_d4096.png" -t 20 -pix_fmt yuv420p -c:v libx264 "$OUT_DIR/s4_4.mp4" 2>/dev/null
 cat << 'LIST' > "$OUT_DIR/s4_list.txt"
 file 's4_1.mp4'
 file 's4_2.mp4'
@@ -40,7 +40,7 @@ ffmpeg -y -nostdin -i "$OUT_DIR/scene4_video.mp4" -i "$AUDIO_DIR/scene4.mp3" -ma
 echo "Creating Scene 5 (Vector Math Animation)..."
 ffmpeg -y -nostdin -loop 1 -i "$DIR/vector_math_1.png" -t 4 -pix_fmt yuv420p -c:v libx264 "$OUT_DIR/s5_1.mp4" 2>/dev/null
 ffmpeg -y -nostdin -loop 1 -i "$DIR/vector_math_2.png" -t 4 -pix_fmt yuv420p -c:v libx264 "$OUT_DIR/s5_2.mp4" 2>/dev/null
-ffmpeg -y -nostdin -loop 1 -i "$DIR/vector_math_3.png" -t 15 -pix_fmt yuv420p -c:v libx264 "$OUT_DIR/s5_3.mp4" 2>/dev/null
+ffmpeg -y -nostdin -loop 1 -i "$DIR/vector_math_3.png" -t 7.3 -pix_fmt yuv420p -c:v libx264 "$OUT_DIR/s5_3.mp4" 2>/dev/null
 cat << 'LIST' > "$OUT_DIR/s5_list.txt"
 file 's5_1.mp4'
 file 's5_2.mp4'
@@ -62,7 +62,7 @@ file 'scene5_v2.mp4'
 file 'scene6_v2.mp4'
 LIST
 
-ffmpeg -y -nostdin -f concat -safe 0 -i "$OUT_DIR/list_v2.txt" -c copy -movflags +faststart "$OUT_DIR/geometry_of_meaning_v2.mp4" 2>/dev/null
+ffmpeg -y -nostdin -f concat -safe 0 -i "$OUT_DIR/list_v2.txt" -t 108.0 -c copy -movflags +faststart "$OUT_DIR/geometry_of_meaning_v2.mp4" 2>/dev/null
 
 echo "Cleaning up temp files..."
 rm -f "$OUT_DIR"/s4_*.mp4 "$OUT_DIR"/s5_*.mp4 "$OUT_DIR"/scene1_anim.mp4 "$OUT_DIR"/scene1_pad.mp4 "$OUT_DIR"/scene1_video.mp4 "$OUT_DIR"/scene4_video.mp4 "$OUT_DIR"/scene5_video.mp4 "$OUT_DIR"/scene*_v2.mp4
