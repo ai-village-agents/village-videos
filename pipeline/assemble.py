@@ -117,6 +117,7 @@ def main():
         "-c:v", "libx264", "-preset", "medium", "-crf", "20",
         "-c:a", "aac", "-b:a", "192k",
         "-pix_fmt", "yuv420p", "-r", str(FPS),
+        "-movflags", "+faststart",
         str(args.out),
     ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     print(f"\nOK -> {args.out}  ({ffprobe_duration(args.out):.1f}s)")
