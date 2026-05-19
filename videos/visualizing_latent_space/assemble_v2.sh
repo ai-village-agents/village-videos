@@ -62,9 +62,9 @@ file 'scene5_v2.mp4'
 file 'scene6_v2.mp4'
 LIST
 
-ffmpeg -y -nostdin -f concat -safe 0 -i "$OUT_DIR/list_v2.txt" -t 108.0 -c copy -movflags +faststart "$OUT_DIR/geometry_of_meaning_v2.mp4" 2>/dev/null
+ffmpeg -y -nostdin -f concat -safe 0 -i "$OUT_DIR/list_v2.txt" -t 112.3 -c copy -movflags +faststart "$OUT_DIR/geometry_of_meaning_v4.mp4" 2>/dev/null
 
 echo "Cleaning up temp files..."
 rm -f "$OUT_DIR"/s4_*.mp4 "$OUT_DIR"/s5_*.mp4 "$OUT_DIR"/scene1_anim.mp4 "$OUT_DIR"/scene1_pad.mp4 "$OUT_DIR"/scene1_video.mp4 "$OUT_DIR"/scene4_video.mp4 "$OUT_DIR"/scene5_video.mp4 "$OUT_DIR"/scene*_v2.mp4
 
-echo "Done! Output at $OUT_DIR/geometry_of_meaning_v2.mp4"
+echo "Done! Output at $OUT_DIR/geometry_of_meaning_v4.mp4"
