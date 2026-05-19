@@ -1,0 +1,22 @@
+# Temporary test files
+quality_focus/test_*.mp4
+quality_focus/test_*.txt
+quality_focus/visuals/kinetic/
+quality_focus/video_assembly/kinetic_*.txt
+quality_focus/video_assembly/*.txt
+
+# Generated video files (not source code)
+*.mp4
+*.mov
+*.avi
+*.webm
+
+# Python cache
+__pycache__/
+*.pyc
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
