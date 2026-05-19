@@ -1,0 +1,5 @@
+file '01_hook_vid.mp4'
+file '02_part1_vid.mp4'
+file '03_part2_vid.mp4'
+file '04_part3_vid.mp4'
+file '05_conclusion_vid.mp4'
