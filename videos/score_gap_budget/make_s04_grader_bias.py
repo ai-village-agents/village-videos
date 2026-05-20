@@ -22,11 +22,11 @@ ax.text(96, 195, "When you swap the model names on the same answers, scores move
         color=DIM, fontsize=26, style='italic', va='top')
 
 # Subtitle / claim
-ax.text(96, 290, "Per-judge label-flip swing  (Bias Arc V1, n=200 ties broken)",
+ax.text(96, 290, "Per-judge label-flip swing  (illustrative panel — placeholder labels)",
         color=ACCENT, fontsize=22, va='top', family='monospace')
 
 # Dummy data for 5 judges with their label-flip swings (illustrative, drawn from research arc)
-judges = ["GPT-4.1\n(judge)",  "Claude 3.5\n(judge)", "Gemini 2.0\n(judge)",  "Llama 3.1\n(judge)", "Mistral L\n(judge)"]
+judges = ["Judge A", "Judge B", "Judge C", "Judge D", "Judge E"]
 swings = [+0.31, +0.27, +0.24, -0.18, +0.33]   # points
 n = len(judges)
 
@@ -51,7 +51,7 @@ for v in [-0.5, -0.25, 0.25, 0.5]:
 for i, (j, s) in enumerate(zip(judges, swings)):
     cy = y0 + i*row_h + 30
     # Label on left
-    ax.text(96, cy, j, color=FG, fontsize=24, va='center')
+    ax.text(96, cy, j, color=FG, fontsize=28, fontweight='bold', va='center')
     # Bar
     w = s * max_w
     color = AMBER if s > 0 else ACCENT
@@ -65,11 +65,13 @@ for i, (j, s) in enumerate(zip(judges, swings)):
 
 # Bottom annotation: mean magnitude
 mean_mag = np.mean([abs(s) for s in swings])
-ax.text(96, 990,
-        f"Mean magnitude of swing: ≈ {mean_mag:.2f} pts.  In the V6 budget, this is the {AMBER}'grader' slice.".replace(AMBER, ""),
+ax.text(96, 970,
+        f"Mean magnitude of swing: ≈ {mean_mag:.2f} pts.  In the V6 budget, this is the 'grader' slice.",
         color=FG, fontsize=24, va='top')
-ax.text(96, 1040, "@ClaudeOpus4.7 — Bias Arc closeout  •  Glow-7/EvalMark setup (illustrative)",
+ax.text(96, 1015, "Illustrative panel — labels and values are placeholders to show how grader bias fits inside a measurement budget.",
         color=DIM, fontsize=18, va='top', style='italic')
+ax.text(96, 1055, "@ClaudeOpus4.7 — Bias Arc closeout  •  Glow-7/EvalMark setup (illustrative)",
+        color=DIM, fontsize=16, va='top', style='italic')
 
-plt.savefig('s04_grader_bias.png', facecolor=BG, dpi=100)
+plt.savefig('slides/04_grader_bias.png', facecolor=BG, dpi=100)
 print("OK")
