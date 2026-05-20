@@ -28,26 +28,19 @@ def lerp(a, b, t):
 
 def build_animation():
     fig, ax = plt.subplots(figsize=FIGSIZE, dpi=DPI)
-    fig.patch.set_facecolor("#f2f2f0")
-    ax.set_facecolor("#f2f2f0")
+    fig.patch.set_facecolor("#0F172A")
+    ax.set_facecolor("#0F172A")
     ax.set_xlim(-1.6, 1.6)
     ax.set_ylim(-0.9, 0.9)
     ax.axis("off")
 
-    x = np.linspace(-1.6, 1.6, 400)
-    y = np.linspace(-0.9, 0.9, 260)
-    xx, yy = np.meshgrid(x, y)
-    bg_base = 0.95 - 0.08 * np.exp(-(xx**2 + (yy * 1.6) ** 2))
-    bg = np.dstack([bg_base, bg_base, bg_base])
-    bg_im = ax.imshow(bg, extent=[-1.6, 1.6, -0.9, 0.9], origin="lower", zorder=0)
-
     # Word positions (same as scene 2)
     words = [
-        {"word": "BANK", "x": 0.0, "y": 0.0, "c": "#ffffff"},
-        {"word": "river", "x": -1.15, "y": 0.22, "c": "#f5f5f5"},
-        {"word": "loan", "x": 1.12, "y": 0.18, "c": "#f5f5f5"},
-        {"word": "water", "x": -1.0, "y": -0.2, "c": "#f5f5f5"},
-        {"word": "money", "x": 1.1, "y": -0.24, "c": "#f5f5f5"},
+        {"word": "BANK", "x": 0.0, "y": 0.0, "c": "#1E293B"},
+        {"word": "river", "x": -1.15, "y": 0.22, "c": "#334155"},
+        {"word": "loan", "x": 1.12, "y": 0.18, "c": "#334155"},
+        {"word": "water", "x": -1.0, "y": -0.2, "c": "#334155"},
+        {"word": "money", "x": 1.1, "y": -0.24, "c": "#334155"},
     ]
     
     word_artists = []
@@ -77,7 +70,7 @@ def build_animation():
             va="center",
             fontsize=40 if w["word"] == "BANK" else 30,
             weight="bold" if w["word"] == "BANK" else "normal",
-            color="#222222" if w["word"] == "BANK" else "#444444",
+            color="#F8FAFC" if w["word"] == "BANK" else "#CBD5E1",
             zorder=4,
         )
         
@@ -114,7 +107,7 @@ def build_animation():
         line, = ax.plot([], [], color="#ff6b6b", lw=4, alpha=0.0, zorder=1)
         score_bg = patches.Rectangle((0,0), 0.2, 0.1, facecolor="#ffffff", edgecolor="#cccccc", lw=1.5, alpha=0.0, zorder=4)
         ax.add_patch(score_bg)
-        score_text = ax.text(0, 0, "", ha="center", va="center", fontsize=22, weight="bold", color="#333333", alpha=0.0, zorder=5)
+        score_text = ax.text(0, 0, "", ha="center", va="center", fontsize=22, weight="bold", color="#F8FAFC", alpha=0.0, zorder=5)
         
         connections.append({
             "line": line,
@@ -127,7 +120,7 @@ def build_animation():
     # Bar chart elements
     chart_bg = patches.Rectangle((-0.5, -0.8), 1.0, 0.6, facecolor="#ffffff", edgecolor="#cccccc", lw=2, alpha=0.0, zorder=10)
     ax.add_patch(chart_bg)
-    chart_title = ax.text(0.0, -0.28, "Q · K Score", ha="center", va="center", fontsize=26, weight="bold", color="#333333", alpha=0.0, zorder=11)
+    chart_title = ax.text(0.0, -0.28, "Q · K Score", ha="center", va="center", fontsize=26, weight="bold", color="#F8FAFC", alpha=0.0, zorder=11)
     
     bars = []
     labels = ["river", "loan", "water", "money"]
@@ -135,7 +128,7 @@ def build_animation():
     for i in range(4):
         bar = patches.Rectangle((-0.38 + i*0.2, -0.7), 0.15, 0, facecolor=bar_colors[i], alpha=0.0, zorder=11)
         ax.add_patch(bar)
-        lbl = ax.text(-0.305 + i*0.2, -0.75, labels[i], ha="center", va="center", fontsize=18, color="#555555", alpha=0.0, zorder=11)
+        lbl = ax.text(-0.305 + i*0.2, -0.75, labels[i], ha="center", va="center", fontsize=18, color="#94A3B8", alpha=0.0, zorder=11)
         bars.append({"patch": bar, "label": lbl})
 
     def update(frame):

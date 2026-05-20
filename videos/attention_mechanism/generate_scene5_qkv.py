@@ -28,27 +28,19 @@ def lerp(a, b, t):
 
 def build_animation():
     fig, ax = plt.subplots(figsize=FIGSIZE, dpi=DPI)
-    fig.patch.set_facecolor("#f2f2f0")
-    ax.set_facecolor("#f2f2f0")
+    fig.patch.set_facecolor("#0F172A")
+    ax.set_facecolor("#0F172A")
     ax.set_xlim(-1.6, 1.6)
     ax.set_ylim(-0.9, 0.9)
     ax.axis("off")
 
-    # The background
-    x = np.linspace(-1.6, 1.6, 400)
-    y = np.linspace(-0.9, 0.9, 260)
-    xx, yy = np.meshgrid(x, y)
-    bg_base = 0.95 - 0.08 * np.exp(-(xx**2 + (yy * 1.6) ** 2))
-    bg = np.dstack([bg_base, bg_base, bg_base])
-    bg_im = ax.imshow(bg, extent=[-1.6, 1.6, -0.9, 0.9], origin="lower", zorder=0)
-
     # Word positions
     words = [
-        {"word": "BANK", "x": 0.0, "y": -0.1, "c": "#ffffff"},
-        {"word": "river", "x": -1.15, "y": 0.32, "c": "#f5f5f5"},
-        {"word": "loan", "x": 1.12, "y": 0.28, "c": "#f5f5f5"},
-        {"word": "water", "x": -1.0, "y": -0.1, "c": "#f5f5f5"},
-        {"word": "money", "x": 1.1, "y": -0.14, "c": "#f5f5f5"},
+        {"word": "BANK", "x": 0.0, "y": -0.1, "c": "#1E293B"},
+        {"word": "river", "x": -1.15, "y": 0.32, "c": "#334155"},
+        {"word": "loan", "x": 1.12, "y": 0.28, "c": "#334155"},
+        {"word": "water", "x": -1.0, "y": -0.1, "c": "#334155"},
+        {"word": "money", "x": 1.1, "y": -0.14, "c": "#334155"},
     ]
     
     weights = [0.62, 0.08, 0.25, 0.05]  # river, loan, water, money
@@ -80,7 +72,7 @@ def build_animation():
             va="center",
             fontsize=40 if w["word"] == "BANK" else 30,
             weight="bold" if w["word"] == "BANK" else "normal",
-            color="#222222" if w["word"] == "BANK" else "#444444",
+            color="#F8FAFC" if w["word"] == "BANK" else "#CBD5E1",
             zorder=4,
         )
         
@@ -125,9 +117,9 @@ def build_animation():
             "source_idx": i + 1
         })
         
-    final_label = ax.text(0, -0.4, "BANK (contextualized representation)", ha="center", va="center", fontsize=32, weight="bold", color="#333333", alpha=0.0, zorder=5)
+    final_label = ax.text(0, -0.4, "BANK (contextualized representation)", ha="center", va="center", fontsize=32, weight="bold", color="#F8FAFC", alpha=0.0, zorder=5)
     
-    math_overlay = ax.text(0, 0.7, "Value = $\sum_{i}$ $w_i$ * $V_i$", ha="center", va="center", fontsize=48, color="#333333", alpha=0.0, zorder=5)
+    math_overlay = ax.text(0, 0.7, "Value = $\sum_{i}$ $w_i$ * $V_i$", ha="center", va="center", fontsize=48, color="#F8FAFC", alpha=0.0, zorder=5)
 
     def update(frame):
         t = frame / FPS
@@ -136,17 +128,15 @@ def build_animation():
         bank = word_artists[0]
         bank_y = bank["base_y"] + 0.015 * math.sin(2 * math.pi * 0.45 * t)
         
-        # Bank color shifts (18s to 25s) toward nature (river=62%, water=25%)
-        # Base: #ffffff
-        # Target: #e0f2f1 (light teal/cyan)
-        if t > 18:
-            color_p = smoothstep(min((t - 18) / 7.0, 1.0))
-            r = int(lerp(255, 224, color_p))
-            g = int(lerp(255, 242, color_p))
-            b = int(lerp(255, 241, color_p))
+        # BANK color shift climax (10s to 14s)
+        if t > 10:
+            color_p = smoothstep(min((t - 10) / 4.0, 1.0))
+            r = int(lerp(30, 45, color_p))
+            g = int(lerp(41, 212, color_p))
+            b = int(lerp(59, 191, color_p))
             bank["card"].set_facecolor(f"#{r:02x}{g:02x}{b:02x}")
-            bank["card"].set_edgecolor(f"#{int(lerp(85, 47, color_p)):02x}{int(lerp(85, 95, color_p)):02x}{int(lerp(85, 88, color_p)):02x}")
-            bank["text"].set_color(f"#{int(lerp(34, 34, color_p)):02x}{int(lerp(34, 68, color_p)):02x}{int(lerp(34, 68, color_p)):02x}")
+            bank["card"].set_edgecolor(f"#{int(lerp(85, 6, color_p)):02x}{int(lerp(85, 78, color_p)):02x}{int(lerp(85, 59, color_p)):02x}")
+            bank["text"].set_color(f"#{int(lerp(248, 2, color_p)):02x}{int(lerp(250, 44, color_p)):02x}{int(lerp(252, 34, color_p)):02x}")
         
         bank["card"].set_bounds(bank["base_x"] - 0.45 / 2, bank_y - 0.22 / 2, 0.45, 0.22)
         bank["text"].set_position((bank["base_x"], bank_y))
@@ -169,10 +159,10 @@ def build_animation():
                 wp = smoothstep(min(t / 3.0, 1.0))
                 w["w_text"].set_alpha(wp)
                 
-        # Streams flowing (8s to 25s)
-        if 8 < t < 28:
-            stream_p = smoothstep(min((t - 8) / 2.0, 1.0))
-            fade_out = 1.0 - smoothstep(max(0, (t - 25) / 3.0))
+        # Streams flowing (5s to 16s)
+        if 5 < t < 16:
+            stream_p = smoothstep(min((t - 5) / 2.0, 1.0))
+            fade_out = 1.0 - smoothstep(max(0, (t - 14) / 2.0))
             overall_alpha = stream_p * fade_out
             
             for stream in streams:

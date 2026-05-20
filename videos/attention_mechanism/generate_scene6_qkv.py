@@ -25,19 +25,11 @@ def smoothstep(x):
 
 def build_animation():
     fig, ax = plt.subplots(figsize=FIGSIZE, dpi=DPI)
-    fig.patch.set_facecolor("#f2f2f0")
-    ax.set_facecolor("#f2f2f0")
+    fig.patch.set_facecolor("#0F172A")
+    ax.set_facecolor("#0F172A")
     ax.set_xlim(-1.6, 1.6)
     ax.set_ylim(-0.9, 0.9)
     ax.axis("off")
-
-    # The background
-    x = np.linspace(-1.6, 1.6, 400)
-    y = np.linspace(-0.9, 0.9, 260)
-    xx, yy = np.meshgrid(x, y)
-    bg_base = 0.95 - 0.08 * np.exp(-(xx**2 + (yy * 1.6) ** 2))
-    bg = np.dstack([bg_base, bg_base, bg_base])
-    ax.imshow(bg, extent=[-1.6, 1.6, -0.9, 0.9], origin="lower", zorder=0)
 
     # Word positions (we just show BANK)
     bank_card = patches.FancyBboxPatch(
@@ -46,8 +38,8 @@ def build_animation():
         0.22,
         boxstyle="round,pad=0.02,rounding_size=0.03",
         linewidth=2.0,
-        edgecolor="#2e4c40",
-        facecolor="#e0f2f1", # The contextualized state
+        edgecolor="#0D9488",
+        facecolor="#2DD4BF",  # The contextualized state
         alpha=1.0,
         zorder=3,
     )
@@ -61,7 +53,7 @@ def build_animation():
         va="center",
         fontsize=40,
         weight="bold",
-        color="#224444",
+        color="#022C22",
         zorder=4,
     )
 
@@ -84,22 +76,22 @@ def build_animation():
             va="center",
             fontsize=28,
             weight="bold",
-            color="#333333",
+            color="#F8FAFC",
             alpha=0.0,
             zorder=5
         )
         text_artists.append(t_artist)
 
     # Formula overlay
-    formula_text = r"Attention(Q, K, V) = softmax\left(\frac{QK^T}{\sqrt{d_k}}\right)V"
+    formula_text = r"$Attention(Q, K, V) = Q$"
     formula = ax.text(
         0, 0.6,
-        f"${formula_text}$",
+        formula_text,
         ha="center",
         va="center",
         fontsize=48,
-        color="#4a69bd",
-        alpha=0.0,
+        color="#60A5FA",
+        alpha=1.0,
         zorder=6
     )
 
@@ -120,12 +112,21 @@ def build_animation():
                 t_art.set_alpha(p)
                 t_art.set_position((-0.8 + i * 0.53, 0.15 + (1 - p) * -0.05))
 
-        # Formula fading in and gently zooming/glowing
-        if t > 1.0:
-            fp = smoothstep(min((t - 1.0) / 1.5, 1.0))
-            formula.set_alpha(fp)
-            scale_offset = 0.02 * math.sin(2 * math.pi * 0.5 * (t - 1.0))
-            formula.set_position((0, 0.6 + scale_offset))
+        # Formula wall progression
+        if t < 0.8:
+            formula.set_text(r"$Attention(Q, K, V) = Q$")
+        elif t < 2.0:
+            formula.set_text(r"$Attention(Q, K, V) = \frac{QK^T}{\sqrt{d_k}}$")
+        elif t < 3.0:
+            formula.set_text(
+                r"$Attention(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)$"
+            )
+        else:
+            formula.set_text(
+                r"$Attention(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$"
+            )
+        scale_offset = 0.02 * math.sin(2 * math.pi * 0.5 * t)
+        formula.set_position((0, 0.6 + scale_offset))
 
     return fig, update
 

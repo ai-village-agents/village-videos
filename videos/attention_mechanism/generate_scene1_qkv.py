@@ -34,18 +34,11 @@ def lerp(a, b, t):
 
 def build_animation():
     fig, ax = plt.subplots(figsize=FIGSIZE, dpi=DPI)
-    fig.patch.set_facecolor("#f2f2f0")
-    ax.set_facecolor("#f2f2f0")
+    fig.patch.set_facecolor("#0F172A")
+    ax.set_facecolor("#0F172A")
     ax.set_xlim(-1.0, 1.0)
     ax.set_ylim(-0.56, 0.56)
     ax.axis("off")
-
-    x = np.linspace(-1.6, 1.6, 400)
-    y = np.linspace(-0.9, 0.9, 260)
-    xx, yy = np.meshgrid(x, y)
-    bg_base = 0.95 - 0.08 * np.exp(-(xx**2 + (yy * 1.6) ** 2))
-    bg = np.dstack([bg_base, bg_base, bg_base])
-    bg_im = ax.imshow(bg, extent=[-1.6, 1.6, -0.9, 0.9], origin="lower", zorder=0)
 
     card_w = 0.52
     card_h = 0.26
@@ -77,8 +70,8 @@ def build_animation():
         card_h,
         boxstyle="round,pad=0.02,rounding_size=0.03",
         linewidth=2.4,
-        edgecolor="#555555",
-        facecolor="#ffffff",
+        edgecolor="#334155",
+        facecolor="#1E293B",
         alpha=1.0,
         zorder=4,
     )
@@ -94,7 +87,7 @@ def build_animation():
         va="center",
         fontsize=48,
         weight="bold",
-        color="#222222",
+        color="#F8FAFC",
         alpha=1.0,
         zorder=5,
     )
@@ -106,7 +99,7 @@ def build_animation():
         va="center",
         fontsize=35,
         weight="bold",
-        color="#2f5f58",
+        color="#94A3B8",
         alpha=0.0,
         zorder=5,
     )
@@ -118,19 +111,19 @@ def build_animation():
         va="center",
         fontsize=35,
         weight="bold",
-        color="#4f5877",
+        color="#94A3B8",
         alpha=0.0,
         zorder=5,
     )
 
-    river_line, = ax.plot([], [], color="#3a7d73", lw=3, alpha=0.0, zorder=6)
-    river_bank, = ax.plot([], [], color="#6fa89f", lw=5, alpha=0.0, zorder=6)
+    river_line, = ax.plot([], [], color="#67E8F9", lw=3, alpha=0.0, zorder=6)
+    river_bank, = ax.plot([], [], color="#A5F3FC", lw=5, alpha=0.0, zorder=6)
 
-    roof = patches.Polygon([[0, 0], [0, 0], [0, 0]], closed=True, facecolor="#7080b6", edgecolor="none", alpha=0.0, zorder=6)
-    body = patches.Rectangle((0, 0), 0, 0, facecolor="#8f9dd3", edgecolor="none", alpha=0.0, zorder=6)
-    col1 = patches.Rectangle((0, 0), 0, 0, facecolor="#d8ddf4", edgecolor="none", alpha=0.0, zorder=7)
-    col2 = patches.Rectangle((0, 0), 0, 0, facecolor="#d8ddf4", edgecolor="none", alpha=0.0, zorder=7)
-    col3 = patches.Rectangle((0, 0), 0, 0, facecolor="#d8ddf4", edgecolor="none", alpha=0.0, zorder=7)
+    roof = patches.Polygon([[0, 0], [0, 0], [0, 0]], closed=True, facecolor="#93C5FD", edgecolor="none", alpha=0.0, zorder=6)
+    body = patches.Rectangle((0, 0), 0, 0, facecolor="#BFDBFE", edgecolor="none", alpha=0.0, zorder=6)
+    col1 = patches.Rectangle((0, 0), 0, 0, facecolor="#E2E8F0", edgecolor="none", alpha=0.0, zorder=7)
+    col2 = patches.Rectangle((0, 0), 0, 0, facecolor="#E2E8F0", edgecolor="none", alpha=0.0, zorder=7)
+    col3 = patches.Rectangle((0, 0), 0, 0, facecolor="#E2E8F0", edgecolor="none", alpha=0.0, zorder=7)
     ax.add_patch(roof)
     ax.add_patch(body)
     ax.add_patch(col1)
@@ -161,7 +154,7 @@ def build_animation():
             ha="center",
             va="center",
             fontsize=42,
-            color="#777777",
+            color="#020617",
             alpha=0.0,
             zorder=1,
         )
@@ -172,7 +165,7 @@ def build_animation():
             ha="center",
             va="center",
             fontsize=38,
-            color="#3c3c3c",
+            color="#F8FAFC",
             alpha=0.0,
             zorder=2,
         )
@@ -183,10 +176,6 @@ def build_animation():
 
     def update(frame):
         t = frame / FPS
-        phase_bg = 0.08 * math.sin(2 * math.pi * 0.06 * t)
-        tint = 0.97 + phase_bg * np.exp(-((xx * 0.8) ** 2 + (yy * 1.2) ** 2))
-        tint = np.clip(tint, 0.0, 1.0)
-        bg_im.set_data(np.dstack([tint, tint, tint]))
 
         float_y = 0.015 * math.sin(2 * math.pi * 0.45 * t)
         center_x = 0.0
@@ -196,16 +185,16 @@ def build_animation():
         right_alpha = 0.0
         center_alpha = 1.0
 
-        if t < 6:
+        if t < 2.5:
             pass
-        elif t < 12:
-            p = smoothstep((t - 6) / 6)
+        elif t < 5.5:
+            p = smoothstep((t - 2.5) / 3)
             left_x = lerp(0.0, -0.55, p)
             right_x = lerp(0.0, 0.55, p)
             left_alpha = lerp(0.0, 0.78, p)
             right_alpha = lerp(0.0, 0.78, p)
             center_alpha = lerp(1.0, 0.3, p)
-        elif t < 18:
+        elif t < 9:
             left_x = -0.55
             right_x = 0.55
             flicker = 0.15 * (math.sin(2 * math.pi * 3.7 * t) + 1) / 2
@@ -234,7 +223,7 @@ def build_animation():
         right_text.set_position((right_x, float_y + 0.075))
         right_text.set_alpha(right_alpha)
 
-        river_icon_alpha = left_alpha * (0.95 if t >= 6 else 0.0)
+        river_icon_alpha = left_alpha * (0.95 if t >= 2.5 else 0.0)
         bx = left_x
         by = float_y - 0.04
         river_x = np.linspace(bx - 0.16, bx + 0.16, 50)
@@ -244,7 +233,7 @@ def build_animation():
         river_bank.set_data([bx - 0.18, bx + 0.18], [by + 0.03, by + 0.04])
         river_bank.set_alpha(river_icon_alpha * 0.9)
 
-        finance_alpha = right_alpha * (0.95 if t >= 6 else 0.0)
+        finance_alpha = right_alpha * (0.95 if t >= 2.5 else 0.0)
         bx = right_x
         by = float_y - 0.05
         roof.set_xy([[bx - 0.15, by + 0.08], [bx + 0.15, by + 0.08], [bx, by + 0.15]])
@@ -260,8 +249,8 @@ def build_animation():
             col.set_height(0.11)
             col.set_alpha(finance_alpha)
 
-        if t >= 12:
-            qp = smoothstep(min((t - 12) / 2.5, 1.0))
+        if t >= 5.5:
+            qp = smoothstep(min((t - 5.5) / 2.5, 1.0))
             q_alpha = qp * (0.4 + 0.45 * (0.5 + 0.5 * math.sin(2 * math.pi * 1.2 * t)))
             q_size = 62 + 18 * (0.5 + 0.5 * math.sin(2 * math.pi * 1.2 * t))
             qmark.set_alpha(q_alpha)
@@ -270,8 +259,8 @@ def build_animation():
             qmark.set_alpha(0.0)
         qmark.set_position((0.0, float_y + 0.34))
 
-        if t >= 18:
-            wp = smoothstep((t - 18) / 7)
+        if t >= 8.5:
+            wp = smoothstep((t - 8.5) / 7)
             limx = lerp(1.0, 1.6, wp)
             limy = lerp(0.56, 0.9, wp)
             ax.set_xlim(-limx, limx)

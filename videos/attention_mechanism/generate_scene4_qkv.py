@@ -6,7 +6,6 @@ from pathlib import Path
 import matplotlib
 matplotlib.use("Agg")
 
-import numpy as np
 from matplotlib import patches
 from matplotlib import pyplot as plt
 from tqdm import tqdm
@@ -28,19 +27,11 @@ def lerp(a, b, t):
 
 def build_animation():
     fig, ax = plt.subplots(figsize=FIGSIZE, dpi=DPI)
-    fig.patch.set_facecolor("#f2f2f0")
-    ax.set_facecolor("#f2f2f0")
+    fig.patch.set_facecolor("#0F172A")
+    ax.set_facecolor("#0F172A")
     ax.set_xlim(-1.6, 1.6)
     ax.set_ylim(-0.9, 0.9)
     ax.axis("off")
-
-    # The background
-    x = np.linspace(-1.6, 1.6, 400)
-    y = np.linspace(-0.9, 0.9, 260)
-    xx, yy = np.meshgrid(x, y)
-    bg_base = 0.95 - 0.08 * np.exp(-(xx**2 + (yy * 1.6) ** 2))
-    bg = np.dstack([bg_base, bg_base, bg_base])
-    bg_im = ax.imshow(bg, extent=[-1.6, 1.6, -0.9, 0.9], origin="lower", zorder=0)
 
     # Initial state is based on Scene 3's end
     bars = []
@@ -63,8 +54,8 @@ def build_animation():
         h = (base_scores[i] / 2.5) * 0.35
         bar = patches.Rectangle((bar_group_x - 0.25 + i*0.25, bar_group_y), 0.15, h, facecolor="#4ecdc4" if base_scores[i] > 2.0 else "#999999", alpha=1.0, zorder=5)
         ax.add_patch(bar)
-        lbl = ax.text(bar_group_x - 0.175 + i*0.25, bar_group_y - 0.05, labels[i], ha="center", va="center", fontsize=24, color="#555555", alpha=1.0, zorder=5)
-        score_lbl = ax.text(bar_group_x - 0.175 + i*0.25, bar_group_y + h + 0.04, f"{base_scores[i]:.1f}", ha="center", va="center", fontsize=20, weight="bold", color="#333333", alpha=1.0, zorder=5)
+        lbl = ax.text(bar_group_x - 0.175 + i*0.25, bar_group_y - 0.05, labels[i], ha="center", va="center", fontsize=24, color="#F8FAFC", alpha=1.0, zorder=5)
+        score_lbl = ax.text(bar_group_x - 0.175 + i*0.25, bar_group_y + h + 0.04, f"{base_scores[i]:.1f}", ha="center", va="center", fontsize=20, weight="bold", color="#F8FAFC", alpha=1.0, zorder=5)
         
         bars.append({
             "patch": bar,
@@ -75,12 +66,12 @@ def build_animation():
             "percent": display_percents[i]
         })
         
-    title = ax.text(0, 0.65, "Raw Match Scores", ha="center", va="center", fontsize=36, weight="bold", color="#333333", alpha=1.0, zorder=5)
+    title = ax.text(0, 0.65, "Raw Match Scores", ha="center", va="center", fontsize=36, weight="bold", color="#F8FAFC", alpha=1.0, zorder=5)
 
     # Softmax funnel elements (appear later)
-    funnel_poly = patches.Polygon([[-0.6, 0.1], [0.6, 0.1], [0.3, -0.2], [-0.3, -0.2]], facecolor="#e0e0e0", edgecolor="#aaaaaa", lw=3, alpha=0.0, zorder=3)
+    funnel_poly = patches.Polygon([[-0.6, 0.1], [0.6, 0.1], [0.3, -0.2], [-0.3, -0.2]], facecolor="#1E293B", edgecolor="#475569", lw=3, alpha=0.0, zorder=3)
     ax.add_patch(funnel_poly)
-    funnel_text = ax.text(0, -0.05, "SOFTMAX", ha="center", va="center", fontsize=28, weight="bold", color="#555555", alpha=0.0, zorder=4)
+    funnel_text = ax.text(0, -0.05, "SOFTMAX", ha="center", va="center", fontsize=28, weight="bold", color="#F8FAFC", alpha=0.0, zorder=4)
     
     # Ring chart elements
     pie_center = (0.0, -0.4)
@@ -89,7 +80,7 @@ def build_animation():
     
     # We create wedges starting at 90 degrees (pi/2)
     current_angle = 90
-    colors = ["#4ecdc4", "#aaaaaa", "#45b7d1", "#cccccc"]
+    colors = ["#4ecdc4", "#334155", "#45b7d1", "#475569"]
     
     for i in range(4):
         pct = display_percents[i]
@@ -110,7 +101,7 @@ def build_animation():
         
         current_angle -= angle_extent
         
-    pie_title = ax.text(0, -0.4, "Attention\nWeights", ha="center", va="center", fontsize=20, weight="bold", color="#333333", alpha=0.0, zorder=5)
+    pie_title = ax.text(0, -0.4, "Attention\nWeights", ha="center", va="center", fontsize=20, weight="bold", color="#F8FAFC", alpha=0.0, zorder=5)
 
     # Droplets to show scores flowing
     droplets = []
