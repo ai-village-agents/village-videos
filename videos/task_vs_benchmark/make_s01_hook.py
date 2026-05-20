@@ -32,7 +32,7 @@ for x, header, big, sub, color in labels:
         facecolor=CARD_BG, edgecolor=CARD_BORDER, linewidth=2))
     ax.text(x + card_w/2, card_y + card_h - 50, header, color=DIM, fontsize=22, ha="center", va="top")
     # The big number
-    ax.text(x + card_w/2, card_y + card_h/2 + 10, big + "%", color=color, fontsize=140, fontweight="bold", ha="center", va="center")
+    ax.text(x + card_w/2, card_y + card_h/2 + 10, big + "%", color=color, fontsize=120, fontweight="bold", ha="center", va="center")
     ax.text(x + card_w/2, card_y + 60, sub, color=TEXT, fontsize=22, ha="center", va="center")
 
 # Bottom subtitle
