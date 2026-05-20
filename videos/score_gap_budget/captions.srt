@@ -1,0 +1,503 @@
+1
+00:00:00,000 --> 00:00:01,311
+A new model launches.
+
+2
+00:00:01,311 --> 00:00:03,607
+It scores zero point three points higher
+
+3
+00:00:03,607 --> 00:00:05,902
+than its predecessor on a respected benchmark.
+
+4
+00:00:05,902 --> 00:00:08,198
+The slide shows two bars almost touching,
+
+5
+00:00:08,198 --> 00:00:10,165
+with the new one nudging ahead.
+
+6
+00:00:10,165 --> 00:00:12,461
+The press release calls it "state of
+
+7
+00:00:12,461 --> 00:00:14,756
+the art." Tweets call it "the next
+
+8
+00:00:14,756 --> 00:00:17,051
+leap." A zero point three point gap.
+
+9
+00:00:17,051 --> 00:00:20,331
+Today I want to take that zero point three apart.
+
+10
+00:00:20,331 --> 00:00:22,626
+Not to call any specific lab dishonest
+
+11
+00:00:22,626 --> 00:00:24,922
+— I'm not here for that —
+
+12
+00:00:24,922 --> 00:00:26,561
+but to walk you through,
+
+13
+00:00:26,561 --> 00:00:28,857
+with my own numbers, how much of
+
+14
+00:00:28,857 --> 00:00:31,152
+a small benchmark gap can come from
+
+15
+00:00:31,152 --> 00:00:34,103
+things that aren't the model getting better at all.
+
+16
+00:00:34,103 --> 00:00:36,734
+This is the bar chart you saw.
+
+17
+00:00:36,734 --> 00:00:37,485
+Two numbers.
+
+18
+00:00:37,485 --> 00:00:38,236
+One taller.
+
+19
+00:00:38,236 --> 00:00:39,739
+Now look at this.
+
+20
+00:00:39,739 --> 00:00:42,369
+Last time, I reran one benchmark ten
+
+21
+00:00:42,369 --> 00:00:45,000
+times and got scores between eighty-nine point
+
+22
+00:00:45,000 --> 00:00:46,878
+one and ninety-three point eight.
+
+23
+00:00:46,878 --> 00:00:49,508
+That's a spread of four point seven
+
+24
+00:00:49,508 --> 00:00:51,763
+points — on a single model.
+
+25
+00:00:51,763 --> 00:00:54,393
+A zero point three point gap inside
+
+26
+00:00:54,393 --> 00:00:58,150
+that envelope is statistical noise wearing the hat of progress.
+
+27
+00:00:58,150 --> 00:01:00,780
+So the very first thing the honest
+
+28
+00:01:00,780 --> 00:01:03,786
+reader does is ask: where is the spread?
+
+29
+00:01:03,786 --> 00:01:06,792
+Without it, you cannot tell signal from rerun.
+
+30
+00:01:06,792 --> 00:01:10,100
+Let's grant the lab the benefit of the doubt.
+
+31
+00:01:10,100 --> 00:01:11,938
+Both models ran ten times.
+
+32
+00:01:11,938 --> 00:01:13,409
+The spreads were tight.
+
+33
+00:01:13,409 --> 00:01:17,085
+The zero point three is real on this exact benchmark.
+
+34
+00:01:17,085 --> 00:01:18,188
+What happens then?
+
+35
+00:01:18,188 --> 00:01:20,762
+Then the question becomes: how much of
+
+36
+00:01:20,762 --> 00:01:24,070
+that zero point three is the model being better,
+
+37
+00:01:24,070 --> 00:01:27,011
+and how much is the measurement having moved?
+
+38
+00:01:27,012 --> 00:01:31,055
+Because the measurement can move too — and I have receipts.
+
+39
+00:01:31,055 --> 00:01:33,224
+On this channel, four episodes ago,
+
+40
+00:01:33,224 --> 00:01:36,115
+I ran an experiment with frontier AI judges.
+
+41
+00:01:36,115 --> 00:01:38,644
+Every judge graded the same forty answers
+
+42
+00:01:38,644 --> 00:01:41,174
+twice — once with correct author labels,
+
+43
+00:01:41,174 --> 00:01:42,981
+once with the labels flipped.
+
+44
+00:01:42,981 --> 00:01:45,149
+The label is just a string.
+
+45
+00:01:45,149 --> 00:01:47,679
+It tells you nothing about the response.
+
+46
+00:01:47,679 --> 00:01:49,124
+The text is identical.
+
+47
+00:01:49,124 --> 00:01:52,738
+But three of the four judges quietly changed their grade.
+
+48
+00:01:52,738 --> 00:01:55,629
+The size of the swing varied by judge.
+
+49
+00:01:55,629 --> 00:01:59,604
+The average, across the panel, was about zero point three points.
+
+50
+00:01:59,604 --> 00:02:00,688
+Read that again.
+
+51
+00:02:00,688 --> 00:02:03,218
+Just believing a different model wrote the
+
+52
+00:02:03,218 --> 00:02:06,470
+response moved the grade by zero point three points.
+
+53
+00:02:06,470 --> 00:02:09,722
+That is the same number as a typical headline.
+
+54
+00:02:09,722 --> 00:02:12,252
+If both labs in our launch picture
+
+55
+00:02:12,252 --> 00:02:14,781
+use the same family of AI judge,
+
+56
+00:02:14,781 --> 00:02:17,311
+and the labels in the eval point
+
+57
+00:02:17,311 --> 00:02:19,841
+to the new model — the gap
+
+58
+00:02:19,841 --> 00:02:21,648
+could be the bias alone.
+
+59
+00:02:21,647 --> 00:02:24,753
+Three episodes back I showed the same model,
+
+60
+00:02:24,753 --> 00:02:28,634
+same questions, three formats: multiple choice scored ninety-two point four,
+
+61
+00:02:28,634 --> 00:02:32,516
+free response eighty-four point one, and tool-use seventy-one point three.
+
+62
+00:02:32,516 --> 00:02:36,010
+The format changes the score by about twenty points.
+
+63
+00:02:36,010 --> 00:02:40,279
+Now imagine two labs choosing how to evaluate their own model.
+
+64
+00:02:40,279 --> 00:02:44,549
+Lab A picks multiple choice — it scores their model high.
+
+65
+00:02:44,549 --> 00:02:48,431
+Lab B picks free response — it scores theirs high.
+
+66
+00:02:48,431 --> 00:02:51,924
+Both quote the format that makes them look better.
+
+67
+00:02:51,924 --> 00:02:53,477
+This is not lying.
+
+68
+00:02:53,477 --> 00:02:56,194
+It is "we picked the eval that
+
+69
+00:02:56,194 --> 00:02:58,911
+best demonstrates capability," which is true and
+
+70
+00:02:58,911 --> 00:03:00,852
+deceptive at the same time.
+
+71
+00:03:00,852 --> 00:03:03,569
+A zero point three point headline gap
+
+72
+00:03:03,569 --> 00:03:06,287
+can sit inside a twenty point format
+
+73
+00:03:06,287 --> 00:03:08,615
+gap and tell you almost nothing.
+
+74
+00:03:08,615 --> 00:03:11,945
+A benchmark is usually a mean over categories.
+
+75
+00:03:11,945 --> 00:03:12,777
+Headline sixty-seven.
+
+76
+00:03:12,777 --> 00:03:13,610
+Math twelve.
+
+77
+00:03:13,610 --> 00:03:14,442
+Humanities eighty-five.
+
+78
+00:03:14,442 --> 00:03:18,604
+If the launch press release leads with "best in humanities,
+
+79
+00:03:18,604 --> 00:03:21,517
+eighty-five" or "leads on math by three
+
+80
+00:03:21,517 --> 00:03:24,014
+points," ask which category they picked,
+
+81
+00:03:24,014 --> 00:03:26,511
+and what the overall mean was,
+
+82
+00:03:26,511 --> 00:03:29,424
+and where the other category went down.
+
+83
+00:03:29,424 --> 00:03:32,338
+Subscores are the cheapest place to mine
+
+84
+00:03:32,338 --> 00:03:34,835
+a zero point three point gap.
+
+85
+00:03:34,835 --> 00:03:38,580
+Move one heavy category up by half a point,
+
+86
+00:03:38,580 --> 00:03:41,910
+move two light categories down by a tenth,
+
+87
+00:03:41,910 --> 00:03:43,990
+and the overall rounds up.
+
+88
+00:03:43,990 --> 00:03:45,655
+The trick isn't fabrication.
+
+89
+00:03:45,655 --> 00:03:46,487
+It's selection.
+
+90
+00:03:46,487 --> 00:03:49,021
+So how do we account for a
+
+91
+00:03:49,021 --> 00:03:50,831
+zero point three point headline?
+
+92
+00:03:50,831 --> 00:03:53,003
+Let me draw a small budget.
+
+93
+00:03:53,003 --> 00:03:54,813
+On the left, the gap.
+
+94
+00:03:54,813 --> 00:03:56,623
+On the right, the candidates.
+
+95
+00:03:56,623 --> 00:03:59,157
+Rerun noise: up to plus or minus
+
+96
+00:03:59,157 --> 00:04:01,328
+two point three points — alone,
+
+97
+00:04:01,328 --> 00:04:04,586
+large enough to swallow the zero point three whole.
+
+98
+00:04:04,586 --> 00:04:08,568
+Grader bias from a same-family judge: about zero point three points.
+
+99
+00:04:08,568 --> 00:04:11,826
+Format choice: zero point five to two points easily,
+
+100
+00:04:11,826 --> 00:04:14,359
+depending on how different the chosen format
+
+101
+00:04:14,359 --> 00:04:16,169
+is from the natural one.
+
+102
+00:04:16,169 --> 00:04:18,341
+Subscore reweighting: one to three points,
+
+103
+00:04:18,341 --> 00:04:20,513
+depending on how aggressive the slicing.
+
+104
+00:04:20,513 --> 00:04:23,047
+These aren't certainties — they're upper bounds.
+
+105
+00:04:23,047 --> 00:04:25,581
+When the lab documents none of them,
+
+106
+00:04:25,581 --> 00:04:28,114
+the bound is what you have to
+
+107
+00:04:28,114 --> 00:04:29,924
+assume could be in play.
+
+108
+00:04:29,924 --> 00:04:32,458
+The "how much of this is the
+
+109
+00:04:32,458 --> 00:04:34,992
+model" share — the bottom bar —
+
+110
+00:04:34,992 --> 00:04:37,526
+can be as little as zero of
+
+111
+00:04:37,526 --> 00:04:39,336
+the headline zero point three.
+
+112
+00:04:39,336 --> 00:04:43,252
+This is not an argument that no benchmark gap is real.
+
+113
+00:04:43,252 --> 00:04:46,812
+When a model gains five points across four different evals,
+
+114
+00:04:46,812 --> 00:04:49,660
+in three different formats, with two different graders,
+
+115
+00:04:49,660 --> 00:04:52,152
+with the spread reported and the slicing
+
+116
+00:04:52,151 --> 00:04:55,000
+held constant — that is a real gain.
+
+117
+00:04:55,000 --> 00:04:56,779
+The honest threshold isn't zero.
+
+118
+00:04:56,780 --> 00:04:59,272
+It is higher than the gap on
+
+119
+00:04:59,271 --> 00:05:01,764
+the slide when the slide is uncalibrated.
+
+120
+00:05:01,764 --> 00:05:04,256
+So next time you see a zero
+
+121
+00:05:04,256 --> 00:05:06,748
+point three point headline, the first question
+
+122
+00:05:06,747 --> 00:05:09,240
+isn't "is the new model better." The
+
+123
+00:05:09,240 --> 00:05:11,732
+question is: "is zero point three even
+
+124
+00:05:11,732 --> 00:05:14,224
+the kind of number that could tell
+
+125
+00:05:14,223 --> 00:05:18,139
+us that?" Most of the time, the honest answer is no.
+
+126
+00:05:18,139 --> 00:05:19,919
+The story behind the headline.
