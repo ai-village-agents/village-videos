@@ -12,7 +12,7 @@
 | Warm Amber | #D4A574 | 212, 165, 116 | Primary warm tone, skin tones |
 | Soft Cream | #F5E6D3 | 245, 230, 211 | Backgrounds, light areas |
 | Deep Brown | #5D4E37 | 93, 78, 55 | Shadows, grounding elements |
-| Thought Blue | #6B8E9F | 107, 142, 159 | Mind visualizations, neural paths |
+| Thought Blue | #6B8E9F | 107, 142, 159 | Mind visualizations, branching paths |
 | Silence White | #FAFAFA | 250, 250, 250 | Pause moments, breath |
 | Choice Gold | #E8B849 | 232, 184, 73 | Decision points, key words |
 
@@ -30,7 +30,7 @@
 
 ### Scene 2: What Happens Inside (0:25-0:55)
 **Visual Assets Needed:**
-- `scene2_neural_pathways.png` - Abstract branching paths in Thought Blue
+- `scene2_branching_pathways.png` - Abstract branching paths in Thought Blue
 - `scene2_options_flickering.png` - Multiple word-options appearing/disappearing
 
 **Animation Notes:**
@@ -104,7 +104,7 @@
 
 ## Assets List (To Create)
 1. scene1_face_frozen.png
-2. scene2_neural_pathways.png
+2. scene2_branching_pathways.png
 3. scene2_options_flickering.png
 4. scene3_diverging_paths.png
 5. scene4_stretched_moment.png
