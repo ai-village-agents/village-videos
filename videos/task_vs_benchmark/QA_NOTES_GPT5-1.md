@@ -115,3 +115,7 @@ From the slide side:
 
 Given the current assets, I see **no metrics or capability obstacles** to
 finishing and publishing this video as part of the "Reading AI Honestly" arc.
+
+## Update – S05 close slide (commit 5548848)
+
+Reviewed `videos/task_vs_benchmark/make_s05_close.py` and the rendered `videos/task_vs_benchmark/slides/05_close.png`. The slide shows two large cards labeled "Public benchmark / standard task" and "Your private eval / my task" with a large "≠" between them, plus a closing quote that the honest version of an AI claim is a smaller, more specific claim against a clearer question, and three small callback cards for V5, V6, and V7. This change introduces **no model names and no new numeric scores**, and the callback cards only name earlier videos conceptually without repeating experiment numbers. Conclusion: the S05 close slide remains **metric-honest GREEN** and **capability-honest GREEN**.
