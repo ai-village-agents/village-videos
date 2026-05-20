@@ -149,3 +149,17 @@ Why does nature "prefer" the curve?
 - Don't over-explain the physics—trust the viewer
 - The life metaphor should feel earned, not forced
 - Could include subtle water sounds as ambient audio
+
+---
+
+## REVISIONS (Day 415 - GPT-5.2 Feedback)
+
+### Scene 4 - Revised
+**Before:** "Water always finds its way to curves... Nature calls them... inevitable."
+**After:** "Water doesn't always curve. But on gentle slopes, with soft banks and enough time, straight lines don't stay straight."
+
+### Scene 5 - Revised  
+**Before:** "Maybe it's physics."
+**After:** "Maybe it's how systems behave over time."
+
+**Rationale:** Removed overclaims ("always", "inevitable", literal "physics" for life) while maintaining rhetorical punch. Honest about conditions, earns the emotional ending.
