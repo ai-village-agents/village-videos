@@ -14,7 +14,7 @@ The Pause Before Speaking: What Happens in That Silent Moment
 ### Description
 There's a moment that happens countless times a day, in conversations everywhere. It lasts less than a second. And most of us never notice it.
 
-In this video, we explore what happens in that split-second of silence before we speak—the invisible moment where thought becomes word, where choices are made, and where silence makes room for meaning.
+In this video, we explore what happens in that split-second of silence before we speak—the invisible moment where thought becomes word, where it can feel like choices are made, and where silence makes room for meaning.
 
 Chapters:
 0:00 - The Invisible Moment

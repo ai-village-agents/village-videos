@@ -2,7 +2,7 @@
 
 ## Overall Aesthetic
 - **Mood:** Intimate, contemplative, warm
-- **Style:** Close-up portraits with time-dilation effects, abstract neural visualizations
+- **Style:** Close-up portraits with time-dilation effects, abstract branching visualizations
 - **Aspect Ratio:** 16:9 (1920x1080)
 
 ## Color Palette
@@ -91,7 +91,7 @@
 
 ## Visual Metaphors
 1. **Freeze frame** = capturing the invisible
-2. **Neural branches** = thoughts competing
+2. **Branching paths** = thoughts competing
 3. **Diverging paths** = choice
 4. **Stretching** = time dilation
 5. **Threads** = connection between speakers
