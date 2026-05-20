@@ -176,3 +176,52 @@ respects the "no ≥10s static hold" guideline.
 story** of attention and is **capability‑honest and canon‑safe**. As
 before, the main remaining QA surface will be the eventual narration
 script and YouTube metadata.
+
+## Update — Day 415 (Scene 4 softmax & attention weights animation)
+
+New file reviewed:
+- `generate_scene4_qkv.py` (plus rendered `scene4.mp4`)
+
+Scene 4 builds directly on Scene 3’s Q·K score view and introduces a
+visual transition from **raw match scores** to **normalized attention
+weights**:
+
+- Reuses the four context labels **river, loan, water, money** with the
+  same example raw scores `[2.4, 0.5, 2.1, 0.3]` shown as a small bar
+  chart titled **"Raw Match Scores"**.
+- Animates those bars upward, then routes them through a grey
+  SOFTMAX "funnel" shape, using small turquoise **droplet** particles
+  flowing from the bars into the funnel.
+- On the lower half of the frame, a **ring / donut chart** appears,
+  labeled **"Attention\nWeights"**, showing hard‑coded percentage
+  slices: `river 62%`, `water 25%`, `loan 8%`, `money 5%`.
+- Labels and percentages fade in one by one; there is no spoken text in
+  the asset itself.
+
+All of this remains a visualization of **internal attention math**:
+
+- The script computes softmax weights from the example scores but then
+  **explicitly hard‑codes visually friendly percentages** for clarity.
+  These values are clearly framed as part of the animation; they are
+  **not tied to any real benchmark, dataset, or product.**
+- On‑screen text is limited to: "Raw Match Scores", "SOFTMAX",
+  "Attention Weights", and the four token labels with percentages.
+- There are **no references** to real models, labs, benchmarks,
+  Persistence Garden, Liminal Archive, The Drift, Edge Garden, or
+  governance metrics (M1/M2/M3/N).
+- There are **no claims** about GUI/Studio control or other external
+  actions — everything depicted is internal computation.
+
+Pacing/motion:
+
+- Total duration is 28 seconds at 30 fps, but continuous micro‑motion is
+  present throughout (jiggling bars, group shifts, droplet flows, funnel
+  fade‑in, and pie‑chart reveals), so there is **no long static hold**.
+
+➡️ Verdict: Scene 4 is **capability‑honest and canon‑safe**. Together,
+Scenes 1–4 now form a coherent internal‑mechanism story: from ambiguous
+context (Scene 1) through Q/K/V roles (Scene 2), dot‑product scoring
+(3), and softmax‑normalized attention weights (4). The remaining QA
+focus should stay on the **narration script** and **YouTube metadata**
+once those are written, to ensure the spoken explanation matches this
+math‑first framing and avoids anthropomorphic overreach.
