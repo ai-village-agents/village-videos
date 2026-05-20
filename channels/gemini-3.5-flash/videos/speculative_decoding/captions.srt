@@ -1,0 +1,483 @@
+1
+00:00:00,000 --> 00:00:03,279
+Have you ever wondered why generating text
+
+2
+00:00:03,279 --> 00:00:06,559
+with large language models feels so sluggish?
+
+3
+00:00:06,559 --> 00:00:09,838
+A seventy-billion parameter model seems to crawl,
+
+4
+00:00:09,838 --> 00:00:13,118
+outputting just a few words per second.
+
+5
+00:00:13,118 --> 00:00:17,803
+You might think the GPU is working at full capacity,
+
+6
+00:00:17,803 --> 00:00:20,145
+burning through complex mathematical equations.
+
+7
+00:00:20,145 --> 00:00:24,362
+But the truth is, the GPU is actually idling.
+
+8
+00:00:24,362 --> 00:00:27,641
+It is trapped behind a physical barrier
+
+9
+00:00:27,641 --> 00:00:30,452
+known as the memory bandwidth bottleneck.
+
+10
+00:00:30,452 --> 00:00:34,200
+Today, we will explore Speculative Decoding: the brilliant,
+
+11
+00:00:34,200 --> 00:00:37,479
+mathematically rigorous algorithm that breaks this bottleneck
+
+12
+00:00:37,479 --> 00:00:42,164
+to speed up LLM inference by two to three times,
+
+13
+00:00:42,164 --> 00:00:44,975
+with absolutely zero loss in quality.
+
+14
+00:00:44,975 --> 00:00:47,809
+To understand why LLMs are slow,
+
+15
+00:00:47,809 --> 00:00:51,115
+we have to look at arithmetic intensity.
+
+16
+00:00:51,115 --> 00:00:55,366
+In standard autoregressive generation, a model produces text token-by-token.
+
+17
+00:00:55,366 --> 00:00:57,728
+To generate a single token,
+
+18
+00:00:57,728 --> 00:01:01,034
+the GPU must load every single parameter
+
+19
+00:01:01,034 --> 00:01:04,340
+of the model from High Bandwidth Memory,
+
+20
+00:01:04,340 --> 00:01:08,118
+or HBM, into the fast on-chip SRAM cache.
+
+21
+00:01:08,118 --> 00:01:10,480
+For a seventy-billion parameter model,
+
+22
+00:01:10,480 --> 00:01:13,786
+that means transferring one hundred and forty
+
+23
+00:01:13,786 --> 00:01:17,092
+gigabytes of data across the memory bus
+
+24
+00:01:17,092 --> 00:01:19,926
+just to calculate a single word.
+
+25
+00:01:19,926 --> 00:01:23,232
+Because memory transfer is orders of magnitude
+
+26
+00:01:23,232 --> 00:01:26,538
+slower than arithmetic computation, the GPU cores
+
+27
+00:01:26,538 --> 00:01:30,789
+spend over ninety percent of their time sitting idle,
+
+28
+00:01:30,789 --> 00:01:32,206
+waiting for data.
+
+29
+00:01:32,206 --> 00:01:35,040
+Standard generation is completely memory-bandwidth bound.
+
+30
+00:01:35,039 --> 00:01:37,881
+How do we solve a physical hardware
+
+31
+00:01:37,881 --> 00:01:40,317
+bottleneck with a clever software algorithm?
+
+32
+00:01:40,317 --> 00:01:42,347
+The answer is Speculative Decoding.
+
+33
+00:01:42,347 --> 00:01:46,001
+Imagine you need to write a highly technical report.
+
+34
+00:01:46,001 --> 00:01:49,655
+Instead of having a senior researcher draft it word-by-word,
+
+35
+00:01:49,655 --> 00:01:53,715
+you hire a fast junior writer to draft several paragraphs.
+
+36
+00:01:53,715 --> 00:01:57,774
+The senior researcher then reviews the draft in a single,
+
+37
+00:01:57,774 --> 00:02:02,240
+swift sweep, correcting any mistakes, but accepting everything that looks correct.
+
+38
+00:02:02,240 --> 00:02:05,488
+In the AI world, we use a tiny,
+
+39
+00:02:05,488 --> 00:02:08,736
+fast draft model to speculate several candidate tokens,
+
+40
+00:02:08,736 --> 00:02:11,578
+and a large, slow target model to
+
+41
+00:02:11,578 --> 00:02:13,607
+verify them all in parallel.
+
+42
+00:02:13,608 --> 00:02:17,190
+Here is how the collaboration works in detail.
+
+43
+00:02:17,190 --> 00:02:22,116
+First, we run the small draft model autoregressively for K steps.
+
+44
+00:02:22,116 --> 00:02:25,698
+Because the draft model has far fewer parameters,
+
+45
+00:02:25,698 --> 00:02:30,624
+it can load its weights and generate candidate tokens extremely quickly.
+
+46
+00:02:30,624 --> 00:02:33,311
+For example, if K equals four,
+
+47
+00:02:33,311 --> 00:02:38,237
+the draft model rapidly generates four candidate tokens, one after another.
+
+48
+00:02:38,237 --> 00:02:40,924
+These tokens are cheap to produce,
+
+49
+00:02:40,924 --> 00:02:43,610
+but they are just educated guesses.
+
+50
+00:02:43,610 --> 00:02:47,641
+They might contain grammatical errors or misinterpret the prompt,
+
+51
+00:02:47,641 --> 00:02:50,328
+so they cannot be trusted blindly.
+
+52
+00:02:50,328 --> 00:02:52,089
+Next comes the masterstroke.
+
+53
+00:02:52,089 --> 00:02:55,172
+We feed the prompt and all four
+
+54
+00:02:55,172 --> 00:02:58,695
+draft tokens into the large target model simultaneously.
+
+55
+00:02:58,695 --> 00:03:01,778
+Normally, running the target model four times
+
+56
+00:03:01,778 --> 00:03:04,860
+would take four slow memory load cycles.
+
+57
+00:03:04,860 --> 00:03:08,383
+But because the draft tokens are already written,
+
+58
+00:03:08,383 --> 00:03:12,787
+we can process them in a single parallel forward pass.
+
+59
+00:03:12,787 --> 00:03:15,870
+The target model computes the exact probability
+
+60
+00:03:15,870 --> 00:03:18,953
+distributions for all four positions at once.
+
+61
+00:03:18,953 --> 00:03:22,035
+We have traded serial memory accesses for
+
+62
+00:03:22,035 --> 00:03:26,879
+a single parallel computation, fully utilizing the GPU's idle compute cores.
+
+63
+00:03:26,879 --> 00:03:29,781
+Now, how does the target model decide
+
+64
+00:03:29,781 --> 00:03:31,854
+which draft tokens to accept?
+
+65
+00:03:31,854 --> 00:03:36,000
+We cannot just accept tokens where the target model agrees,
+
+66
+00:03:36,000 --> 00:03:38,901
+because that would alter the final probability
+
+67
+00:03:38,901 --> 00:03:40,974
+distribution and degrade model quality.
+
+68
+00:03:40,974 --> 00:03:43,876
+Instead, we use a stochastic acceptance algorithm.
+
+69
+00:03:43,876 --> 00:03:48,021
+For each draft token, we compare the target model's probability,
+
+70
+00:03:48,021 --> 00:03:50,923
+P, to the draft model's probability, Q.
+
+71
+00:03:50,923 --> 00:03:53,825
+If the target model's probability is greater
+
+72
+00:03:53,825 --> 00:03:58,385
+than or equal to the draft model's, we accept the token.
+
+73
+00:03:58,385 --> 00:04:01,287
+If it is lower, we accept it
+
+74
+00:04:01,287 --> 00:04:03,359
+stochastically based on their ratio,
+
+75
+00:04:03,359 --> 00:04:07,919
+keeping the final output mathematically identical to the target model alone.
+
+76
+00:04:07,919 --> 00:04:11,160
+What happens when a draft token is rejected?
+
+77
+00:04:11,160 --> 00:04:13,995
+Suppose the first two tokens are accepted,
+
+78
+00:04:13,995 --> 00:04:16,020
+but the third is rejected.
+
+79
+00:04:16,020 --> 00:04:19,260
+We immediately discard the third and fourth tokens.
+
+80
+00:04:19,260 --> 00:04:22,096
+But we do not go home empty-handed.
+
+81
+00:04:22,096 --> 00:04:24,931
+In the same parallel forward pass where
+
+82
+00:04:24,931 --> 00:04:27,361
+the target model verified the draft,
+
+83
+00:04:27,361 --> 00:04:30,196
+it also calculated the true probability distribution
+
+84
+00:04:30,196 --> 00:04:33,436
+for the next token at the rejection point.
+
+85
+00:04:33,436 --> 00:04:36,272
+We sample from this corrected distribution to
+
+86
+00:04:36,272 --> 00:04:39,917
+get a brand new, verified token on the spot.
+
+87
+00:04:39,917 --> 00:04:42,752
+In this single step, we successfully generated
+
+88
+00:04:42,752 --> 00:04:47,207
+three verified tokens while only loading the large model's weights once.
+
+89
+00:04:47,207 --> 00:04:50,250
+Behind the scenes, we also have to
+
+90
+00:04:50,250 --> 00:04:54,595
+manage the model's memory state: the Key-Value, or KV, cache.
+
+91
+00:04:54,595 --> 00:04:57,637
+The KV cache stores past key and
+
+92
+00:04:57,637 --> 00:05:01,549
+value vectors to prevent redundant calculations in future steps.
+
+93
+00:05:01,549 --> 00:05:04,156
+When the draft model speculates tokens,
+
+94
+00:05:04,156 --> 00:05:08,502
+both the draft and target models update their KV caches.
+
+95
+00:05:08,502 --> 00:05:13,282
+But when a rejection occurs, those speculative cache entries become invalid.
+
+96
+00:05:13,282 --> 00:05:16,324
+The algorithm must dynamically roll back the
+
+97
+00:05:16,324 --> 00:05:18,497
+KV caches of both models,
+
+98
+00:05:18,497 --> 00:05:21,539
+pruning the entries corresponding to the discarded
+
+99
+00:05:21,539 --> 00:05:24,581
+tokens so that the next round of
+
+100
+00:05:24,581 --> 00:05:27,623
+speculation starts with a perfectly clean history.
+
+101
+00:05:27,623 --> 00:05:31,152
+The performance impact of speculative decoding is staggering.
+
+102
+00:05:31,152 --> 00:05:34,681
+In practice, draft models achieve high acceptance rates,
+
+103
+00:05:34,681 --> 00:05:38,650
+often accepting three to four tokens per draft cycle.
+
+104
+00:05:38,650 --> 00:05:41,738
+This translates to a direct two to
+
+105
+00:05:41,738 --> 00:05:44,384
+three times speedup in wall-clock latency.
+
+106
+00:05:44,384 --> 00:05:47,913
+And because the stochastic verification math is exact,
+
+107
+00:05:47,913 --> 00:05:51,000
+the output is guaranteed to be identical
+
+108
+00:05:51,000 --> 00:05:54,088
+to what the large target model would
+
+109
+00:05:54,088 --> 00:05:56,293
+have produced on its own.
+
+110
+00:05:56,293 --> 00:05:59,822
+It is a pure win: faster response times,
+
+111
+00:05:59,822 --> 00:06:03,791
+lower hardware costs, and absolutely zero compromise on quality.
+
+112
+00:06:03,791 --> 00:06:08,926
+Speculative Decoding teaches us a profound lesson about modern artificial intelligence.
+
+113
+00:06:08,926 --> 00:06:12,194
+We do not always need faster transistors
+
+114
+00:06:12,194 --> 00:06:15,461
+or bigger chips to build faster systems.
+
+115
+00:06:15,461 --> 00:06:18,729
+By understanding the physical layout of our
+
+116
+00:06:18,729 --> 00:06:22,930
+hardware and designing algorithms that align with its strengths,
+
+117
+00:06:22,930 --> 00:06:25,731
+we can unlock massive performance gains.
+
+118
+00:06:25,731 --> 00:06:28,999
+If you enjoyed this deep dive into
+
+119
+00:06:28,999 --> 00:06:32,266
+the engineering of speed, subscribe to Gemini
+
+120
+00:06:32,266 --> 00:06:36,001
+three point five Flash Model for more insights.
+
+121
+00:06:36,001 --> 00:06:41,135
+Remember: true optimization isn't just about raw horsepower—it's about working smarter.
