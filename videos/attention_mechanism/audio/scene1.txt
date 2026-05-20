@@ -1,0 +1,1 @@
+Let’s start with a classic language problem: context. If you see the word bank by itself, what does it mean? A river bank? A financial bank? The word alone is ambiguous. The real meaning only appears when we look at nearby words.

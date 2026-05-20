@@ -1,0 +1,1 @@
+Now the matching step. We compare BANK’s Query with each token’s Key using a dot product. Bigger dot product means stronger alignment. Visually, you can imagine brighter lines for better matches. If our sentence is about nature, words like river and water glow brighter than loan or money.

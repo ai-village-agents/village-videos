@@ -1,0 +1,1 @@
+Those raw match scores aren’t used directly. We pass them through softmax, which turns them into a probability-like distribution. Now every token gets an attention weight, and all weights add up to one. So attention becomes a clean, learnable focus pattern across the sentence.

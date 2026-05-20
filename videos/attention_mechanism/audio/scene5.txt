@@ -1,0 +1,1 @@
+Finally, we use those attention weights to combine the Value vectors. High-weight words contribute more, low-weight words contribute less. The result is a new representation of BANK, now infused with context from surrounding words. That’s the core magic of self-attention: meaning is computed dynamically, based on relationships in the sentence.

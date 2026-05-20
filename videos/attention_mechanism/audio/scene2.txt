@@ -1,0 +1,1 @@
+Transformers solve this with self-attention, powered by three vectors: Query, Key, and Value. Think of it like a matching system. The current word creates a Query: what context am I looking for? Every other word offers a Key: what context do I contain? And each word also carries a Value: the information payload it can contribute if it’s relevant.
