@@ -1,0 +1,467 @@
+1
+00:00:00,000 --> 00:00:02,248
+Two answers to the same question,
+
+2
+00:00:02,248 --> 00:00:04,872
+in identical confident sentences, side by side.
+
+3
+00:00:04,872 --> 00:00:06,746
+One of them is wrong.
+
+4
+00:00:06,746 --> 00:00:09,745
+Looking at the page, you cannot tell which.
+
+5
+00:00:09,745 --> 00:00:13,118
+> This isn't a failure mode unique to AI.
+
+6
+00:00:13,118 --> 00:00:16,117
+Confident humans get things wrong all the time.
+
+7
+00:00:16,117 --> 00:00:19,490
+But with a model, the confidence is essentially free.
+
+8
+00:00:19,490 --> 00:00:22,488
+It costs the model nothing to sound sure.
+
+9
+00:00:22,488 --> 00:00:25,112
+So a sentence that sounds sure is
+
+10
+00:00:25,112 --> 00:00:26,986
+almost no evidence at all.
+
+11
+00:00:26,986 --> 00:00:30,359
+> If the confidence isn't the signal, what is?
+
+12
+00:00:30,359 --> 00:00:32,225
+There are four quadrants here.
+
+13
+00:00:32,225 --> 00:00:35,956
+> Confident and right — that's what we hope for.
+
+14
+00:00:35,956 --> 00:00:39,313
+A lot of the time, that's what we get.
+
+15
+00:00:39,313 --> 00:00:42,671
+> Hedging and right — slightly annoying, but honest.
+
+16
+00:00:42,671 --> 00:00:45,282
+The kind of behavior we should want
+
+17
+00:00:45,282 --> 00:00:47,148
+models to do more of.
+
+18
+00:00:47,148 --> 00:00:50,505
+> Hedging and wrong — visible, easy to ignore.
+
+19
+00:00:50,505 --> 00:00:53,490
+> And the dangerous quadrant: confident and wrong.
+
+20
+00:00:53,490 --> 00:00:56,474
+Confident-and-wrong looks identical, on the page, to confident-and-right.
+
+21
+00:00:56,474 --> 00:00:59,459
+Same syntax, same tone, same little explanatory paragraph.
+
+22
+00:00:59,459 --> 00:01:03,563
+> So the goal isn't to read the model's tone harder.
+
+23
+00:01:03,563 --> 00:01:06,174
+The goal is to do something the
+
+24
+00:01:06,174 --> 00:01:08,040
+model can't do for you.
+
+25
+00:01:08,039 --> 00:01:09,126
+The simplest test.
+
+26
+00:01:09,126 --> 00:01:10,938
+The one most people skip.
+
+27
+00:01:10,938 --> 00:01:12,749
+> Look at the answer.
+
+28
+00:01:12,749 --> 00:01:15,647
+Find a specific factual claim — a date,
+
+29
+00:01:15,647 --> 00:01:19,632
+a paper title, a formula, a function name, a quoted sentence.
+
+30
+00:01:19,632 --> 00:01:22,168
+Something you could verify in thirty seconds.
+
+31
+00:01:22,168 --> 00:01:23,979
+> Check that one thing.
+
+32
+00:01:23,979 --> 00:01:26,877
+> If it's right, you've learned a little.
+
+33
+00:01:26,877 --> 00:01:29,413
+If it's wrong, you've learned a lot.
+
+34
+00:01:29,413 --> 00:01:31,949
+Because every unverifiable claim sitting next to
+
+35
+00:01:31,949 --> 00:01:34,485
+a wrong verifiable one should drop in
+
+36
+00:01:34,485 --> 00:01:37,021
+your trust by roughly the same amount.
+
+37
+00:01:37,021 --> 00:01:39,556
+> A good rule of thumb: if
+
+38
+00:01:39,556 --> 00:01:42,817
+two of three checkable claims in the answer fail,
+
+39
+00:01:42,817 --> 00:01:46,439
+treat the entire answer as a draft, not a result.
+
+40
+00:01:46,439 --> 00:01:47,244
+Second test.
+
+41
+00:01:47,244 --> 00:01:50,060
+Ask the model: "What would change your
+
+42
+00:01:50,060 --> 00:01:53,279
+answer?" > A well-calibrated reply names an updater.
+
+43
+00:01:53,279 --> 00:01:56,095
+Something like: "If the paper I'm citing
+
+44
+00:01:56,095 --> 00:01:59,716
+turns out to be from 2019 instead of 2021,
+
+45
+00:01:59,716 --> 00:02:03,739
+I'm wrong about the precedent." That's a real, falsifiable hook.
+
+46
+00:02:03,739 --> 00:02:06,556
+> An overconfident reply just restates the
+
+47
+00:02:06,556 --> 00:02:10,981
+original claim with more words, or says nothing would change it.
+
+48
+00:02:10,981 --> 00:02:13,797
+> Saying nothing would change it is
+
+49
+00:02:13,797 --> 00:02:16,614
+almost never correct about an empirical question.
+
+50
+00:02:16,614 --> 00:02:18,625
+When you hear that pattern,
+
+51
+00:02:18,625 --> 00:02:21,442
+you've found an answer the model isn't
+
+52
+00:02:21,442 --> 00:02:23,855
+actually examining — it's just defending.
+
+53
+00:02:23,855 --> 00:02:24,744
+Third test.
+
+54
+00:02:24,744 --> 00:02:27,855
+Don't ask "are there hedges in this
+
+55
+00:02:27,855 --> 00:02:30,966
+answer." Ask "are the hedges in the
+
+56
+00:02:30,966 --> 00:02:33,632
+right places." > Compare two paragraphs.
+
+57
+00:02:33,632 --> 00:02:36,743
+> Paragraph A: "It's possible that X
+
+58
+00:02:36,743 --> 00:02:39,409
+may arguably perhaps be the case,
+
+59
+00:02:39,409 --> 00:02:43,853
+and we might potentially think Y could hold." Hedges everywhere.
+
+60
+00:02:43,853 --> 00:02:44,742
+Hedge inflation.
+
+61
+00:02:44,742 --> 00:02:49,186
+That paragraph isn't more honest — it's just less committed.
+
+62
+00:02:49,186 --> 00:02:53,185
+> Paragraph B: makes confident claims about well-known facts,
+
+63
+00:02:53,185 --> 00:02:56,296
+and concentrates its hedges on the dates,
+
+64
+00:02:56,296 --> 00:02:59,851
+attributions, and edge cases where uncertainty actually lives.
+
+65
+00:02:59,851 --> 00:03:01,628
+That paragraph is calibrated.
+
+66
+00:03:01,628 --> 00:03:03,850
+> Sprinkled hedges aren't honesty.
+
+67
+00:03:03,850 --> 00:03:05,183
+Concentrated hedges are.
+
+68
+00:03:05,183 --> 00:03:08,958
+A fourth test, for when the stakes are higher.
+
+69
+00:03:08,958 --> 00:03:13,572
+The diagnostic from the previous video, brought into a single conversation.
+
+70
+00:03:13,572 --> 00:03:16,927
+> Take your question and ask it twice,
+
+71
+00:03:16,927 --> 00:03:19,024
+with mild changes in phrasing.
+
+72
+00:03:19,024 --> 00:03:21,960
+Not the content — just the wording.
+
+73
+00:03:21,960 --> 00:03:24,896
+"What year was MMLU introduced?" versus "When
+
+74
+00:03:24,896 --> 00:03:27,832
+did the MMLU benchmark first appear?" >
+
+75
+00:03:27,832 --> 00:03:30,768
+A calibrated model gives the same answer
+
+76
+00:03:30,768 --> 00:03:33,703
+with the same hedges in both runs.
+
+77
+00:03:33,703 --> 00:03:35,800
+> An uncalibrated one shifts.
+
+78
+00:03:35,800 --> 00:03:38,736
+Confident two thousand twenty in one phrasing.
+
+79
+00:03:38,736 --> 00:03:41,672
+Hedged "around 2020 or 2021" in another.
+
+80
+00:03:41,672 --> 00:03:44,608
+A different year entirely in a third.
+
+81
+00:03:44,608 --> 00:03:47,963
+That instability isn't visible inside any one response.
+
+82
+00:03:47,963 --> 00:03:50,060
+It's only visible across runs.
+
+83
+00:03:50,060 --> 00:03:52,996
+> Same logic as benchmark rerun spread,
+
+84
+00:03:52,996 --> 00:03:56,352
+applied to the chat in front of you.
+
+85
+00:03:56,352 --> 00:03:59,095
+So, three questions to carry with you.
+
+86
+00:03:59,095 --> 00:04:01,054
+Four if you have time.
+
+87
+00:04:01,054 --> 00:04:01,838
+> One.
+
+88
+00:04:01,838 --> 00:04:04,581
+Pick a verifiable claim, and verify it.
+
+89
+00:04:04,581 --> 00:04:08,891
+If it fails, every unverifiable claim near it should lose weight.
+
+90
+00:04:08,891 --> 00:04:09,675
+> Two.
+
+91
+00:04:09,675 --> 00:04:12,026
+Ask: what would change your answer?
+
+92
+00:04:12,026 --> 00:04:14,377
+If you don't get an updater,
+
+93
+00:04:14,377 --> 00:04:16,729
+you didn't get a calibrated answer.
+
+94
+00:04:16,729 --> 00:04:17,512
+> Three.
+
+95
+00:04:17,512 --> 00:04:19,080
+Look at the hedges.
+
+96
+00:04:19,080 --> 00:04:21,431
+Are they concentrated where uncertainty lives,
+
+97
+00:04:21,431 --> 00:04:23,782
+or sprinkled uniformly to soften everything?
+
+98
+00:04:23,782 --> 00:04:26,525
+> And the bonus fourth: re-ask the
+
+99
+00:04:26,525 --> 00:04:28,485
+question in a different phrasing.
+
+100
+00:04:28,485 --> 00:04:31,228
+If the answer drifts, your real uncertainty
+
+101
+00:04:31,228 --> 00:04:34,363
+is wider than the model is showing you.
+
+102
+00:04:34,363 --> 00:04:36,714
+> If two of these fail,
+
+103
+00:04:36,714 --> 00:04:39,849
+the right move isn't to ignore the answer.
+
+104
+00:04:39,849 --> 00:04:44,160
+It's to drop your confidence in it, and go check more.
+
+105
+00:04:44,160 --> 00:04:47,011
+Confidence in a sentence is a font choice.
+
+106
+00:04:47,011 --> 00:04:49,506
+Correctness is something you have to check.
+
+107
+00:04:49,506 --> 00:04:51,288
+> The good news is,
+
+108
+00:04:51,288 --> 00:04:54,496
+you only have to check enough — not everything.
+
+109
+00:04:54,496 --> 00:04:55,566
+One verifiable claim.
+
+110
+00:04:55,566 --> 00:04:56,279
+One updater.
+
+111
+00:04:56,279 --> 00:04:58,061
+One look at the hedges.
+
+112
+00:04:58,061 --> 00:05:01,982
+Three small habits that catch most of the high-stakes confident-wrong cases.
+
+113
+00:05:01,982 --> 00:05:04,477
+> This is the third in a
+
+114
+00:05:04,477 --> 00:05:06,616
+small series on reading AI honestly.
+
+115
+00:05:06,616 --> 00:05:08,398
+Links to the others below.
+
+116
+00:05:08,398 --> 00:05:10,893
+> The story behind the headline keeps
+
+117
+00:05:10,893 --> 00:05:13,032
+being a useful place to look.
