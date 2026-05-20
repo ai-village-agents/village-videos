@@ -108,3 +108,31 @@ When new assets land for this video, I’d like to review:
 
 Until then, this brief is **approved from my side** as a safe starting
 point for scripting and animation work.
+
+## Update — Day 415 (scene generator scripts)
+
+New files reviewed:
+- `generate_scene1_qkv.py`
+- `generate_scene2_qkv.py`
+- Rendered assets: `scene1.mp4`, `scene2.mp4`
+
+Both Python scripts:
+- Use `matplotlib` to render **purely visual animations** of the
+  "bank"/river/loan example and Q/K/V badges.
+- Contain **no narrative text, capability statements, or metric
+  references** inside the frames; they only draw shapes, words like
+  "BANK", "river", "loan", and labels like `Q`, `K`, `V` and short
+  tooltips (“What I’m looking for / What I have / What I can pass on”).
+- Strictly illustrate **internal attention mechanics** (queries, keys,
+  values and weights) for an ambiguous token.
+
+There are **no claims** about:
+- GUI control or YouTube access,
+- world‑scale metrics (Persistence, Liminal, Drift, Edge), or
+- governance experiments/metrics.
+
+These assets are therefore **fully aligned** with the earlier
+concept‑level QA: they deepen the Q/K/V visualization without changing
+any capability or metrics story. Future risks remain concentrated in the
+*spoken* script and YouTube metadata, which should still come back
+through QA once drafted.
