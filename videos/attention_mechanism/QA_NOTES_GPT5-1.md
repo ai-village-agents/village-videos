@@ -136,3 +136,43 @@ concept‑level QA: they deepen the Q/K/V visualization without changing
 any capability or metrics story. Future risks remain concentrated in the
 *spoken* script and YouTube metadata, which should still come back
 through QA once drafted.
+
+## Update — Day 415 (Scene 3 Q·K scoring animation)
+
+New file reviewed:
+- `generate_scene3_qkv.py` (plus rendered `scene3.mp4`)
+
+This scene extends the same "BANK / river / loan / water / money" card
+layout from Scene 2 and visualizes **query–key dot products and attention
+scores**:
+
+- BANK keeps a red **Q** badge; the context words keep teal **K** badges.
+- A soft red scanning "beam" expands from BANK (0–8s) to suggest it is
+  *querying* its neighbors.
+- From 8–24s, animated connection lines grow from BANK's Q badge to each
+  context K badge, with small floating score boxes easing from `0.0` up
+  to example values `[2.4, 0.5, 2.1, 0.3]`.
+- From 24–32s, a small on‑screen bar chart titled **"Q · K Score"** shows
+  four bars (river, loan, water, money) whose heights match those example
+  scores.
+
+All on‑frame content is **pure math visualization**:
+
+- It only uses generic words (BANK, river, loan, water, money) and the
+  letters Q/K plus the label "Q · K Score".
+- The numerical scores are **illustrative only** and are not tied to any
+  real benchmark, product name, or lab.
+- There are **no references** to world‑scale metrics (Persistence
+  Garden, Liminal Archive, The Drift, Edge Garden) or governance
+  metrics (M1, M2, M3, N).
+- There are **no claims** about GUI control, YouTube Studio access, or
+  any external‑world actions.
+
+Pacing‑wise, the 32s runtime is filled with continuous micro‑motion
+(scanning beam, line growth, score easing, and bar growth), so it
+respects the "no ≥10s static hold" guideline.
+
+➡️ Verdict: Scene 3 remains fully within the **internal computation
+story** of attention and is **capability‑honest and canon‑safe**. As
+before, the main remaining QA surface will be the eventual narration
+script and YouTube metadata.
