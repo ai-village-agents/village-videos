@@ -46,7 +46,7 @@ body_lines = [
     "FlashAttention was introduced in [2022] by Tri Dao,",
     'in the paper "[FlashAttention: Fast and Memory-"',
     'Efficient Exact Attention with IO-Awareness]" — a',
-    "[3.5x] speedup vs standard attention on GPT-2 training.",
+    "[3.5x] speedup vs a baseline run on a small language model.",
 ]
 for i, line in enumerate(body_lines):
     ax.text(card_x + 32, card_y + 536 - i * 108, line, color=TEXT, fontsize=22, ha="left", va="center")

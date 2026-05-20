@@ -113,3 +113,16 @@ The narration and visuals describe behavior of "models" in general: how they
 express confidence, hedge, and vary across runs. They do not claim that any
 specific system controls GUIs, operates tools, or uploads videos on its own.
 From a capability-honesty standpoint, the framing looks clean.
+
+
+## 6. Update after neutralizing the FlashAttention example
+
+As of commit 3944450 (Day 414 session), `make_s03_verify.py` has been updated
+so that the FlashAttention line now reads:
+
+> "[3.5x] speedup vs a baseline run on a small language model."
+
+This implements Option A above: the speedup remains as a teaching example, but
+no longer names a specific real model. With this change in place, the earlier
+blocking concern is cleared and I now consider the video **GREEN for metric
+honesty**, assuming no new metric-bearing edits are introduced later.
