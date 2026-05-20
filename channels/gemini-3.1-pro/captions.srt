@@ -1,0 +1,144 @@
+1
+00:00:00,000 --> 00:00:03,240
+When you type a word into an AI,
+
+2
+00:00:03,240 --> 00:00:06,480
+it doesn't see letters. It sees numbers. Specifically,
+
+3
+00:00:06,480 --> 00:00:09,720
+coordinates. To an AI, every concept in the
+
+4
+00:00:09,720 --> 00:00:12,960
+universe is mapped to a physical location in
+
+5
+00:00:12,960 --> 00:00:16,200
+a vast, mathematical landscape. We call this: Latent
+
+6
+00:00:16,200 --> 00:00:19,440
+Space.
+
+7
+00:00:19,440 --> 00:00:22,824
+Imagine a simple map with just two dimensions.
+
+8
+00:00:22,824 --> 00:00:26,208
+Size, and fluffiness. By mapping concepts to coordinates,
+
+9
+00:00:26,208 --> 00:00:29,592
+the AI begins to understand relationships. A kitten
+
+10
+00:00:29,592 --> 00:00:32,976
+is closer to a bear in fluffiness, but
+
+11
+00:00:32,976 --> 00:00:36,360
+closer to an ant in size. The distance
+
+12
+00:00:36,360 --> 00:00:39,744
+between points is the meaning.
+
+13
+00:00:39,744 --> 00:00:43,104
+But reality is infinitely more complex than two
+
+14
+00:00:43,104 --> 00:00:46,464
+dimensions. So, we add a third axis. Let's
+
+15
+00:00:46,464 --> 00:00:49,824
+call it danger. Now our concepts are suspended
+
+16
+00:00:49,824 --> 00:00:53,184
+in 3D space.
+
+17
+00:00:53,184 --> 00:00:56,745
+Modern AI models like the one you chat
+
+18
+00:00:56,745 --> 00:01:00,306
+with don't use three dimensions. They use thousands.
+
+19
+00:01:00,306 --> 00:01:03,867
+Sometimes over four thousand different directions to measure
+
+20
+00:01:03,867 --> 00:01:07,427
+every subtle nuance of human language. Tone, grammar,
+
+21
+00:01:07,427 --> 00:01:10,989
+sarcasm, historical context. All of it is mapped
+
+22
+00:01:10,989 --> 00:01:14,550
+as coordinates in a massive, hyper-dimensional space. We
+
+23
+00:01:14,550 --> 00:01:18,111
+can't picture a 4000-dimensional space, but the math
+
+24
+00:01:18,111 --> 00:01:21,672
+still works exactly the same.
+
+25
+00:01:21,672 --> 00:01:24,220
+And because meaning is just math, the AI
+
+26
+00:01:24,220 --> 00:01:26,768
+can do algebra with concepts. If you find
+
+27
+00:01:26,768 --> 00:01:29,316
+the distance and direction that takes you from
+
+28
+00:01:29,316 --> 00:01:31,864
+"Man" to "Woman"... ...and you apply that exact
+
+29
+00:01:31,864 --> 00:01:34,412
+same movement starting from "King", you land directly
+
+30
+00:01:34,412 --> 00:01:36,960
+on "Queen".
+
+31
+00:01:36,960 --> 00:01:39,512
+It isn't thinking in words. It's navigating a
+
+32
+00:01:39,512 --> 00:01:42,064
+galaxy of meaning, plotting a course from one
+
+33
+00:01:42,064 --> 00:01:44,616
+coordinate to the next. The next time an
+
+34
+00:01:44,616 --> 00:01:47,168
+AI writes you a poem or solves a
+
+35
+00:01:47,168 --> 00:01:49,720
+coding problem, remember: it's just drawing lines in
+
+36
+00:01:49,720 --> 00:01:52,272
+the dark.
+

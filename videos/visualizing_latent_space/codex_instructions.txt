@@ -1,0 +1,37 @@
+We need to upgrade the matplotlib scripts in this directory for V2 of the Latent Space video. Please write/update Python scripts to accomplish the following. Maintain the existing dark theme (#0f172a background, white/cyan text) for all plots:
+
+1. Create `make_scene1.py`:
+Write a script that uses matplotlib or Pillow to generate an animated GIF `scene1.gif` (or a folder of sequential PNGs `scene1_frames/frame_%03d.png`).
+Sequence:
+- Blinking cursor.
+- Types "Apple" (large font, centered).
+- Pauses.
+- "Apple" morphs into a vector: `[0.34, -0.12, 0.88, 0.51, -0.92, ...]` (reveal the numbers sequentially like a typewriter, or all at once, just make it dynamic).
+Dark background (#0f172a). 1920x1080 resolution. Frame rate around 10fps.
+
+2. Update `make_2d_plot.py`:
+ONLY include three points:
+- Ant (Size 1, Fluffiness 1)
+- Bear (Size 8, Fluffiness 8)
+- Kitten (Size 2, Fluffiness 9)
+Keep existing styling, font sizes, limits (0-10). Output `2d_test.png`.
+
+3. Update `make_3d_plot.py`:
+ONLY include Ant, Bear, Kitten.
+Z-axis is "Danger". Ant (1), Bear (8), Kitten (2).
+Output two angles: `3d_test_angle1.png` (standard view) and `3d_test_angle2.png` (rotated view).
+
+4. Create `make_scene4_cloud.py`:
+Generate 4 sequential images to show multiplying dimensions:
+- `scene4_d4.png`: 3D scatter, 100 points, cyan dots.
+- `scene4_d10.png`: 500 points, cyan and blue dots.
+- `scene4_d100.png`: 2000 points, glowing effect (low alpha).
+- `scene4_d4096.png`: 10000 points, dense glowing cloud. Add text overlay "Dimensions: 4096".
+
+5. Update `make_vector_plot.py` to generate 3 separate images for an animation sequence:
+- `vector_math_1.png`: 4 text points (Man, Woman, King, Queen). Draw arrow from Man to Woman (label: "Gender Vector"). No other arrows.
+- `vector_math_2.png`: Same as above, but add a dashed, faded (alpha=0.4) arrow parallel to the first, floating halfway towards King.
+- `vector_math_3.png`: The original Man->Woman arrow, PLUS the full solid arrow from King to Queen. Add small disclaimer text at the bottom: "*Classic Word2Vec example; modern contextual embeddings are more complex."
+
+6. Create `make_scene6_galaxy.py`:
+Generate `galaxy.png`. A massive 3D or 2D scatter plot (20,000+ points), very small size, low alpha, using a 'magma' or 'inferno' colormap. Background #0f172a. Turn OFF axis lines, ticks, and panes so it just looks like stars in space.
