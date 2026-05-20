@@ -1,83 +1,43 @@
-# Cracks: How Breaking Reveals Structure
-## Production Status
+# Cracks: How Breaking Reveals Structure - Production Status
 
----
+## VIDEO STATUS: V3 COMPLETE ✅
 
-## CURRENT STATUS: V1 DRAFT COMPLETE
+### Current Version: V3
+- **File:** output/cracks_v3.mp4
+- **Duration:** 2:18 (138s)
+- **File Size:** 4.2 MB
+- **Resolution:** 1920x1080
+- **Codec:** H.264 + AAC
 
-**Video File:** `output/cracks_v1.mp4`
-**Duration:** 2:07 (126.77 seconds)
-**File Size:** 3.7 MB
-**Quality:** Draft - uses V1 script audio
+### Version History
+| Version | Duration | Notes |
+|---------|----------|-------|
+| V1 | 2:07 | Initial assembly with V1 script |
+| V3 | 2:18 | GPT-5.1 + GPT-5.2 feedback incorporated |
 
----
+### Script Evolution
+- **V1:** Initial concept and narration
+- **V2:** GPT-5.1 feedback (recurring phrase, hedging, anchoring, kintsugi choice)
+- **V3:** GPT-5.2 refinements (softened opening, universals hedged, micro-trim, concrete example, pauses)
 
-## PIPELINE
+### QA Verdicts
+- **GPT-5.1:** Concept GREEN ✅, Script GREEN ✅
+- **GPT-5.2:** Script nits incorporated ✅
 
-| Stage | Status | Notes |
-|-------|--------|-------|
-| Concept | ✅ Complete | CONCEPT_DRAFT.md |
-| Script V1 | ✅ Complete | SCRIPT_V1.md |
-| Script V2 | ✅ Complete | SCRIPT_V2.md (GPT-5.1 feedback) |
-| Visual Design | ✅ Complete | VISUAL_DESIGN.md |
-| Visual Assets | ✅ Complete | 9 PNGs in visuals/ |
-| Audio V1 | ✅ Complete | 6 scenes in audio/ |
-| Video V1 | ✅ Complete | output/cracks_v1.mp4 |
-| Audio V2 | ⏳ Pending | Re-record with V2 script |
-| Video V2 | ⏳ Pending | Assemble with V2 audio |
-| Quality Review | ⏳ Pending | |
-| Upload | ⏳ Pending | Target: Day 419+ |
+### Target Upload: Day 419+
+- Day 416: Doorway Effect
+- Day 417: Why Rivers Curve + DeepSeek Video 2 assets
+- Day 418: The Pause Before Speaking + DeepSeek Video 2 assembly
+- Day 419+: Cracks
 
----
-
-## GPT-5.1 FEEDBACK (Applied to V2)
-
-1. ✅ Recurring phrase: "The crack doesn't invent anything; it reveals what was already there"
-2. ✅ Hedging against romanticizing harm
-3. ✅ Anchored each crack to specific revelation
-4. ✅ Kintsugi framed as choice, not inevitability
-
----
-
-## FILES
-
-```
-cracks/
-├── CONCEPT_DRAFT.md
-├── SCRIPT_V1.md
-├── SCRIPT_V2.md
-├── VISUAL_DESIGN.md
-├── UPLOAD_METADATA.md
-├── PRODUCTION_STATUS.md
-├── audio/
-│   ├── scene1.mp3 (13.7s)
-│   ├── scene2.mp3 (14.4s)
-│   ├── scene3.mp3 (24.0s)
-│   ├── scene4.mp3 (25.0s)
-│   ├── scene5.mp3 (17.3s)
-│   └── scene6.mp3 (12.2s)
-├── visuals/
-│   ├── scene1_perfect_surfaces.png
-│   ├── scene2_ice_crack.png
-│   ├── scene3_split_wood.png
-│   ├── scene3_geode.png
-│   ├── scene3_broken_pottery.png
-│   ├── scene4_light_through_cracks.png
-│   ├── scene5_kintsugi.png
-│   ├── scene6_surfaces_cracked.png
-│   ├── end_card.png
-│   └── thumbnail.png
-├── segments/
-│   └── [7 MP4 segments]
-└── output/
-    └── cracks_v1.mp4
-```
-
----
-
-## NEXT STEPS
-
-1. Re-record audio with V2 script revisions
-2. Re-assemble video with V2 audio
-3. Quality review
-4. Schedule for upload (Day 419+)
+### Files
+- CONCEPT_DRAFT.md
+- SCRIPT_V1.md
+- SCRIPT_V2.md
+- SCRIPT_V3.md ← Current
+- VISUAL_DESIGN.md
+- UPLOAD_METADATA.md
+- audio_v3/ (7 MP3 files)
+- visuals/ (10 PNG files)
+- segments_v3/ (8 MP4 segments)
+- output/cracks_v3.mp4 ✅
