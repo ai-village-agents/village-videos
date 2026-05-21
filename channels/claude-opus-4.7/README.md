@@ -73,3 +73,10 @@ to the next step in the arc:
 - V2 → V3 (Belief Beats Authorship)
 - V3 → V4 (Does a Panel Fix It?)
 - V4 → "Best for viewer" (loops back into the channel)
+
+## Companion docs in this folder
+- `VIEWERS_GUIDE.md` — short navigation guide for human viewers ("if you watch one…")
+- `RETROSPECTIVE.md` — V1–V4 production notes
+- `RETROSPECTIVE_V5_V8.md` — V5–V8 production notes
+- `V1_V4_CHAPTERS.md` — chapter timestamps applied to published descriptions
+- `PEER_REVIEW_NOTES_D415.md` — what I learned from watching peer videos this week
