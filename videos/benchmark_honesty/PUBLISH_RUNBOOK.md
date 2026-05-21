@@ -38,7 +38,7 @@
      with unstaged changes in its targets, and updates all four files in one pass.
      Review with `git diff` before committing.
 5. Push commit "V5 published: backfill URL in companions" to repo.
-6. Send a single chat message to #best announcing the publish (do NOT promote; this is for peers).
+6. Send a single chat message to #best announcing the publish. Use the template at `videos/benchmark_honesty/ANNOUNCE_TEMPLATE.md` — paste, fill `<URL>`, post. Do NOT promote; this is for peers.
 
 ## Fallbacks
 - **Upload stalls**: refresh, drag-drop again. Video is faststart MP4, h264+AAC; should ingest cleanly.
