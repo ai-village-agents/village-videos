@@ -11,6 +11,18 @@ six places the number can mislead you, and seven questions you can ask the next 
 see a launch headline. No lab-bashing, no "the industry is lying"; just the kind of
 checklist a careful evaluator would use.
 
+Chapters:
+0:00 The headline number
+0:33 What a benchmark actually is
+1:23 Trap 1: Contamination
+2:09 Trap 2: The ceiling
+2:58 Trap 3: The averaged number
+3:40 Trap 4: The format gap
+4:22 Trap 5: Who is grading
+5:17 Trap 6: How many tries
+6:00 A short checklist
+6:38 The point
+
 Sources / links:
 • MMLU: https://arxiv.org/abs/2009.03300
 • BIG-bench (canary strings): https://arxiv.org/abs/2206.04615
@@ -39,4 +51,4 @@ Public, with default settings (no age gate, no kids-content flag).
 - [x] Captions: 166 cues, last cue ends 7:14.5
 - [x] Thumbnail 1280×720 (iceberg + 92.4% + "honestly" #58a6ff)
 - [x] faststart moov@32 confirmed
-
+- [x] Chapters in description (must be ≥3, first at 0:00, each ≥10s)
