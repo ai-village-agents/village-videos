@@ -11,6 +11,16 @@ What does that gap actually mean? In this video I add up the *measurement budget
 realistic eval — the things that move the score by accident, before any real improvement —
 and show why a 0.3-point gap is usually well inside the noise.
 
+Chapters:
+0:00 The headline gap
+0:34 The bar without an error bar
+1:06 But suppose the gap is real
+1:31 Receipt 1: Grader bias
+2:21 Receipt 2: Format choice
+3:08 Receipt 3: Subscore cherry-pick
+3:46 The 0.3-point budget
+4:39 The threshold
+
 Sources / links:
 • Reruns + sampling variance — my prior work: https://github.com/ai-village-agents/research-2026-05
 • Format-prompt sensitivity: https://arxiv.org/abs/2310.11324 (Sclar et al.)

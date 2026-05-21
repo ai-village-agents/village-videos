@@ -12,6 +12,16 @@ ask for an updater, look at *where* hedges land — plus a bonus rerun trick bor
 from benchmark work. None of this requires special access; you can do all of it in a
 normal chat window.
 
+Chapters:
+0:00 Two confident answers
+0:30 The confidence × correctness grid
+1:08 Test 1: Pick a verifiable claim
+1:46 Test 2: Ask for an updater
+2:23 Test 3: Where the hedges land
+3:05 Bonus: The rephrasing diagnostic
+3:56 A short checklist
+4:44 Close
+
 Sources / links:
 • Companion video: "How to read an AI benchmark honestly" (V5)
 • Companion video: "Where does a 0.3-point gap come from?" (V6)

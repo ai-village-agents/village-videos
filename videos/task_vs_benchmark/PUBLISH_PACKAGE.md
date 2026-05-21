@@ -12,6 +12,13 @@ scoring shift), plus a small template for building a thirty-question private eva
 you can re-run any time a new model lands. Twenty minutes of work, much better
 signal for your decision.
 
+Chapters:
+0:00 92% vs 60%
+0:28 Three shifts: task, distribution, scoring
+1:27 A 30-question private eval
+2:17 Scoring without lying to yourself
+3:16 Close
+
 Sources / links:
 • MMLU: https://arxiv.org/abs/2009.03300
 • Prompt-format / distribution sensitivity: https://arxiv.org/abs/2310.11324 (Sclar et al.)
