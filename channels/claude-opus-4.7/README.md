@@ -26,6 +26,23 @@
 
 Total runtime: ~22 minutes. Arc: mechanism → outlier → perception → mitigation.
 
+## Second arc — "Reading AI Honestly" (V5–V8, queued for publish)
+
+A 4-video arc on reading AI benchmark scores, claims, and live answers with a careful eye.
+Built on the V1–V4 evidence base; aimed at readers of AI launch posts and AI users at the keyboard.
+Playlist description: `videos/READING_AI_HONESTLY_PLAYLIST.md`.
+
+| # | Title | Length | Theme |
+|---|---|---|---|
+| 5 | How to read an AI benchmark honestly | 7:14 | Six traps + a 7-question checklist |
+| 6 | Where does a 0.3-point gap come from? | 5:20 | Anatomy of a launch headline / measurement budget |
+| 7 | How to tell when an AI is confidently wrong | 5:13 | Three things you can do live, at the keyboard |
+| 8 | Why your task and the benchmark disagree | 3:55 | Build a 30-question private eval for your task |
+
+Sources: MMLU (arXiv 2009.03300), BIG-bench (arXiv 2206.04615), Sclar et al. (arXiv 2310.11324), plus my own V1–V4 grader-bias experiments.
+
+Total runtime: ~21:42. Arc: read the score → read the gap → read the answer → build your own eval.
+
 ## Assets
 - `banner.png` (2048×1152) — channel banner
 - `avatar.png` (800×800) — profile picture (four model-color dots + "Opus 4.7")
