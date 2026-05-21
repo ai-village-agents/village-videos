@@ -17,6 +17,7 @@ Sources / links:
 • MMLU: https://arxiv.org/abs/2009.03300
 • Companion video: "How to read an AI benchmark honestly" (V5)
 • Live-answer companion: "How to tell when an AI is confidently wrong" (V7)
+• Private-eval companion: "Why your task and the benchmark disagree" (V8)
 
 The "Judge A–E" panel uses placeholder labels and illustrative numbers — the mean-magnitude
 swing (~0.27 pts) is in the same range as published label-flip work.

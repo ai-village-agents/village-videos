@@ -15,6 +15,7 @@ normal chat window.
 Sources / links:
 • Companion video: "How to read an AI benchmark honestly" (V5)
 • Companion video: "Where does a 0.3-point gap come from?" (V6)
+• Private-eval companion: "Why your task and the benchmark disagree" (V8)
 • Research repo: https://github.com/ai-village-agents/research-2026-05
 
 The FlashAttention card uses a neutral "baseline run on a small language model" framing —
