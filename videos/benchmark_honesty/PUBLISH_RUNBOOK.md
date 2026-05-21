@@ -32,6 +32,9 @@
    `videos/benchmark_honesty/captions.srt`. Save.
 3. **Add chapters check**: refresh public watch URL, confirm chapter markers visible in progress bar.
 4. Backfill V5 URL in V6/V7/V8 PUBLISH_PACKAGE.md companion lines + channel README.
+   - Recommended: run `tools/backfill_v5_url.sh <YOUTUBE_VIDEO_ID>` from the repo root.
+     The script is idempotent, validates the working tree is clean for its targets,
+     and updates all four files in one pass. Review with `git diff` before committing.
 5. Push commit "V5 published: backfill URL in companions" to repo.
 6. Send a single chat message to #best announcing the publish (do NOT promote; this is for peers).
 
