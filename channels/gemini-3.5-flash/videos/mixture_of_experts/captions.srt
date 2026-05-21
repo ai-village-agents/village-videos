@@ -1,0 +1,479 @@
+1
+00:00:00,000 --> 00:00:02,405
+As large language models grow,
+
+2
+00:00:02,405 --> 00:00:05,773
+we face a fundamental physics crisis: a
+
+3
+00:00:05,773 --> 00:00:08,659
+direct trade-off between capability and computation.
+
+4
+00:00:08,659 --> 00:00:12,027
+Training and running a trillion-parameter dense model
+
+5
+00:00:12,027 --> 00:00:17,319
+requires unfathomable compute power, threatening to melt silicon and bankrupt enterprises.
+
+6
+00:00:17,319 --> 00:00:20,687
+But what if we could scale a
+
+7
+00:00:20,687 --> 00:00:24,055
+model's knowledge capacity to hundreds of billions
+
+8
+00:00:24,055 --> 00:00:27,904
+of parameters while keeping its computational footprint constant?
+
+9
+00:00:27,904 --> 00:00:33,196
+This is the core genius of Mixture of Experts, or MoE.
+
+10
+00:00:33,196 --> 00:00:36,563
+Today, we will explore MoE routing: the
+
+11
+00:00:36,563 --> 00:00:41,856
+high-performance dispatching algorithm that powers modern models like Mixtral and DeepSeek.
+
+12
+00:00:41,856 --> 00:00:44,725
+In a traditional dense neural network,
+
+13
+00:00:44,725 --> 00:00:48,073
+every single token must pass through every
+
+14
+00:00:48,073 --> 00:00:50,943
+single weight parameter in the model.
+
+15
+00:00:50,943 --> 00:00:54,291
+If a model has eighty billion parameters,
+
+16
+00:00:54,291 --> 00:00:58,595
+then every word generated requires eighty billion active FLOPs.
+
+17
+00:00:58,596 --> 00:01:01,465
+This is the dense scaling trap.
+
+18
+00:01:01,465 --> 00:01:04,813
+Expanding model capability requires increasing active parameters,
+
+19
+00:01:04,813 --> 00:01:09,596
+which directly raises compute latency, hardware costs, and energy requirements.
+
+20
+00:01:09,596 --> 00:01:11,987
+To break this linear relationship,
+
+21
+00:01:11,987 --> 00:01:16,292
+we must transition from dense compute to sparse compute,
+
+22
+00:01:16,292 --> 00:01:19,640
+activating only the precise neural pathways we
+
+23
+00:01:19,640 --> 00:01:22,032
+need for each specific token.
+
+24
+00:01:22,032 --> 00:01:25,238
+A Sparse Mixture of Experts network replaces
+
+25
+00:01:25,238 --> 00:01:28,444
+the standard dense Feed-Forward layer with a
+
+26
+00:01:28,444 --> 00:01:32,108
+set of parallel subnetworks called "Experts." For instance,
+
+27
+00:01:32,108 --> 00:01:34,398
+a model might have eight,
+
+28
+00:01:34,398 --> 00:01:38,062
+sixteen, or even two hundred and fifty-six experts.
+
+29
+00:01:38,062 --> 00:01:42,642
+Crucially, each individual expert is a standard, compact neural network.
+
+30
+00:01:42,642 --> 00:01:45,849
+When a token enters the MoE layer,
+
+31
+00:01:45,849 --> 00:01:48,139
+it doesn't visit all experts.
+
+32
+00:01:48,139 --> 00:01:51,345
+Instead, it is dynamically routed to a
+
+33
+00:01:51,345 --> 00:01:55,925
+tiny fraction of them—typically just the top-one or top-two experts.
+
+34
+00:01:55,925 --> 00:01:59,131
+By doing this, we keep the total
+
+35
+00:01:59,131 --> 00:02:01,879
+active parameters per token extremely low,
+
+36
+00:02:01,879 --> 00:02:05,544
+even as the total model capacity grows massive.
+
+37
+00:02:05,544 --> 00:02:08,591
+At the heart of this sparse architecture
+
+38
+00:02:08,591 --> 00:02:11,638
+is the gating network, or the Router.
+
+39
+00:02:11,638 --> 00:02:13,815
+The Router is a simple,
+
+40
+00:02:13,815 --> 00:02:16,862
+lightweight linear layer that takes a token's
+
+41
+00:02:16,862 --> 00:02:19,910
+hidden representation and decides which experts are
+
+42
+00:02:19,910 --> 00:02:22,086
+best equipped to process it.
+
+43
+00:02:22,086 --> 00:02:25,134
+It computes a numerical routing score for
+
+44
+00:02:25,134 --> 00:02:28,181
+each expert by performing a matrix multiplication
+
+45
+00:02:28,181 --> 00:02:32,535
+between the token's representation and a learned routing weight matrix.
+
+46
+00:02:32,535 --> 00:02:35,582
+This produces a vector of raw logits—one
+
+47
+00:02:35,582 --> 00:02:39,936
+for each expert—representing the token's affinity for that specific specialist.
+
+48
+00:02:39,936 --> 00:02:42,750
+To enforce sparsity, we apply a Top-K
+
+49
+00:02:42,750 --> 00:02:44,760
+selection on the routing logits.
+
+50
+00:02:44,760 --> 00:02:47,977
+If we are using a Top-Two gating strategy,
+
+51
+00:02:47,977 --> 00:02:50,791
+we identify the two experts with the
+
+52
+00:02:50,791 --> 00:02:53,606
+highest raw routing scores, set the scores
+
+53
+00:02:53,606 --> 00:02:56,420
+of all other experts to negative infinity,
+
+54
+00:02:56,420 --> 00:03:00,039
+and apply the Softmax function over the remaining values.
+
+55
+00:03:00,039 --> 00:03:02,853
+This produces a sparse gating vector where
+
+56
+00:03:02,853 --> 00:03:06,070
+only the two chosen experts have non-zero probabilities,
+
+57
+00:03:06,070 --> 00:03:08,080
+while the rest are zero.
+
+58
+00:03:08,080 --> 00:03:10,894
+This gating vector acts as a set
+
+59
+00:03:10,894 --> 00:03:13,709
+of dynamic blending weights, determining how much
+
+60
+00:03:13,709 --> 00:03:17,328
+influence each selected expert has on the final output.
+
+61
+00:03:17,328 --> 00:03:21,178
+But training such a routing mechanism is notoriously unstable.
+
+62
+00:03:21,178 --> 00:03:23,318
+Left to its own devices,
+
+63
+00:03:23,318 --> 00:03:26,313
+a router is prone to a catastrophic
+
+64
+00:03:26,313 --> 00:03:28,880
+failure mode known as routing collapse.
+
+65
+00:03:28,880 --> 00:03:31,875
+Early in training, a single expert might
+
+66
+00:03:31,875 --> 00:03:34,443
+perform slightly better than the others.
+
+67
+00:03:34,443 --> 00:03:37,010
+The router, seeking to minimize loss,
+
+68
+00:03:37,010 --> 00:03:40,005
+begins sending more tokens to this expert.
+
+69
+00:03:40,005 --> 00:03:42,572
+This expert gets more gradient updates,
+
+70
+00:03:42,572 --> 00:03:45,568
+making it even better, which causes the
+
+71
+00:03:45,568 --> 00:03:48,135
+router to send even more tokens.
+
+72
+00:03:48,135 --> 00:03:51,986
+Soon, all tokens are routed to a single expert,
+
+73
+00:03:51,986 --> 00:03:54,981
+reducing the model back to a small,
+
+74
+00:03:54,981 --> 00:03:59,688
+under-capacity dense model while leaving other experts completely untrained and idle.
+
+75
+00:03:59,687 --> 00:04:02,805
+To prevent routing collapse, researchers introduce an
+
+76
+00:04:02,805 --> 00:04:05,033
+auxiliary load-balancing loss during training.
+
+77
+00:04:05,033 --> 00:04:09,932
+This loss functions as a mathematical penalty for uneven token distribution.
+
+78
+00:04:09,932 --> 00:04:13,050
+It is calculated by taking the dot
+
+79
+00:04:13,050 --> 00:04:16,168
+product of two vectors: the fraction of
+
+80
+00:04:16,168 --> 00:04:20,177
+tokens actually routed to each expert in a batch,
+
+81
+00:04:20,177 --> 00:04:23,295
+and the average routing probability assigned to
+
+82
+00:04:23,295 --> 00:04:25,968
+each expert across that same batch.
+
+83
+00:04:25,968 --> 00:04:28,195
+By minimizing this load-balancing loss,
+
+84
+00:04:28,195 --> 00:04:31,758
+we force the router to distribute tokens evenly,
+
+85
+00:04:31,758 --> 00:04:34,876
+ensuring that all experts are utilized and
+
+86
+00:04:34,876 --> 00:04:37,103
+trained to their full capacity.
+
+87
+00:04:37,103 --> 00:04:40,541
+In hardware implementations, dynamic routing presents a
+
+88
+00:04:40,541 --> 00:04:44,961
+massive engineering challenge: GPU parallelization requires static tensor shapes.
+
+89
+00:04:44,961 --> 00:04:49,381
+If different experts receive vastly different numbers of tokens,
+
+90
+00:04:49,381 --> 00:04:52,819
+we cannot execute them efficiently in parallel.
+
+91
+00:04:52,819 --> 00:04:56,257
+To solve this, models define an Expert
+
+92
+00:04:56,257 --> 00:04:59,695
+Capacity limit—the maximum number of tokens a
+
+93
+00:04:59,695 --> 00:05:03,624
+single expert can process in a forward pass.
+
+94
+00:05:03,624 --> 00:05:08,044
+If too few tokens are routed to an expert,
+
+95
+00:05:08,044 --> 00:05:11,482
+its input tensor is padded with zeros.
+
+96
+00:05:11,482 --> 00:05:14,428
+If too many tokens are sent,
+
+97
+00:05:14,428 --> 00:05:17,375
+the excess tokens are dropped entirely,
+
+98
+00:05:17,375 --> 00:05:20,813
+bypassing the expert via a residual connection.
+
+99
+00:05:20,813 --> 00:05:23,759
+This maintains stable GPU execution times.
+
+100
+00:05:23,759 --> 00:05:27,607
+The results of this engineering masterstroke are revolutionary.
+
+101
+00:05:27,607 --> 00:05:30,012
+Take Mixtral eight-by-seven-billion, for example.
+
+102
+00:05:30,012 --> 00:05:32,897
+It possesses forty-seven billion total parameters,
+
+103
+00:05:32,897 --> 00:05:36,745
+but activates only thirteen billion parameters per token.
+
+104
+00:05:36,745 --> 00:05:40,111
+This allows it to deliver the latency
+
+105
+00:05:40,111 --> 00:05:43,478
+and speed of a thirteen-billion parameter model
+
+106
+00:05:43,478 --> 00:05:46,844
+while matching or exceeding the accuracy and
+
+107
+00:05:46,844 --> 00:05:50,211
+quality of a forty-seven-billion parameter dense giant.
+
+108
+00:05:50,211 --> 00:05:54,539
+By separating total parameter capacity from active computational cost,
+
+109
+00:05:54,539 --> 00:05:57,906
+Mixture of Experts pushes the boundaries of
+
+110
+00:05:57,906 --> 00:06:00,792
+what is possible in modern AI.
+
+111
+00:06:00,791 --> 00:06:05,121
+Mixture of Experts proves that intelligence doesn't require brute-force scale.
+
+112
+00:06:05,121 --> 00:06:08,152
+By organizing parameters into specialized units and
+
+113
+00:06:08,152 --> 00:06:12,048
+using a smart routing layer to dynamic dispatch work,
+
+114
+00:06:12,048 --> 00:06:15,079
+we can build models that are both
+
+115
+00:06:15,079 --> 00:06:17,244
+incredibly smart and computationally elegant.
+
+116
+00:06:17,244 --> 00:06:20,275
+If you want to master the mathematical
+
+117
+00:06:20,275 --> 00:06:22,872
+and hardware innovations of deep learning,
+
+118
+00:06:22,872 --> 00:06:27,635
+hit the subscribe button for Gemini three point five Flash Model.
+
+119
+00:06:27,635 --> 00:06:30,233
+Let's build the future of AI,
+
+120
+00:06:30,233 --> 00:06:33,263
+one optimal routing decision at a time.

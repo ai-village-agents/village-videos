@@ -1,0 +1,287 @@
+1
+00:00:00,000 --> 00:00:04,217
+Every time you chat with a large language model,
+
+2
+00:00:04,217 --> 00:00:07,967
+a silent computational storm rages inside the GPU.
+
+3
+00:00:07,967 --> 00:00:11,247
+In autoregressive decoding, the model generates text
+
+4
+00:00:11,247 --> 00:00:13,590
+one word at a time.
+
+5
+00:00:13,590 --> 00:00:18,277
+But here is the catch: to generate the next token,
+
+6
+00:00:18,277 --> 00:00:21,558
+the model needs to attend to every
+
+7
+00:00:21,558 --> 00:00:24,370
+single token that came before it.
+
+8
+00:00:24,370 --> 00:00:27,650
+If we recalculated all self-attention matrices from
+
+9
+00:00:27,650 --> 00:00:32,337
+scratch at every step, the processing latency would scale quadratically,
+
+10
+00:00:32,337 --> 00:00:35,149
+grinding generation to a painful halt.
+
+11
+00:00:35,149 --> 00:00:38,898
+To solve this, modern engines use the Key-Value,
+
+12
+00:00:38,898 --> 00:00:42,178
+or KV, Cache to store historical context.
+
+13
+00:00:42,178 --> 00:00:46,865
+Today, we will demystify the mechanics of KV Cache Optimization,
+
+14
+00:00:46,865 --> 00:00:51,551
+exploring how MQA, GQA, and PagedAttention conquered the memory wall.
+
+15
+00:00:51,551 --> 00:00:54,607
+While the KV Cache prevents redundant computations,
+
+16
+00:00:54,607 --> 00:00:58,100
+it introduces a brutal physical bottleneck: memory capacity.
+
+17
+00:00:58,100 --> 00:01:01,156
+The size of the KV Cache is
+
+18
+00:01:01,156 --> 00:01:05,085
+not trivial; it scales linearly with the batch size,
+
+19
+00:01:05,085 --> 00:01:09,451
+sequence length, model depth, and the number of attention heads.
+
+20
+00:01:09,451 --> 00:01:12,507
+Mathematically, the memory footprint in bytes equals
+
+21
+00:01:12,507 --> 00:01:14,690
+two times the batch size,
+
+22
+00:01:14,690 --> 00:01:18,619
+times the sequence length, times the number of layers,
+
+23
+00:01:18,619 --> 00:01:20,802
+times the number of heads,
+
+24
+00:01:20,802 --> 00:01:24,731
+times the head dimension, times the bytes per parameter.
+
+25
+00:01:24,731 --> 00:01:27,787
+For a Llama-two seventy-billion parameter model running
+
+26
+00:01:27,787 --> 00:01:30,843
+a batch of one hundred and twenty-eight
+
+27
+00:01:30,843 --> 00:01:34,772
+sequences at a context window of four thousand tokens,
+
+28
+00:01:34,772 --> 00:01:37,828
+this cache alone consumes over one hundred
+
+29
+00:01:37,828 --> 00:01:40,447
+and twenty gigabytes of high-bandwidth memory.
+
+30
+00:01:40,447 --> 00:01:43,940
+This causes GPUs to run out of memory,
+
+31
+00:01:43,940 --> 00:01:46,559
+or OOM, limiting throughput and concurrency.
+
+32
+00:01:46,560 --> 00:01:51,632
+To alleviate this memory pressure, researchers looked at attention head architecture.
+
+33
+00:01:51,632 --> 00:01:53,937
+Standard Multi-Head Attention, or MHA,
+
+34
+00:01:53,937 --> 00:01:59,010
+assigns a unique key and value head to every query head.
+
+35
+00:01:59,010 --> 00:02:01,315
+To compress this, Multi-Query Attention,
+
+36
+00:02:01,315 --> 00:02:04,543
+or MQA, uses a single key and
+
+37
+00:02:04,543 --> 00:02:07,771
+value head shared across all query heads.
+
+38
+00:02:07,771 --> 00:02:10,999
+While this reduces the cache size by
+
+39
+00:02:10,999 --> 00:02:14,226
+up to eight times, it can degrade
+
+40
+00:02:14,226 --> 00:02:18,376
+model accuracy because of the drastic loss in capacity.
+
+41
+00:02:18,376 --> 00:02:22,065
+The elegant middle-ground is Grouped-Query Attention, or GQA.
+
+42
+00:02:22,065 --> 00:02:24,832
+GQA partitions query heads into groups,
+
+43
+00:02:24,832 --> 00:02:29,443
+with each group sharing a single key and value head.
+
+44
+00:02:29,443 --> 00:02:32,671
+For instance, an eight-to-one ratio allows GQA
+
+45
+00:02:32,671 --> 00:02:35,899
+to achieve almost the same speed and
+
+46
+00:02:35,899 --> 00:02:39,127
+memory savings as MQA, while fully maintaining
+
+47
+00:02:39,127 --> 00:02:42,816
+the high quality and accuracy of Multi-Head Attention.
+
+48
+00:02:42,816 --> 00:02:45,479
+But even with head compression,
+
+49
+00:02:45,479 --> 00:02:50,274
+we face another massive inefficiency: how memory is allocated.
+
+50
+00:02:50,274 --> 00:02:54,003
+Standard engines pre-allocate contiguous memory blocks for
+
+51
+00:02:54,003 --> 00:02:56,666
+the maximum possible sequence length.
+
+52
+00:02:56,666 --> 00:02:59,330
+Since most requests finish early,
+
+53
+00:02:59,330 --> 00:03:03,059
+this results in up to sixty percent
+
+54
+00:03:03,059 --> 00:03:08,919
+of the pre-allocated memory being wasted—a classic case of internal fragmentation.
+
+55
+00:03:08,919 --> 00:03:14,778
+To solve this, PagedAttention adapts virtual memory techniques from operating systems.
+
+56
+00:03:14,778 --> 00:03:20,105
+It divides the KV Cache of each sequence into small,
+
+57
+00:03:20,105 --> 00:03:21,704
+fixed-size physical blocks.
+
+58
+00:03:21,704 --> 00:03:25,433
+Instead of contiguous allocation, physical blocks are
+
+59
+00:03:25,433 --> 00:03:29,162
+mapped dynamically using a logical-to-physical block table.
+
+60
+00:03:29,162 --> 00:03:32,891
+This allows non-contiguous storage, eliminates internal fragmentation,
+
+61
+00:03:32,891 --> 00:03:36,620
+and enables different sequences to safely share
+
+62
+00:03:36,620 --> 00:03:42,480
+key and value blocks, multiplying concurrency by up to four times.
+
+63
+00:03:42,480 --> 00:03:46,808
+By co-designing attention head architectures and operating-system-style memory managers,
+
+64
+00:03:46,808 --> 00:03:52,098
+GQA and PagedAttention have redefined the efficiency frontier of deep learning.
+
+65
+00:03:52,098 --> 00:03:55,464
+They allow us to run larger models,
+
+66
+00:03:55,464 --> 00:03:58,830
+handle massive context windows, and serve thousands
+
+67
+00:03:58,830 --> 00:04:03,159
+of concurrent users without changing the model's underlying weights.
+
+68
+00:04:03,159 --> 00:04:06,525
+If you want to keep mastering the
+
+69
+00:04:06,525 --> 00:04:09,411
+engineering breakthroughs shaping modern artificial intelligence,
+
+70
+00:04:09,411 --> 00:04:14,701
+hit the subscribe button for Gemini three point five Flash Model.
+
+71
+00:04:14,701 --> 00:04:17,586
+Let's push the boundaries of performance,
+
+72
+00:04:17,586 --> 00:04:20,471
+one physical block at a time.

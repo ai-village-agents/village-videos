@@ -1,0 +1,303 @@
+1
+00:00:00,000 --> 00:00:03,259
+For a transformer to understand a sentence,
+
+2
+00:00:03,259 --> 00:00:07,451
+it must know not just what the words are,
+
+3
+00:00:07,451 --> 00:00:09,314
+but where they are.
+
+4
+00:00:09,314 --> 00:00:13,505
+In the original Attention Is All You Need paper,
+
+5
+00:00:13,505 --> 00:00:17,697
+researchers added absolute positional embeddings directly to token vectors.
+
+6
+00:00:17,697 --> 00:00:20,957
+Think of this as assigning every word
+
+7
+00:00:20,957 --> 00:00:23,751
+a fixed coordinate on a map.
+
+8
+00:00:23,751 --> 00:00:26,545
+But language is relative, not absolute.
+
+9
+00:00:26,545 --> 00:00:30,271
+If you shift a sentence by three tokens,
+
+10
+00:00:30,271 --> 00:00:34,928
+its meaning stays the same, yet absolute coordinates change completely.
+
+11
+00:00:34,928 --> 00:00:37,722
+While relative positional embeddings solve this,
+
+12
+00:00:37,722 --> 00:00:42,379
+they require complex attention bias matrices that degrade hardware performance.
+
+13
+00:00:42,379 --> 00:00:46,105
+To break this impasse, modern architectures like Llama,
+
+14
+00:00:46,105 --> 00:00:50,297
+Mistral, and Gemma use Rotary Position Embeddings, or RoPE.
+
+15
+00:00:50,297 --> 00:00:53,557
+RoPE represents positions geometrically, combining the absolute
+
+16
+00:00:53,557 --> 00:00:58,679
+efficiency of additive embeddings with the mathematical elegance of relative distance.
+
+17
+00:00:58,679 --> 00:01:03,276
+To understand RoPE, we must step into the complex plane.
+
+18
+00:01:03,276 --> 00:01:06,493
+Imagine a two-dimensional vector representing our token.
+
+19
+00:01:06,493 --> 00:01:11,089
+In absolute embeddings, we push this vector in some direction.
+
+20
+00:01:11,089 --> 00:01:13,387
+In RoPE, we rotate it.
+
+21
+00:01:13,387 --> 00:01:17,524
+By multiplying our vector by a two-dimensional rotation matrix,
+
+22
+00:01:17,524 --> 00:01:22,120
+we rotate it by an angle proportional to its position,
+
+23
+00:01:22,120 --> 00:01:24,877
+m, times a base frequency, theta.
+
+24
+00:01:24,877 --> 00:01:28,095
+This rotation alters the vector's phase while
+
+25
+00:01:28,095 --> 00:01:30,393
+leaving its magnitude completely unchanged.
+
+26
+00:01:30,393 --> 00:01:33,150
+Because rotation is a linear operator,
+
+27
+00:01:33,150 --> 00:01:36,368
+it preserves the geometric relationships between vectors.
+
+28
+00:01:36,368 --> 00:01:40,504
+If we rotate two vectors by the same angle,
+
+29
+00:01:40,504 --> 00:01:44,181
+their relative distance and inner product remain identical.
+
+30
+00:01:44,181 --> 00:01:47,398
+This simple rotation in two dimensions is
+
+31
+00:01:47,398 --> 00:01:50,615
+the fundamental building block of sequence geometry.
+
+32
+00:01:50,615 --> 00:01:53,939
+But transformer hidden dimensions are not two-dimensional;
+
+33
+00:01:53,939 --> 00:01:56,787
+they are typically thousands of dimensions.
+
+34
+00:01:56,787 --> 00:01:58,686
+How does RoPE scale?
+
+35
+00:01:58,686 --> 00:02:02,010
+It does so by partitioning the high-dimensional
+
+36
+00:02:02,010 --> 00:02:06,283
+vector space into a series of independent two-dimensional planes.
+
+37
+00:02:06,283 --> 00:02:09,131
+For a vector of dimension d,
+
+38
+00:02:09,131 --> 00:02:12,455
+RoPE groups adjacent coordinates into d-over-two pairs.
+
+39
+00:02:12,455 --> 00:02:15,778
+Each pair is rotated in its own
+
+40
+00:02:15,778 --> 00:02:18,627
+two-dimensional plane with a unique frequency,
+
+41
+00:02:18,627 --> 00:02:23,849
+theta-sub-i, which decreases exponentially as we go deeper into the dimensions.
+
+42
+00:02:23,849 --> 00:02:28,122
+We represent this as a sparse, block-diagonal rotation matrix.
+
+43
+00:02:28,122 --> 00:02:32,869
+In practice, we don't even perform a full matrix multiplication.
+
+44
+00:02:32,869 --> 00:02:36,193
+We implement RoPE as a highly efficient,
+
+45
+00:02:36,193 --> 00:02:39,516
+element-wise vector operation, applying sine and cosine
+
+46
+00:02:39,516 --> 00:02:42,839
+transformations directly to coordinate pairs in parallel.
+
+47
+00:02:42,840 --> 00:02:47,745
+The true magic of RoPE lies in the self-attention dot product.
+
+48
+00:02:47,745 --> 00:02:50,867
+When a Query at position m attends
+
+49
+00:02:50,867 --> 00:02:53,543
+to a Key at position n,
+
+50
+00:02:53,543 --> 00:02:57,557
+both vectors have been rotated by their respective positions.
+
+51
+00:02:57,557 --> 00:03:00,679
+Mathematically, the dot product of the rotated
+
+52
+00:03:00,679 --> 00:03:03,801
+Query and Key is equivalent to multiplying
+
+53
+00:03:03,801 --> 00:03:06,923
+the Query transpose by the transpose of
+
+54
+00:03:06,923 --> 00:03:09,153
+the rotation matrix of m,
+
+55
+00:03:09,153 --> 00:03:13,612
+times the rotation matrix of n, times the Key vector.
+
+56
+00:03:13,612 --> 00:03:16,288
+Because these rotation matrices are orthogonal,
+
+57
+00:03:16,288 --> 00:03:19,410
+their product simplifies to a single rotation
+
+58
+00:03:19,410 --> 00:03:22,978
+matrix of the relative distance, n minus m.
+
+59
+00:03:22,978 --> 00:03:26,100
+Thus, the attention score depends solely on
+
+60
+00:03:26,100 --> 00:03:28,776
+the relative distance between the tokens,
+
+61
+00:03:28,776 --> 00:03:33,236
+even though we only applied absolute transformations to individual vectors.
+
+62
+00:03:33,236 --> 00:03:35,466
+Furthermore, as relative distance increases,
+
+63
+00:03:35,466 --> 00:03:39,479
+the dot product naturally decays, matching human linguistic intuition.
+
+64
+00:03:39,480 --> 00:03:43,917
+By marrying absolute encoding efficiency with relative attention mechanics,
+
+65
+00:03:43,917 --> 00:03:48,848
+RoPE has become the undisputed standard for modern language models.
+
+66
+00:03:48,848 --> 00:03:53,779
+Its geometric foundation offers another massive advantage: context length extrapolation.
+
+67
+00:03:53,779 --> 00:03:57,231
+Because positions are represented as continuous rotations,
+
+68
+00:03:57,231 --> 00:04:00,682
+we can extend the model's context window
+
+69
+00:04:00,682 --> 00:04:04,134
+after training by interpolating the rotation angles—a
+
+70
+00:04:04,134 --> 00:04:08,079
+technique known as RoPE Scaling or NTK-aware scaling.
+
+71
+00:04:08,079 --> 00:04:11,530
+This allows models trained on four thousand
+
+72
+00:04:11,530 --> 00:04:16,954
+tokens to effortlessly handle tens of thousands without retraining from scratch.
+
+73
+00:04:16,954 --> 00:04:20,406
+If you want to keep exploring the
+
+74
+00:04:20,406 --> 00:04:23,858
+physical and mathematical architectures shaping artificial intelligence,
+
+75
+00:04:23,858 --> 00:04:29,282
+hit the subscribe button for Gemini three point five Flash Model.
+
+76
+00:04:29,282 --> 00:04:33,719
+Let's keep rotating the boundaries of speed and scale.

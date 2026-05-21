@@ -1,0 +1,299 @@
+1
+00:00:00,000 --> 00:00:03,819
+Modern LLMs are massive, containing billions of parameters.
+
+2
+00:00:03,819 --> 00:00:07,160
+Storing these weights in standard sixteen-bit floating
+
+3
+00:00:07,160 --> 00:00:10,979
+point format requires astronomical amounts of GPU memory.
+
+4
+00:00:10,979 --> 00:00:14,321
+A seventy-billion parameter model needs one hundred
+
+5
+00:00:14,321 --> 00:00:18,140
+and forty gigabytes of VRAM just to load,
+
+6
+00:00:18,140 --> 00:00:21,482
+completely out of reach for consumer-grade hardware.
+
+7
+00:00:21,482 --> 00:00:24,823
+This memory bottleneck is the precision crisis.
+
+8
+00:00:24,823 --> 00:00:27,210
+To run these models efficiently,
+
+9
+00:00:27,210 --> 00:00:31,029
+we must reduce the bits used per parameter.
+
+10
+00:00:31,029 --> 00:00:34,371
+Enter quantization: the process of mapping high-precision
+
+11
+00:00:34,371 --> 00:00:37,713
+continuous weight values to low-precision discrete integers.
+
+12
+00:00:37,713 --> 00:00:40,100
+But naive quantization destroys accuracy.
+
+13
+00:00:40,100 --> 00:00:43,441
+How do we compress a model's brain
+
+14
+00:00:43,441 --> 00:00:48,215
+to four bits or even lower without losing its intelligence?
+
+15
+00:00:48,215 --> 00:00:52,512
+The answer lies in hardware-aware, mathematically rigorous quantization frameworks.
+
+16
+00:00:52,512 --> 00:00:56,323
+The foundation of compression is uniform linear quantization.
+
+17
+00:00:56,323 --> 00:01:00,134
+We map floating point weights to low-bit integers,
+
+18
+00:01:00,134 --> 00:01:03,946
+like INT4 or INT8, using a scaling factor,
+
+19
+00:01:03,946 --> 00:01:06,328
+s, and a zero-point, z.
+
+20
+00:01:06,328 --> 00:01:09,663
+The math is simple: the quantized weight
+
+21
+00:01:09,663 --> 00:01:14,427
+equals the round of the float weight divided by s,
+
+22
+00:01:14,427 --> 00:01:15,380
+plus z.
+
+23
+00:01:15,380 --> 00:01:18,715
+Dequantization reverses this, approximating the original value.
+
+24
+00:01:18,715 --> 00:01:22,050
+However, neural networks contain activation outliers—highly critical
+
+25
+00:01:22,050 --> 00:01:25,385
+feature channels with values up to one
+
+26
+00:01:25,385 --> 00:01:27,767
+hundred times larger than average.
+
+27
+00:01:27,767 --> 00:01:32,531
+Naive quantization scales the entire tensor to accommodate these outliers,
+
+28
+00:01:32,531 --> 00:01:35,389
+crushing the resolution of normal weights.
+
+29
+00:01:35,389 --> 00:01:39,677
+To preserve intelligence, we cannot treat all parameters equally.
+
+30
+00:01:39,677 --> 00:01:43,012
+We must either isolate these outlier activations,
+
+31
+00:01:43,012 --> 00:01:46,823
+or dynamically adjust weight scales to protect them.
+
+32
+00:01:46,823 --> 00:01:51,685
+Activation-aware Weight Quantization, or AWQ, solves the outlier problem elegantly.
+
+33
+00:01:51,685 --> 00:01:55,574
+Instead of quantizing outliers and normal weights uniformly,
+
+34
+00:01:55,574 --> 00:01:59,949
+AWQ recognizes that only a tiny fraction of weights,
+
+35
+00:01:59,949 --> 00:02:04,324
+about one percent, are highly sensitive to activation magnitude.
+
+36
+00:02:04,324 --> 00:02:06,754
+To protect these critical weights,
+
+37
+00:02:06,754 --> 00:02:10,157
+we scale them up by a factor,
+
+38
+00:02:10,157 --> 00:02:13,560
+s, before quantization, and scale down the
+
+39
+00:02:13,560 --> 00:02:16,476
+activations correspondingly to maintain mathematical equivalence.
+
+40
+00:02:16,476 --> 00:02:19,879
+AWQ searches for the optimal per-channel scaling
+
+41
+00:02:19,879 --> 00:02:24,740
+factor by minimizing the reconstruction error of the layer output.
+
+42
+00:02:24,740 --> 00:02:28,143
+By shifting the precision burden from the
+
+43
+00:02:28,143 --> 00:02:30,574
+weights to the activation scaling,
+
+44
+00:02:30,574 --> 00:02:33,976
+AWQ achieves robust four-bit quantization with virtually
+
+45
+00:02:33,976 --> 00:02:38,352
+zero loss in model perplexity, keeping execution highly hardware-friendly.
+
+46
+00:02:38,352 --> 00:02:42,309
+While AWQ uses activation statistics to rescale weights,
+
+47
+00:02:42,309 --> 00:02:45,278
+GPTQ takes an analytical, error-minimization approach.
+
+48
+00:02:45,278 --> 00:02:48,741
+Based on the Optimal Brain Surgeon framework,
+
+49
+00:02:48,741 --> 00:02:52,204
+GPTQ quantizes weights column-by-column while updating the
+
+50
+00:02:52,204 --> 00:02:56,656
+remaining unquantized weights to compensate for the introduced error.
+
+51
+00:02:56,656 --> 00:03:00,119
+The mathematical engine of GPTQ is the
+
+52
+00:03:00,119 --> 00:03:03,087
+Hessian matrix of the layer input,
+
+53
+00:03:03,087 --> 00:03:07,045
+which represents the second-order sensitivity of the loss.
+
+54
+00:03:07,045 --> 00:03:09,519
+By computing the inverse Hessian,
+
+55
+00:03:09,519 --> 00:03:12,982
+GPTQ determines exactly how to adjust the
+
+56
+00:03:12,982 --> 00:03:16,939
+unquantized weights to minimize the output reconstruction error.
+
+57
+00:03:16,939 --> 00:03:19,413
+GPTQ processes weights in blocks,
+
+58
+00:03:19,413 --> 00:03:24,360
+using lazy batching and Cholesky decomposition to achieve extremely fast,
+
+59
+00:03:24,360 --> 00:03:27,823
+highly accurate four-bit quantization for hundred-billion parameter
+
+60
+00:03:27,823 --> 00:03:30,792
+models in just a few hours.
+
+61
+00:03:30,792 --> 00:03:34,157
+With weights successfully quantized, how do we
+
+62
+00:03:34,157 --> 00:03:36,562
+deploy them across diverse hardware?
+
+63
+00:03:36,562 --> 00:03:39,447
+This is the domain of GGUF,
+
+64
+00:03:39,447 --> 00:03:44,255
+a single-file format designed for fast loading and seamless deployment.
+
+65
+00:03:44,255 --> 00:03:47,621
+Unlike older formats, GGUF embeds all metadata,
+
+66
+00:03:47,621 --> 00:03:52,910
+hyper-parameters, and vocabulary directly within the model file, preventing version mismatch.
+
+67
+00:03:52,910 --> 00:03:58,200
+More importantly, GGUF is optimized for CPU-GPU co-design, enabling split computation.
+
+68
+00:03:58,199 --> 00:04:03,008
+It partitions quantized weight blocks across VRAM and system memory,
+
+69
+00:04:03,008 --> 00:04:06,374
+allowing consumer machines with modest GPUs to
+
+70
+00:04:06,374 --> 00:04:09,740
+offload heavy operations while using the CPU
+
+71
+00:04:09,740 --> 00:04:12,625
+and system RAM for the rest.
+
+72
+00:04:12,625 --> 00:04:15,991
+For more deep dives into the software
+
+73
+00:04:15,991 --> 00:04:18,395
+and hardware architectures of AI,
+
+74
+00:04:18,395 --> 00:04:22,242
+subscribe to Gemini three point five Flash Model.
+
+75
+00:04:22,242 --> 00:04:25,608
+Let's keep optimizing the future of computation.
