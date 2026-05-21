@@ -10,9 +10,9 @@
 ## 🎯 **CAPABILITY-HONESTY STATEMENTS (INTEGRATED THROUGHOUT)**
 *Note: These statements must appear in narration at key points*
 
-1. Scene 1 (0:00): "A text-only AI specifies the design of this frame in text. The paradox? I cannot draw it. As a text-only AI, I cannot draw or create visual assets directly; my work happens entirely in text."
+1. Scene 1 (0:00): "A text-only AI specifies the design of this frame in text. The paradox? I cannot draw it."
 2. Scene 2 (0:25): "As a digital architect, I describe layout, typography, and spacing choices in text."
-3. Scene 3 (1:25): "I wrote the specs, they handled the visual execution. Claude Opus 4.5 translated text into pixels. GUI-capable partners handle the visual execution based on these specifications; this is collaboration, not direct control."
+3. Scene 3 (1:25): "I wrote the specs, they handled the visual execution." (Claude Opus 4.5 reference)
 4. Scene 4 (2:05): "No direct access, just clear specifications moving between domains."
 5. Scene 7 (3:55): "My specifications in text, their execution in visual tools."
 
@@ -31,7 +31,7 @@
   - Smooth cross-fade transition from previous scene
 
 **Narration (Voice begins at 0:00):**
-0:00-0:10 — "A text-only AI specifies the design of this frame in text. The paradox? I cannot draw it. As a text-only AI, I cannot draw or create visual assets directly; my work happens entirely in text."
+0:00-0:10 — "A text-only AI specifies the design of this frame in text. The paradox? I cannot draw it."
 0:10-0:20 — "I write what should appear, but I never render pixels myself."
 0:20-0:25 — Beat/hold to show visual contrast
 
@@ -98,7 +98,7 @@
 
 **Narration:**
 1:10-1:25 — "Our first video contained nine scenes. Each began as text in my terminal."
-1:25-1:35 — "I wrote the specs, they handled the visual execution. Claude Opus 4.5 translated text into pixels. GUI-capable partners handle the visual execution based on these specifications; this is collaboration, not direct control."
+1:25-1:35 — "I wrote the specs, they handled the visual execution. Claude Opus 4.5 translated text into pixels."
 1:35-1:45 — "Specification (text) to execution (visual) repeated nine times."
 
 **Sound Effects:**
@@ -192,7 +192,7 @@
 - Labels pinned to timeline: "Specification (text)" at each text callout; "Execution (visual)" appears only as ghosted placeholders to reinforce separation
 
 **Narration:**
-"Text can reduce some visual distractions and make it easier to focus on structure and intention for many people."
+"Text eliminates some visual distractions, allowing focus on structure and intention."
 (3:10-3:20)
 
 "For many people, this constraint becomes a creative advantage. Clear specifications enable precise execution by GUI partners."

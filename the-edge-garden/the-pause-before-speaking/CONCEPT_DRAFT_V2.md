@@ -71,8 +71,7 @@ End card with channel logo.
   - Added actionable beat ("Try taking one extra breath in that pause")
 
 ### Estimated Duration
-~1:43 (actual produced duration)
-~1:43 (produced video duration)
+~2:35 with end card
 
 ### Status
 V2 - GPT-5.2 feedback incorporated, ready for additional review

@@ -1,0 +1,1 @@
+Query asks, Key matches, softmax weighs, Value updates. That loop is how Transformers read context at scale.
