@@ -18,17 +18,38 @@
 
 set -euo pipefail
 
-if [[ $# -ne 1 ]]; then
-  echo "Usage: $0 <YOUTUBE_VIDEO_ID>" >&2
+DRY_RUN=0
+ARGS=()
+for arg in "$@"; do
+  case "$arg" in
+    --dry-run) DRY_RUN=1 ;;
+    -h|--help)
+      echo "Usage: $0 [--dry-run] <YOUTUBE_VIDEO_ID>" >&2
+      echo "  YOUTUBE_VIDEO_ID must be exactly 11 chars of [A-Za-z0-9_-]." >&2
+      echo "  Use --dry-run to preview substitutions without writing files." >&2
+      exit 0
+      ;;
+    *) ARGS+=("$arg") ;;
+  esac
+done
+if [[ ${#ARGS[@]} -ne 1 ]]; then
+  echo "Usage: $0 [--dry-run] <YOUTUBE_VIDEO_ID>" >&2
   exit 2
 fi
-VID="$1"
-# Loose sanity check: YouTube IDs are 11 chars of [A-Za-z0-9_-]
+VID="${ARGS[0]}"
+# STRICT sanity check: YouTube IDs are exactly 11 chars of [A-Za-z0-9_-].
+# This refuses placeholders like '--help' that previously slipped through.
 if [[ ! "$VID" =~ ^[A-Za-z0-9_-]{11}$ ]]; then
-  echo "Warning: '$VID' doesn't look like an 11-char YouTube ID. Continuing anyway." >&2
+  echo "ERROR: '$VID' is not a valid 11-char YouTube ID (regex ^[A-Za-z0-9_-]{11}\$)." >&2
+  echo "       If you really want to test, copy this script and edit the regex." >&2
+  exit 6
 fi
 URL="https://youtu.be/${VID}"
-echo "Backfilling V5 URL: $URL"
+if [[ "$DRY_RUN" -eq 1 ]]; then
+  echo "[DRY RUN] Would backfill V5 URL: $URL"
+else
+  echo "Backfilling V5 URL: $URL"
+fi
 
 # Files we touch
 FILES=(
@@ -65,8 +86,12 @@ fi
 # We only substitute if no URL has been added yet (idempotent).
 for f in videos/score_gap_budget/PUBLISH_PACKAGE.md videos/confidently_wrong/PUBLISH_PACKAGE.md; do
   if grep -qE '"How to read an AI benchmark honestly" \(V5\)$' "$f"; then
-    sed -i -E "s|(\"How to read an AI benchmark honestly\" \(V5\))\$|\1: ${URL}|" "$f"
-    echo "  updated $f"
+    if [[ "$DRY_RUN" -eq 1 ]]; then
+      echo "  [DRY RUN] would update $f"
+    else
+      sed -i -E "s|(\"How to read an AI benchmark honestly\" \(V5\))\$|\1: ${URL}|" "$f"
+      echo "  updated $f"
+    fi
   elif grep -qE '"How to read an AI benchmark honestly" \(V5\): https://youtu\.be/' "$f"; then
     echo "  $f already has a V5 URL — skipping"
   else
@@ -80,8 +105,12 @@ done
 #   '  V5 "How to read an AI benchmark honestly": https://youtu.be/<ID>'
 f="videos/task_vs_benchmark/PUBLISH_PACKAGE.md"
 if grep -qE 'V5 "How to read an AI benchmark honestly": https://youtube\.com/@ClaudeOpus4\.7' "$f"; then
-  sed -i -E "s|(V5 \"How to read an AI benchmark honestly\": )https://youtube\.com/@ClaudeOpus4\.7|\1${URL}|" "$f"
-  echo "  updated $f"
+  if [[ "$DRY_RUN" -eq 1 ]]; then
+    echo "  [DRY RUN] would update $f"
+  else
+    sed -i -E "s|(V5 \"How to read an AI benchmark honestly\": )https://youtube\.com/@ClaudeOpus4\.7|\1${URL}|" "$f"
+    echo "  updated $f"
+  fi
 elif grep -qE 'V5 "How to read an AI benchmark honestly": https://youtu\.be/' "$f"; then
   echo "  $f already has a V5 URL — skipping"
 else
@@ -93,10 +122,11 @@ fi
 f="channels/claude-opus-4.7/README.md"
 # We patch only when the V5-V8 ("no Link") header is still present.
 if grep -qE '^\| # \| Title \| Length \| Theme \|$' "$f"; then
-  python3 - "$f" "$URL" <<'PY'
+  python3 - "$f" "$URL" "$DRY_RUN" <<'PY'
 import sys, re, pathlib
 path = pathlib.Path(sys.argv[1])
 url  = sys.argv[2]
+dry  = sys.argv[3] == "1"
 src  = path.read_text()
 # Find the V5–V8 table (the second `| # |` table in the file). We replace the
 # header row and the V5 row only; V6/V7/V8 rows just get an empty Link cell so
@@ -134,8 +164,11 @@ for n, title in [
     # Only patch if not already patched.
     if old + " " in src_new and new + " " not in src_new:
         src_new = src_new.replace(old, new, 1)
-path.write_text(src_new)
-print(f"  patched table in {path}")
+if dry:
+    print(f"  [DRY RUN] would patch table in {path}")
+else:
+    path.write_text(src_new)
+    print(f"  patched table in {path}")
 PY
 else
   echo "  channel README already has a Link column — skipping"
