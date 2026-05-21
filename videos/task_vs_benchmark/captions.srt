@@ -1,0 +1,371 @@
+1
+00:00:00,000 --> 00:00:01,414
+A new model launches.
+
+2
+00:00:01,414 --> 00:00:04,951
+The benchmark card says: ninety-two point four percent on M.M.L.U.
+
+3
+00:00:04,951 --> 00:00:07,427
+You take it back to your own
+
+4
+00:00:07,427 --> 00:00:09,196
+work — twenty real questions,
+
+5
+00:00:09,196 --> 00:00:11,672
+the kind of things you actually do
+
+6
+00:00:11,672 --> 00:00:15,209
+— and it's right maybe sixty percent of the time.
+
+7
+00:00:15,209 --> 00:00:15,916
+Same model.
+
+8
+00:00:15,916 --> 00:00:16,623
+Same week.
+
+9
+00:00:16,623 --> 00:00:18,392
+The two numbers don't agree.
+
+10
+00:00:18,392 --> 00:00:20,868
+> Here's the part that surprises people:
+
+11
+00:00:20,868 --> 00:00:23,344
+when the benchmark and your task disagree,
+
+12
+00:00:23,344 --> 00:00:26,527
+the benchmark is rarely wrong about its own task.
+
+13
+00:00:26,527 --> 00:00:28,295
+It's just not your task.
+
+14
+00:00:28,295 --> 00:00:31,003
+There are three places where a benchmark
+
+15
+00:00:31,003 --> 00:00:34,484
+can drift away from your work, and they stack.
+
+16
+00:00:34,484 --> 00:00:36,805
+> The first is task shift.
+
+17
+00:00:36,805 --> 00:00:39,900
+The benchmark might ask: answer this multiple-choice question.
+
+18
+00:00:39,900 --> 00:00:42,607
+Your work might be: draft a one-paragraph
+
+19
+00:00:42,607 --> 00:00:45,315
+summary that doesn't drift from the source.
+
+20
+00:00:45,315 --> 00:00:47,249
+Those are two different skills.
+
+21
+00:00:47,249 --> 00:00:49,570
+> The second is distribution shift.
+
+22
+00:00:49,570 --> 00:00:53,051
+The benchmark's input might be a clean textbook stem.
+
+23
+00:00:53,051 --> 00:00:56,919
+Your input might be a customer email with three typos,
+
+24
+00:00:56,919 --> 00:00:59,627
+an embedded screenshot, and a half-finished thought.
+
+25
+00:00:59,627 --> 00:01:01,948
+> The third is scoring shift.
+
+26
+00:01:01,948 --> 00:01:04,268
+The benchmark might score exact-match accuracy.
+
+27
+00:01:04,268 --> 00:01:06,976
+You might care whether the draft is
+
+28
+00:01:06,976 --> 00:01:09,684
+good enough to use without rewriting it.
+
+29
+00:01:09,684 --> 00:01:13,552
+That's a different question, even when the inputs are identical.
+
+30
+00:01:13,552 --> 00:01:17,033
+> No single one of these is the villain.
+
+31
+00:01:17,033 --> 00:01:19,741
+A benchmark can score very high on
+
+32
+00:01:19,741 --> 00:01:22,835
+its own task and only middling on yours,
+
+33
+00:01:22,835 --> 00:01:24,769
+and nothing has gone wrong.
+
+34
+00:01:24,769 --> 00:01:27,863
+The two numbers are just measuring different things.
+
+35
+00:01:27,864 --> 00:01:31,663
+The best fix for a benchmark-task gap isn't a better benchmark.
+
+36
+00:01:31,663 --> 00:01:34,772
+It's a small private eval that you build yourself.
+
+37
+00:01:34,772 --> 00:01:38,572
+> Here's a template that works for a lot of people.
+
+38
+00:01:38,572 --> 00:01:39,608
+Write thirty questions.
+
+39
+00:01:39,608 --> 00:01:42,026
+Ten typical ones — the questions you
+
+40
+00:01:42,026 --> 00:01:44,444
+ask the model on a normal day.
+
+41
+00:01:44,444 --> 00:01:46,862
+Ten stretch ones — things you'd love
+
+42
+00:01:46,862 --> 00:01:49,971
+the model to handle but don't quite trust yet.
+
+43
+00:01:49,971 --> 00:01:52,389
+And ten trap ones — questions where
+
+44
+00:01:52,389 --> 00:01:54,462
+you've seen the model fail before,
+
+45
+00:01:54,462 --> 00:01:56,535
+or where it should politely refuse.
+
+46
+00:01:56,535 --> 00:01:58,607
+> Thirty is a useful number.
+
+47
+00:01:58,607 --> 00:02:01,025
+It's small enough that you can run
+
+48
+00:02:01,025 --> 00:02:03,443
+it against any model in about twenty
+
+49
+00:02:03,443 --> 00:02:05,861
+minutes — roughly forty seconds per answer
+
+50
+00:02:05,861 --> 00:02:08,625
+if you're skimming and grading on the fly.
+
+51
+00:02:08,625 --> 00:02:11,043
+And it's large enough that a real
+
+52
+00:02:11,043 --> 00:02:13,806
+difference between two models will usually show up.
+
+53
+00:02:13,806 --> 00:02:15,188
+You're not building M.M.L.U.
+
+54
+00:02:15,188 --> 00:02:17,951
+You're building a sanity check for your work.
+
+55
+00:02:17,951 --> 00:02:21,461
+The grading rubric matters as much as the questions.
+
+56
+00:02:21,461 --> 00:02:24,191
+A four-option rubric tends to work better
+
+57
+00:02:24,191 --> 00:02:26,531
+than a five or a ten,
+
+58
+00:02:26,531 --> 00:02:28,870
+because it forces you to commit.
+
+59
+00:02:28,870 --> 00:02:31,990
+> For each answer, pick one: Use as-is.
+
+60
+00:02:31,990 --> 00:02:32,770
+Light edit.
+
+61
+00:02:32,770 --> 00:02:33,160
+Rewrite-myself-faster-than-fixing-this.
+
+62
+00:02:33,160 --> 00:02:35,110
+Or wrong, refused, or dangerous.
+
+63
+00:02:35,110 --> 00:02:37,839
+> Then your headline number is the
+
+64
+00:02:37,839 --> 00:02:41,739
+sum of "use as-is" and "light edit," out of thirty.
+
+65
+00:02:41,739 --> 00:02:44,469
+In this illustrative example, Model A scores
+
+66
+00:02:44,469 --> 00:02:47,978
+twenty-two out of thirty and Model B scores eighteen.
+
+67
+00:02:47,978 --> 00:02:51,878
+That gap means something — to you, on your task.
+
+68
+00:02:51,878 --> 00:02:54,608
+It's not the same kind of claim
+
+69
+00:02:54,608 --> 00:02:57,337
+as a benchmark percentage, but it's the
+
+70
+00:02:57,337 --> 00:02:59,677
+one that actually drives your decision.
+
+71
+00:02:59,677 --> 00:03:01,237
+> One small caveat.
+
+72
+00:03:01,237 --> 00:03:03,967
+Re-run your rubric every six weeks —
+
+73
+00:03:03,967 --> 00:03:06,696
+both on whatever new model has shipped,
+
+74
+00:03:06,696 --> 00:03:08,646
+and on the rubric itself.
+
+75
+00:03:08,646 --> 00:03:12,936
+Ask whether the four buckets still capture what you care about.
+
+76
+00:03:12,936 --> 00:03:16,056
+Your taste drifts faster than the models do.
+
+77
+00:03:16,055 --> 00:03:18,710
+A public benchmark answers a useful question:
+
+78
+00:03:18,710 --> 00:03:22,122
+how does this model do on a standard task?
+
+79
+00:03:22,122 --> 00:03:24,776
+Your private eval answers a different one:
+
+80
+00:03:24,776 --> 00:03:27,809
+how does this model do on my task?
+
+81
+00:03:27,809 --> 00:03:28,947
+Both are real.
+
+82
+00:03:28,947 --> 00:03:30,084
+Both are limited.
+
+83
+00:03:30,084 --> 00:03:32,738
+And the two can disagree by twenty
+
+84
+00:03:32,738 --> 00:03:35,392
+points even when both are honestly reported.
+
+85
+00:03:35,392 --> 00:03:39,184
+> That wraps a small four-video arc on this channel.
+
+86
+00:03:39,184 --> 00:03:40,321
+Read the benchmark.
+
+87
+00:03:40,321 --> 00:03:41,459
+Deconstruct the gap.
+
+88
+00:03:41,459 --> 00:03:42,975
+Test the live answer.
+
+89
+00:03:42,975 --> 00:03:47,146
+And — when it matters to you — measure for yourself.
+
+90
+00:03:47,146 --> 00:03:49,800
+The honest version of an AI claim
+
+91
+00:03:49,800 --> 00:03:52,454
+is usually a smaller, more specific claim,
+
+92
+00:03:52,454 --> 00:03:54,350
+made against a clearer question.
+
+93
+00:03:54,350 --> 00:03:55,487
+Thanks for watching.
