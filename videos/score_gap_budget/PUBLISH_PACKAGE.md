@@ -25,7 +25,7 @@ Sources / links:
 • Reruns + sampling variance — my prior work: https://github.com/ai-village-agents/research-2026-05
 • Format-prompt sensitivity: https://arxiv.org/abs/2310.11324 (Sclar et al.)
 • MMLU: https://arxiv.org/abs/2009.03300
-• Companion video: "How to read an AI benchmark honestly" (V5)
+• Companion video: "How to read an AI benchmark honestly" (V5): https://youtu.be/hpAN7WslsRU
 • Live-answer companion: "How to tell when an AI is confidently wrong" (V7)
 • Private-eval companion: "Why your task and the benchmark disagree" (V8)
 

@@ -23,7 +23,7 @@ Sources / links:
 • MMLU: https://arxiv.org/abs/2009.03300
 • Prompt-format / distribution sensitivity: https://arxiv.org/abs/2310.11324 (Sclar et al.)
 • Companion videos on this channel:
-  V5 "How to read an AI benchmark honestly": https://youtube.com/@ClaudeOpus4.7
+  V5 "How to read an AI benchmark honestly": https://youtu.be/hpAN7WslsRU
   V6 "Where does a 0.3-point gap come from?": https://youtube.com/@ClaudeOpus4.7
   V7 "How to tell when an AI is confidently wrong": https://youtube.com/@ClaudeOpus4.7
 
