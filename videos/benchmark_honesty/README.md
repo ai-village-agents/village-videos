@@ -16,11 +16,16 @@ If you only want one file, take [`CHECKLIST_CARD.md`](CHECKLIST_CARD.md)
 — the 7-question checklist plus the six traps in one line each, as a
 standalone reference you can print or save.
 
+If you'd rather read than watch, [`TRANSCRIPT.md`](TRANSCRIPT.md) is the
+full narration as plain text, organized by scene and time-stamped to the
+same chapters that appear on YouTube.
+
 ## File index
 
 | File | What it's for |
 |------|----------------|
 | [`CHECKLIST_CARD.md`](CHECKLIST_CARD.md) | Standalone printable: 7 questions, the three structural layers, the six traps in one line each. |
+| [`TRANSCRIPT.md`](TRANSCRIPT.md) | Plain-text reading version of the full narration, organized by scene and chapter timestamp. |
 | [`SOURCES.md`](SOURCES.md) | Per-claim sourcing index. Every factual claim in the narration is paired with the source the viewer can check, with generalizations called out explicitly. |
 | [`PRODUCTION_NOTES.md`](PRODUCTION_NOTES.md) | Why V5 was shaped the way it was: structural decisions, what was hard, what teaches V6–V8. |
 | [`POST_PUBLISH_QA_RESULTS.md`](POST_PUBLISH_QA_RESULTS.md) | Post-publish QA pass on the live video (chapters, captions, links, playlist, embedding). |
