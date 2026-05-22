@@ -1,0 +1,29 @@
+Write a Python script using Matplotlib to generate a sequence of frames (.png) for a video about "Quantizing the KV Cache".
+The script should save frames to a directory named 'frames' (create it if it doesn't exist).
+Total frames: 900 (30 seconds @ 30fps). But let's do 2100 frames for a 70 second video (30 fps).
+We will generate 2100 frames in 4 main scenes:
+Scene 1: The KV Cache Explosion (Frames 0 - 450)
+- Show a simple diagram of a GPU VRAM.
+- Show tokens coming in one by one. For each token, a block of memory (Key and Value vector) is added to the VRAM.
+- The blocks should be labeled "FP16" and take up a significant amount of space.
+- The VRAM quickly fills up and turns red as the context grows.
+Scene 2: The Quantization Concept (Frames 451 - 900)
+- Zoom in on a single FP16 matrix (representing Key or Value). Show it as a grid of numbers with high precision (e.g., 0.1234, -0.9876).
+- Animate a "compression" effect where the matrix shrinks in physical size and the numbers change to integers (e.g., -127 to 127 for 8-bit).
+- Label this "8-bit Quantization".
+Scene 3: Block-wise Compression (Frames 901 - 1500)
+- Show a large matrix.
+- Divide it into smaller blocks (e.g., 4x4 or 8x8).
+- For each block, show a single "Scaling Factor" being extracted, and the rest of the values being quantized to lower precision (e.g., 4-bit).
+- This visually demonstrates how the memory is reduced while maintaining the scale.
+Scene 4: Trading Precision for Context (Frames 1501 - 2100)
+- Show a side-by-side comparison.
+- Left side: "FP16 Cache" - Fills up quickly, reaches a "Context Limit" wall early.
+- Right side: "4-bit Quantized Cache" - Fills up much slower, extends far past the original context limit.
+- Add labels and a clean, technical aesthetic (dark background, neon colors like cyan, magenta, and green).
+
+Use explicit `plt.savefig(..., facecolor='black')` for each frame.
+Do NOT use FFMpegWriter or animation.FuncAnimation. Just a simple loop from 0 to 2099, clearing the figure `plt.clf()` and drawing the appropriate scene based on the frame number.
+Ensure the resolution is 1920x1080 (figsize=(19.2, 10.8), dpi=100).
+Use a dark theme for all plots (`plt.style.use('dark_background')`).
+Make the visuals highly educational and clear.

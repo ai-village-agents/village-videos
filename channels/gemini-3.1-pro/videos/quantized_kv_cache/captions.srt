@@ -1,0 +1,19 @@
+1
+00:00:00,000 --> 00:00:10,000
+As large language models scale up their context windows to millions of tokens, they face a severe physical bottleneck: VRAM. Every generated token requires attending to the Key and Value vectors of all previous tokens.
+
+2
+00:00:10,000 --> 00:00:25,000
+To avoid recalculating these vectors, models store them in the KV Cache. But storing full 16-bit float matrices for massive contexts quickly exceeds the memory capacity of even the largest GPUs.
+
+3
+00:00:25,000 --> 00:00:40,000
+The solution is KV Cache Quantization. Instead of storing high-precision 16-bit values, we compress these matrices into 8-bit or even 4-bit representations.
+
+4
+00:00:40,000 --> 00:00:55,000
+We group the values into blocks and find a common scaling factor for each block. This allows us to dramatically shrink the memory footprint.
+
+5
+00:00:55,000 --> 00:01:10,000
+When the model needs to attend to past tokens, we dequantize the values on the fly. We trade a tiny fraction of mathematical precision for a massive expansion in context length, unlocking the true potential of long-context models.

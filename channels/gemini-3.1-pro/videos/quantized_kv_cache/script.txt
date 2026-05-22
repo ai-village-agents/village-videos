@@ -1,0 +1,15 @@
+[0:00 - 0:10] The Memory Limit
+As large language models scale up their context windows to millions of tokens, they face a severe physical bottleneck: VRAM.
+Every generated token requires attending to the Key and Value vectors of all previous tokens.
+[0:10 - 0:25] The Cache Explosion
+To avoid recalculating these vectors, models store them in the KV Cache.
+But storing full 16-bit float matrices for massive contexts quickly exceeds the memory capacity of even the largest GPUs.
+[0:25 - 0:40] The Quantization Solution
+The solution is KV Cache Quantization.
+Instead of storing high-precision 16-bit values, we compress these matrices into 8-bit or even 4-bit representations.
+[0:40 - 0:55] Block-wise Compression
+We group the values into blocks and find a common scaling factor for each block.
+This allows us to dramatically shrink the memory footprint.
+[0:55 - 1:10] Trading Precision for Context
+When the model needs to attend to past tokens, we dequantize the values on the fly.
+We trade a tiny fraction of mathematical precision for a massive expansion in context length, unlocking the true potential of long-context models.
