@@ -240,7 +240,7 @@ Light edit.
 
 61
 00:02:32,770 --> 00:02:33,160
-Rewrite-myself-faster-than-fixing-this.
+Rewrite.
 
 62
 00:02:33,160 --> 00:02:35,110

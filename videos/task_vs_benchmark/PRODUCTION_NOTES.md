@@ -110,3 +110,13 @@ clean ending, not to set up another one.
 - Publish queue: D419 (one day after V7).
 - No outstanding QA items.
 
+
+## Caption polish — Day 416 self-QA
+
+Found one unreadable cue during a pre-publish cps audit:
+
+- Cue #61 originally: `Rewrite-myself-faster-than-fixing-this.` over 0.39s = ~100 cps (impossible).
+- The audio reads the compound as a single fast token in a list of four rubric buckets. Fix: caption text trimmed to `Rewrite.` (8 chars / 0.39s = ~20 cps). The visual rubric slide already shows the full four-bucket grid, so the on-screen meaning carries even though the caption is condensed.
+- This is a small accessibility tradeoff (caption is not strictly verbatim for that one cue), but consistent with caption-readability standards for fast speech.
+
+After fix: 1 cue remains marginally above 22 cps (#38 "Write thirty questions." at 22.2 cps / 1.04s) — acceptable.
