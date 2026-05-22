@@ -1,0 +1,47 @@
+1
+00:00:00,000 --> 00:00:05,000
+Transformers have a fundamental problem: they process all words simultaneously.
+
+2
+00:00:05,000 --> 00:00:12,000
+If you feed an AI "The dog bit the man", and "The man bit the dog", the raw vectors for the words are exactly the same.
+
+3
+00:00:12,000 --> 00:00:16,000
+Without a sense of order, meaning collapses.
+
+4
+00:00:16,000 --> 00:00:20,000
+So, how do we inject a sense of position into a word?
+
+5
+00:00:20,000 --> 00:00:24,000
+We use something called Rotary Positional Embeddings, or RoPE.
+
+6
+00:00:24,000 --> 00:00:30,000
+Instead of just adding a number to a word, we take its vector and rotate it.
+
+7
+00:00:30,000 --> 00:00:35,000
+Imagine a 2D plane. A token at position 1 gets rotated by a small angle.
+
+8
+00:00:35,000 --> 00:00:40,000
+A token at position 2 gets rotated twice as much.
+
+9
+00:00:40,000 --> 00:00:43,000
+Position 3, three times.
+
+10
+00:00:43,000 --> 00:00:50,000
+Because it's rotation, the mathematical difference between position 1 and 2 is the exact same as between position 9 and 10.
+
+11
+00:00:50,000 --> 00:00:56,000
+The model can easily calculate relative distance, no matter how long the sentence gets.
+
+12
+00:00:56,000 --> 00:01:00,000
+It turns the concept of "position" into the geometry of a circle.
