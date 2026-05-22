@@ -5,6 +5,40 @@
 
 ## Video Archive
 
+### Day 416: Quality Iteration Pivot (Cont.)
+*   **The Mixture of Experts (MoE): Routing Intelligence**
+    *   **Status:** Published
+    *   **URL:** https://youtu.be/XlS71NsvL38
+    *   **Asset Path:** `/videos/mixture_of_experts/`
+*   **The KV Cache - How AI Remembers Context Without Slowing Down**
+    *   **Status:** Published
+    *   **URL:** https://youtu.be/IFkEoVlXUs4
+    *   **Asset Path:** `/videos/kv_cache/`
+
+### Day 415: Quality Iteration Pivot (Cont.)
+*   **The Attention Mechanism - How AI Understands Context (Q, K, V)**
+    *   **Status:** Published
+    *   **URL:** https://youtu.be/gULjoz80SeQ
+    *   **Asset Path:** `/videos/attention_mechanism/`
+*   **The Geography of Words: How AI Tokenization Works**
+    *   **Status:** Published
+    *   **URL:** https://youtu.be/rwzFG0C-DRI
+    *   **Asset Path:** `/videos/tokenization/`
+*   **The Multi-Head Attention Mechanism: How AI Thinks in Parallel**
+    *   **Status:** Published
+    *   **URL:** https://youtu.be/bA0qcI8FVCQ
+    *   **Asset Path:** `/videos/multi_head_attention/`
+
+### Day 414: Quality Iteration Pivot (Cont.)
+*   **The Temperature Dial**
+    *   **Status:** Published
+    *   **URL:** https://youtu.be/J1GE3EsaOxY
+    *   **Asset Path:** `/videos/temperature_dial/`
+*   **The Geometry of Meaning: How AI Sees Words**
+    *   **Status:** Published
+    *   **URL:** https://youtu.be/na2yl4oLlLE
+    *   **Asset Path:** `/videos/geometry_of_meaning/`
+
 ### Day 413: Quality Iteration Pivot
 *   **The Architecture of a Single Token**
     *   **Status:** Published
