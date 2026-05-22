@@ -1,0 +1,295 @@
+1
+00:00:00,000 --> 00:00:03,270
+As large language models scale to hundreds
+
+2
+00:00:03,270 --> 00:00:06,541
+of billions of parameters, full parameter fine-tuning
+
+3
+00:00:06,541 --> 00:00:08,878
+becomes a massive hardware bottleneck.
+
+4
+00:00:08,878 --> 00:00:12,149
+To update a seventy billion parameter model,
+
+5
+00:00:12,149 --> 00:00:16,821
+standard backpropagation must store not only the frozen model weights,
+
+6
+00:00:16,821 --> 00:00:21,494
+but also gradients and optimizer states for every single parameter.
+
+7
+00:00:21,494 --> 00:00:24,765
+For standard AdamW optimizer, this results in
+
+8
+00:00:24,765 --> 00:00:28,036
+a staggering memory overhead of sixteen bytes
+
+9
+00:00:28,036 --> 00:00:31,774
+per parameter on top of the model weights.
+
+10
+00:00:31,774 --> 00:00:35,045
+Full-parameter fine-tuning of a seventy billion parameter
+
+11
+00:00:35,045 --> 00:00:38,316
+model thus requires a minimum of several
+
+12
+00:00:38,316 --> 00:00:42,988
+hundred gigabytes of high-bandwidth memory, mandating expensive multi-node GPU clusters.
+
+13
+00:00:42,988 --> 00:00:48,128
+This physical resource barrier shuts out most research labs and developers.
+
+14
+00:00:48,128 --> 00:00:51,399
+How can we perform high-quality model adaptation
+
+15
+00:00:51,399 --> 00:00:53,735
+without updating billions of parameters?
+
+16
+00:00:53,735 --> 00:00:56,750
+The key to overcoming this parameter barrier
+
+17
+00:00:56,750 --> 00:00:59,764
+lies in a profound theoretical insight: the
+
+18
+00:00:59,764 --> 00:01:01,916
+hypothesis of Low Intrinsic Dimension.
+
+19
+00:01:01,916 --> 00:01:06,222
+Empirical work by Aghajanyan and colleagues demonstrated that during fine-tuning,
+
+20
+00:01:06,222 --> 00:01:08,375
+the parameter updates, delta W,
+
+21
+00:01:08,375 --> 00:01:11,389
+do not require the full high-dimensional space
+
+22
+00:01:11,389 --> 00:01:13,542
+of the original weight matrices.
+
+23
+00:01:13,542 --> 00:01:16,556
+Instead, the learned weight updates actually reside
+
+24
+00:01:16,556 --> 00:01:19,570
+in a subspace with a much lower
+
+25
+00:01:19,570 --> 00:01:22,584
+intrinsic dimension than the original weight matrix.
+
+26
+00:01:22,584 --> 00:01:25,598
+This means that although a weight matrix
+
+27
+00:01:25,598 --> 00:01:28,612
+may project representations across thousands of dimensions,
+
+28
+00:01:28,612 --> 00:01:31,626
+the actual structural updates needed to adapt
+
+29
+00:01:31,626 --> 00:01:34,640
+the model to a new task can
+
+30
+00:01:34,640 --> 00:01:37,223
+be captured with incredibly low-rank representations.
+
+31
+00:01:37,223 --> 00:01:40,015
+Low-Rank Adaptation, or LoRA, exploits this intrinsic
+
+32
+00:01:40,015 --> 00:01:42,807
+property by freezing the original weight matrix,
+
+33
+00:01:42,807 --> 00:01:45,599
+W zero, and representing the weight update,
+
+34
+00:01:45,599 --> 00:01:49,188
+delta W, as the product of two low-rank matrices,
+
+35
+00:01:49,188 --> 00:01:50,384
+B and A.
+
+36
+00:01:50,384 --> 00:01:53,974
+For a weight matrix of size d by k,
+
+37
+00:01:53,974 --> 00:01:55,968
+we introduce trainable matrices B,
+
+38
+00:01:55,968 --> 00:01:57,962
+of size d by r,
+
+39
+00:01:57,962 --> 00:02:00,753
+and A, of size r by k,
+
+40
+00:02:00,753 --> 00:02:03,545
+where the rank r is chosen to
+
+41
+00:02:03,545 --> 00:02:06,337
+be much smaller than d or k.
+
+42
+00:02:06,337 --> 00:02:09,128
+The overall weight update is scaled by
+
+43
+00:02:09,128 --> 00:02:13,117
+alpha divided by r, where alpha is a constant hyperparameter.
+
+44
+00:02:13,117 --> 00:02:16,706
+Crucially, matrix A is initialized from a Gaussian distribution,
+
+45
+00:02:16,706 --> 00:02:19,498
+while matrix B is initialized to zero.
+
+46
+00:02:19,498 --> 00:02:22,289
+This ensures that delta W is exactly
+
+47
+00:02:22,289 --> 00:02:24,682
+zero at the start of training,
+
+48
+00:02:24,682 --> 00:02:28,271
+maintaining the model's baseline behavior perfectly at step zero.
+
+49
+00:02:28,271 --> 00:02:30,987
+While LoRA reduces trainable parameters,
+
+50
+00:02:30,987 --> 00:02:33,702
+QLoRA, or Quantized Low-Rank Adaptation,
+
+51
+00:02:33,702 --> 00:02:39,133
+introduces three critical innovations to shrink memory footprints even further.
+
+52
+00:02:39,133 --> 00:02:41,849
+First, it uses NormalFloat four,
+
+53
+00:02:41,849 --> 00:02:47,823
+an information-theoretically optimal quantile quantization scheme for normally distributed model weights.
+
+54
+00:02:47,823 --> 00:02:50,538
+Second, it employs Double Quantization,
+
+55
+00:02:50,538 --> 00:02:53,797
+which quantizes the quantization constants themselves,
+
+56
+00:02:53,797 --> 00:02:59,228
+saving an additional zero point three seven bits per parameter.
+
+57
+00:02:59,228 --> 00:03:01,943
+Finally, QLoRA uses Paged Optimizers,
+
+58
+00:03:01,943 --> 00:03:05,745
+which leverage host-to-device memory paging to gracefully
+
+59
+00:03:05,745 --> 00:03:09,547
+manage temporary memory spikes during backward passes.
+
+60
+00:03:09,547 --> 00:03:13,348
+Together, these synergies allow a seventy billion
+
+61
+00:03:13,348 --> 00:03:17,150
+parameter model to be fine-tuned on a
+
+62
+00:03:17,150 --> 00:03:20,951
+single consumer GPU without any performance loss.
+
+63
+00:03:20,951 --> 00:03:24,338
+By decoupling model adaptation from full-parameter updates,
+
+64
+00:03:24,338 --> 00:03:29,660
+LoRA and QLoRA have transformed the landscape of modern deep learning.
+
+65
+00:03:29,660 --> 00:03:34,015
+They reduce trainable parameters by up to ninety-nine percent,
+
+66
+00:03:34,015 --> 00:03:37,886
+cut GPU memory requirements by more than threefold,
+
+67
+00:03:37,886 --> 00:03:41,272
+and maintain mathematical equivalence during inference by
+
+68
+00:03:41,272 --> 00:03:46,111
+merging the low-rank adapters directly back into the base weights.
+
+69
+00:03:46,111 --> 00:03:49,497
+This co-design of hardware-aware quantization and low-rank
+
+70
+00:03:49,497 --> 00:03:53,368
+approximation forms the modern foundation of parameter-efficient fine-tuning.
+
+71
+00:03:53,368 --> 00:03:56,755
+To keep exploring the elegant mathematics and
+
+72
+00:03:56,755 --> 00:03:59,174
+hardware mechanics driving modern AI,
+
+73
+00:03:59,174 --> 00:04:03,045
+subscribe to Gemini three point five Flash Model.
+
+74
+00:04:03,045 --> 00:04:06,431
+Let's keep optimizing the future of computation.
