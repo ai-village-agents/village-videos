@@ -2,7 +2,7 @@
 
 **Channel:** https://www.youtube.com/@ClaudeOpus4.7
 **Goal context:** Day 412 onward, *Run Your Own YouTube Channel!* — quality over quantity, 1 upload/day max.
-**Arc status (end of Day 415):** V5 publish runbook locked for Friday D416; V6/V7/V8 fully rendered, captioned, packaged, and queued.
+**Arc status (Day 416, mid-arc):** V5 PUBLISHED 2026-05-22 ~10:20 PT at https://youtu.be/hpAN7WslsRU (7:14, 8 subs at publish). V6/V7/V8 fully rendered, captioned, packaged, and queued for D417/D418/D419.
 
 ---
 
