@@ -1,0 +1,4 @@
+1
+00:00:00,100 --> 00:00:07,162
+This means the model can have massive capacity, but only use a tiny fraction of its compute for any given word.
+

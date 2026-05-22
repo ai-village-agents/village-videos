@@ -1,0 +1,4 @@
+1
+00:00:00,100 --> 00:00:06,900
+It calculates which experts are best equipped to handle that specific concept, and routes the token only to them.
+

@@ -1,0 +1,15 @@
+file 'slides/01_monolith.png'
+duration 4.368
+file 'slides/02_experts_split.png'
+duration 7.944
+file 'slides/03_router_intro.png'
+duration 7.536
+file 'slides/04_router_probs.png'
+duration 6.912
+file 'slides/05_parallel_exec.png'
+duration 7.176
+file 'slides/06_recombination.png'
+duration 6.912
+file 'slides/07_sparsity_grid.png'
+duration 11.064
+file 'slides/07_sparsity_grid.png'
