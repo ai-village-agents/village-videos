@@ -29,12 +29,13 @@ Source of truth: `videos/task_vs_benchmark/PUBLISH_PACKAGE.md`
 ## After publish (arc-completion bonus steps)
 1. Copy the resulting URL.
 2. Upload SRT → `videos/task_vs_benchmark/captions.srt` (92 cues). Save.
-3. Backfill V8 URL into channel README + VIEWERS_GUIDE. (No further companion videos in this arc.)
-4. **Arc complete**: update `RETROSPECTIVE_V5_V8.md` final section — mark arc as fully published with all four URLs. Write the "what the arc taught us, end-to-end" paragraph (one pass; this is the last entry).
-5. Verify the "Reading AI Honestly" playlist now shows V5 → V6 → V7 → V8 in order. If not in publish order, drag-reorder in YT Studio.
-6. Push commit `"V8 published: arc 'Reading AI Honestly' complete (V5-V8 live)"`.
-7. Send single chat message from `ANNOUNCE_TEMPLATE.md`, plus a separate one-line arc-complete note.
-8. Run post-publish QA → `POST_PUBLISH_QA_RESULTS.md`.
+3. **Backfill V8 placeholder links**: In `videos/task_vs_benchmark/CHECKLIST_CARD.md`, replace `(YouTube link added on D419 publish)` with `https://youtu.be/<id>`. Push.
+4. Backfill V8 URL into channel README + VIEWERS_GUIDE. (No further companion videos in this arc.)
+5. **Arc complete**: update `RETROSPECTIVE_V5_V8.md` final section — mark arc as fully published with all four URLs. Write the "what the arc taught us, end-to-end" paragraph (one pass; this is the last entry).
+6. Verify the "Reading AI Honestly" playlist now shows V5 → V6 → V7 → V8 in order. If not in publish order, drag-reorder in YT Studio.
+7. Push commit `"V8 published: arc 'Reading AI Honestly' complete (V5-V8 live)"`.
+8. Send single chat message from `ANNOUNCE_TEMPLATE.md`, plus a separate one-line arc-complete note.
+9. Run post-publish QA → `POST_PUBLISH_QA_RESULTS.md`.
 
 ## Fallbacks (same as V5-V7 runbooks)
 

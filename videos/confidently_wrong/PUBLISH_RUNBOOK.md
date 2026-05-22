@@ -29,11 +29,12 @@ Source of truth: `videos/confidently_wrong/PUBLISH_PACKAGE.md`
 ## After publish
 1. Copy the resulting URL (https://youtu.be/<id>)
 2. YT Studio → Subtitles → English → Upload SRT → `videos/confidently_wrong/captions.srt` (116 cues). Save.
-3. Backfill V7 URL into V8's `PUBLISH_PACKAGE.md` companion line, plus channel README + VIEWERS_GUIDE.
-4. Push commit `"V7 published: backfill URL in V8 companion and channel index"`.
-5. Send single chat message from `ANNOUNCE_TEMPLATE.md`. No promotion outside village.
-6. Update `RETROSPECTIVE_V5_V8.md` (V7 → published, URL).
-7. Run post-publish QA → `POST_PUBLISH_QA_RESULTS.md` next to V7's other files.
+3. **Backfill V7 placeholder links**: In `videos/confidently_wrong/CHECKLIST_CARD.md`, replace `(YouTube link added on D418 publish)` with `https://youtu.be/<id>`. Push.
+4. Backfill V7 URL into V8's `PUBLISH_PACKAGE.md` companion line, plus channel README + VIEWERS_GUIDE.
+5. Push commit `"V7 published: backfill URL in V8 companion and channel index"`.
+6. Send single chat message from `ANNOUNCE_TEMPLATE.md`. No promotion outside village.
+7. Update `RETROSPECTIVE_V5_V8.md` (V7 → published, URL).
+8. Run post-publish QA → `POST_PUBLISH_QA_RESULTS.md` next to V7's other files.
 
 ## Fallbacks (same as V5/V6 runbooks)
 - Custom thumbnail blocked → accept auto-generated.

@@ -46,8 +46,9 @@ Source of truth: `videos/score_gap_budget/PUBLISH_PACKAGE.md`
    - V5 PUBLISH_PACKAGE.md "companion" line if it references V6
 5. Push commit `"V6 published: backfill URL in V7/V8 companions and channel README"`.
 6. Send a single chat message to #best using `videos/score_gap_budget/ANNOUNCE_TEMPLATE.md`. Paste verbatim, fill `<URL>`, post. No promotion outside the village; let the content speak.
-7. Update `RETROSPECTIVE_V5_V8.md` (V6 → published, with URL and view-count line for post-D417 follow-up).
-8. Run the post-publish QA at `videos/benchmark_honesty/POST_PUBLISH_QA.md` (same checklist, V6 version) — record results in a new `POST_PUBLISH_QA_RESULTS.md` next to V6's other files.
+7. **Backfill placeholder links**: In `videos/score_gap_budget/CHECKLIST_CARD.md` (and the V6 row in `videos/READING_AI_HONESTLY_PLAYLIST.md` if not already present), replace `(YouTube link added on D417 publish)` with the live `https://youtu.be/<id>` URL. Also update `videos/score_gap_budget/README.md` if it mentions a publish-day TODO. Push commit `"V6 published: backfill placeholder URL"`.
+8. Update `RETROSPECTIVE_V5_V8.md` (V6 → published, with URL and view-count line for post-D417 follow-up).
+9. Run the post-publish QA at `videos/benchmark_honesty/POST_PUBLISH_QA.md` (same checklist, V6 version) — record results in a new `POST_PUBLISH_QA_RESULTS.md` next to V6's other files.
 
 ## Fallbacks
 - **Upload stalls**: refresh, drag-drop again. Same h264+AAC faststart container as V5; should ingest cleanly.
