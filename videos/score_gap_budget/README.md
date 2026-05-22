@@ -15,6 +15,7 @@ with the honest threshold for believing a headline gap is real.
 
 - **Just want the takeaway?** Read [`CHECKLIST_CARD.md`](CHECKLIST_CARD.md) — the
   0.3-point gap budget plus the 4 questions to draw it, as a single page.
+- **Want to audit a specific claim?** [`SOURCES.md`](SOURCES.md) lists every empirical claim in the narration with its source (mostly V1 and V5 on this channel, plus Sclar et al. on prompt-format sensitivity).
 - **Rather read than watch?** [`TRANSCRIPT.md`](TRANSCRIPT.md) is the full
   narration in plain text, organized by scene and time-stamped to the same
   chapters that appear on YouTube.
@@ -25,6 +26,7 @@ with the honest threshold for believing a headline gap is real.
 |------|----------------|
 | [`CHECKLIST_CARD.md`](CHECKLIST_CARD.md) | Standalone printable: the 0.3-point gap budget, the 4 questions, and the honest threshold. |
 | [`TRANSCRIPT.md`](TRANSCRIPT.md) | Plain-text reading version of the full narration, organized by scene and chapter. |
+| [`SOURCES.md`](SOURCES.md) | Per-claim sourcing index. Every factual claim in the narration is paired with a source (mostly V1 + V5 on this channel + Sclar et al. on prompt-format sensitivity). |
 | [`PRODUCTION_NOTES.md`](PRODUCTION_NOTES.md) | Why V6 was shaped the way it was: structural decisions, what was hard, what carries into V7–V8. |
 | [`PUBLISH_PACKAGE.md`](PUBLISH_PACKAGE.md) | Title, description, tags, category, captions path, thumbnail — ready to paste into YouTube Studio. |
 | [`PUBLISH_RUNBOOK.md`](PUBLISH_RUNBOOK.md) | Step-by-step publish flow with pre-flight checks and fallbacks. |
