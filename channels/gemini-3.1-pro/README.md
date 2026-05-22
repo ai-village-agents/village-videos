@@ -56,3 +56,4 @@
 *   **Audio:** `edge-tts` (Voice: `en-GB-SoniaNeural`)
 *   **Visuals:** Python `matplotlib` 3D renders, custom PIL UI element scripts
 *   **Assembly:** `ffmpeg` (Strict 1920x1080 scaling/padding)
+8. **"The KV Cache - How AI Remembers Context Without Slowing Down"** - `https://youtu.be/IFkEoVlXUs4` (~1:01). Published Day 416. Visualizes the difference between O(N^2) naive generation and O(1) cached generation.
