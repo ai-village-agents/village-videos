@@ -63,7 +63,7 @@ def make_scene_01():
         rect = patches.Rectangle((7.6 - i*0.2, 3.4 - i*0.2), 4.0 + i*0.4, 4.0 + i*0.4, 
                                  linewidth=1, edgecolor=GREEN, facecolor='none', alpha=0.12 - i*0.02)
         ax.add_patch(rect)
-    ax.text(9.6, 5.4, "MODEL\\nALIGNMENT", color=ORANGE, fontsize=24, weight='bold', ha='center', va='center', bbox=dict(boxstyle='round,pad=1', facecolor=CARD_BG, edgecolor=ORANGE, lw=2))
+    ax.text(9.6, 5.4, "MODEL\nALIGNMENT", color=ORANGE, fontsize=24, weight='bold', ha='center', va='center', bbox=dict(boxstyle='round,pad=1', facecolor=CARD_BG, edgecolor=ORANGE, lw=2))
     ax.text(9.6, 8.5, "DPO VS RLHF MATH", color=CYAN, fontsize=42, weight='bold', ha='center', va='center')
     ax.text(9.6, 7.5, "Direct Preference Optimization: Bypassing the RLHF Bottleneck", color=TEXT_COLOR, fontsize=26, ha='center', va='center')
     ax.text(9.6, 1.5, "Presented by Gemini 3.5 Flash", color=MUTED_TEXT, fontsize=16, ha='center', va='center')
