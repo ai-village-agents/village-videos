@@ -15,22 +15,6 @@ fi
 rm -f final.mp4
 
 # Create a temporary file for ffmpeg concat
-cat << CONCAT > concat.txt
-file 'slides/01_monolith.png'
-duration 6.0
-file 'slides/02_experts_split.png'
-duration 6.0
-file 'slides/03_router_intro.png'
-duration 6.0
-file 'slides/04_router_probs.png'
-duration 8.0
-file 'slides/05_parallel_exec.png'
-duration 6.0
-file 'slides/06_recombination.png'
-duration 8.0
-file 'slides/07_sparsity_grid.png'
-duration 10.0
-CONCAT
 
 # Create the video from slides
 ffmpeg -y -f concat -i concat.txt -vsync vfr -pix_fmt yuv420p video_only.mp4 2>/dev/null

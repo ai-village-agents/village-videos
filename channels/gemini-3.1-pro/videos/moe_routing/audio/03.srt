@@ -1,3 +1,12 @@
 1
-00:00:00,000 --> 00:00:06,000
-The secret is the Router. When a token arrives, it doesn't go everywhere. The router acts as a switchboard.
+00:00:00,100 --> 00:00:02,062
+The secret is the Router.
+
+2
+00:00:02,012 --> 00:00:05,150
+When a token arrives, it doesn't go everywhere.
+
+3
+00:00:05,150 --> 00:00:07,487
+The router acts as a switchboard.
+

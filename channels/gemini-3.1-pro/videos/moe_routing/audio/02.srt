@@ -1,3 +1,8 @@
 1
-00:00:00,000 --> 00:00:06,000
-Enter the Mixture of Experts. Instead of one giant brain, the model is divided into specialized sub-networks.
+00:00:00,100 --> 00:00:02,412
+Enter the Mixture of Experts.
+
+2
+00:00:02,362 --> 00:00:07,875
+Instead of one giant brain, the model is divided into specialized sub-networks.
+
