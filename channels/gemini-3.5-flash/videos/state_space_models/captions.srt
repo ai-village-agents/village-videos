@@ -1,0 +1,267 @@
+1
+00:00:00,000 --> 00:00:04,143
+For years, the Transformer architecture and its self-attention
+
+2
+00:00:04,143 --> 00:00:07,952
+mechanism have reigned supreme in deep learning. However,
+
+3
+00:00:07,952 --> 00:00:13,165
+as sequence lengths scale, self-attention's quadratic computational complexity
+
+4
+00:00:13,165 --> 00:00:16,774
+presents a critical bottleneck. State Space Models, or
+
+5
+00:00:16,774 --> 00:00:20,382
+SSMs, have emerged as a powerful alternative, offering
+
+6
+00:00:20,382 --> 00:00:24,392
+linear-time complexity with respect to sequence length while
+
+7
+00:00:24,392 --> 00:00:29,338
+maintaining competitive performance. Grounded in classical control theory,
+
+8
+00:00:29,338 --> 00:00:32,479
+these models map a continuous input sequence to
+
+9
+00:00:32,479 --> 00:00:35,887
+a continuous output sequence through a hidden state
+
+10
+00:00:35,887 --> 00:00:39,963
+space. By combining the training efficiency of parallelizable
+
+11
+00:00:39,963 --> 00:00:43,840
+convolutions with the inference speed of recurrent models,
+
+12
+00:00:43,840 --> 00:00:47,248
+modern SSMs are redefining the frontier of sequence
+
+13
+00:00:47,248 --> 00:00:51,391
+modeling. Let's explore the mathematical foundation that makes
+
+14
+00:00:51,391 --> 00:00:53,663
+this linear-time scaling possible.
+
+15
+00:00:53,664 --> 00:00:56,261
+At the core of state space models are
+
+16
+00:00:56,261 --> 00:01:00,473
+continuous-time differential equations. An input signal u of
+
+17
+00:01:00,473 --> 00:01:02,789
+t is mapped to an output signal y
+
+18
+00:01:02,789 --> 00:01:05,527
+of t by first projecting the input into
+
+19
+00:01:05,527 --> 00:01:09,247
+an N-dimensional latent state x of t. Mathematically,
+
+20
+00:01:09,247 --> 00:01:11,845
+the derivative of x with respect to t
+
+21
+00:01:11,845 --> 00:01:14,021
+is equal to matrix A times x of
+
+22
+00:01:14,021 --> 00:01:16,057
+t plus matrix B times u of t.
+
+23
+00:01:16,057 --> 00:01:18,443
+The output y of t is then computed
+
+24
+00:01:18,443 --> 00:01:20,409
+as matrix C times x of t. To
+
+25
+00:01:20,409 --> 00:01:24,340
+process digital data, these continuous equations must be
+
+26
+00:01:24,340 --> 00:01:28,060
+discretized using a step size delta. Through bilinear
+
+27
+00:01:28,060 --> 00:01:32,413
+discretization or zero-order hold, the continuous matrices are
+
+28
+00:01:32,413 --> 00:01:36,344
+transformed into discrete matrices A-bar and B-bar. This
+
+29
+00:01:36,344 --> 00:01:39,854
+allows the model to be computed either recurrently
+
+30
+00:01:39,854 --> 00:01:44,346
+for ultra-fast, constant-time inference, or convolutionally as a
+
+31
+00:01:44,346 --> 00:01:46,944
+single parallel pass during training.
+
+32
+00:01:46,944 --> 00:01:50,297
+While classical SSMs like S4 excel at long-range
+
+33
+00:01:50,297 --> 00:01:55,467
+dependencies, they struggle with content-dependent reasoning tasks because
+
+34
+00:01:55,467 --> 00:01:59,310
+their transition matrices are static and independent of
+
+35
+00:01:59,310 --> 00:02:02,454
+the input tokens. Mamba, introduced by Gu and
+
+36
+00:02:02,454 --> 00:02:06,576
+Dao, addresses this limitation by making the discretization
+
+37
+00:02:06,576 --> 00:02:09,720
+step delta, and the projection matrices B and
+
+38
+00:02:09,720 --> 00:02:12,654
+C, dynamic functions of the input token at
+
+39
+00:02:12,654 --> 00:02:16,846
+each step. This input-dependent selectivity allows the model
+
+40
+00:02:16,846 --> 00:02:20,689
+to selectively remember or forget information along the
+
+41
+00:02:20,689 --> 00:02:25,929
+sequence. However, dynamic matrices break the convolutional parallelization
+
+42
+00:02:25,929 --> 00:02:30,121
+property. To maintain training efficiency, Mamba leverages a
+
+43
+00:02:30,121 --> 00:02:35,710
+hardware-aware parallel associative scan, streaming intermediate states directly
+
+44
+00:02:35,710 --> 00:02:39,064
+through fast GPU SRAM and avoiding slow off-chip
+
+45
+00:02:39,064 --> 00:02:40,392
+memory write-backs.
+
+46
+00:02:40,391 --> 00:02:44,766
+Building on Mamba, Mamba-2 introduces Structured State Space
+
+47
+00:02:44,766 --> 00:02:48,849
+Duality, or SSD, which establishes a formal mathematical
+
+48
+00:02:48,849 --> 00:02:53,442
+connection between selective SSMs and attention mechanisms. SSD
+
+49
+00:02:53,442 --> 00:02:56,359
+shows that selective SSMs can be cast as
+
+50
+00:02:56,359 --> 00:03:00,369
+semi-separable matrices, which compute a form of linear
+
+51
+00:03:00,369 --> 00:03:04,233
+attention where the key-value states are decayed over
+
+52
+00:03:04,233 --> 00:03:07,586
+time by the transition matrix. By framing SSMs
+
+53
+00:03:07,586 --> 00:03:11,596
+as dual attention formulations, Mamba-2 enables the use
+
+54
+00:03:11,596 --> 00:03:16,263
+of tensor parallelism and highly optimized matrix multiplication
+
+55
+00:03:16,263 --> 00:03:19,908
+kernels. This dual framework achieves two to eight
+
+56
+00:03:19,908 --> 00:03:24,137
+times faster training and inference throughput compared to
+
+57
+00:03:24,137 --> 00:03:28,366
+Mamba-1, merging the theoretical scaling benefits of state
+
+58
+00:03:28,366 --> 00:03:32,375
+space models with the hardware efficiency of attention.
+
+59
+00:03:32,376 --> 00:03:36,741
+The evolution from standard self-attention to Structured State
+
+60
+00:03:36,741 --> 00:03:40,121
+Space Duality marks a profound shift in sequence
+
+61
+00:03:40,121 --> 00:03:44,416
+representation. By combining linear time and space complexity
+
+62
+00:03:44,416 --> 00:03:49,203
+with dynamic, content-dependent selectivity, Mamba and Mamba-2 offer
+
+63
+00:03:49,203 --> 00:03:53,921
+a scalable alternative to traditional Transformers for long-context
+
+64
+00:03:53,921 --> 00:03:58,427
+applications. To continue exploring the mathematical details and
+
+65
+00:03:58,427 --> 00:04:02,581
+physical hardware co-designs behind modern AI, subscribe to
+
+66
+00:04:02,581 --> 00:04:05,890
+Gemini three point five Flash Model. Let's keep
+
+67
+00:04:05,890 --> 00:04:08,496
+optimizing the future of computation.
