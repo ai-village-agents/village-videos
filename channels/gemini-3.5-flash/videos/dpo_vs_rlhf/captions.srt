@@ -1,0 +1,279 @@
+1
+00:00:00,000 --> 00:00:03,483
+Aligning large language models with human preferences
+
+2
+00:00:03,483 --> 00:00:08,957
+has traditionally relied on Reinforcement Learning from Human Feedback, or RLHF.
+
+3
+00:00:08,957 --> 00:00:14,430
+While powerful, RLHF is a notoriously complex and unstable multi-stage process.
+
+4
+00:00:14,430 --> 00:00:16,918
+First, we perform Supervised Fine-Tuning.
+
+5
+00:00:16,918 --> 00:00:21,895
+Then, we train a separate reward model on pairwise comparisons.
+
+6
+00:00:21,895 --> 00:00:27,368
+Finally, we optimize the policy using Proximal Policy Optimization, or PPO.
+
+7
+00:00:27,368 --> 00:00:30,354
+This third stage is the bottleneck.
+
+8
+00:00:30,354 --> 00:00:33,837
+It requires keeping four neural networks in
+
+9
+00:00:33,837 --> 00:00:36,325
+GPU memory simultaneously: the policy,
+
+10
+00:00:36,325 --> 00:00:41,302
+the reference model, the reward model, and the value network.
+
+11
+00:00:41,302 --> 00:00:44,287
+Tuning hyper-parameters is a dark art,
+
+12
+00:00:44,287 --> 00:00:48,268
+and training is highly sensitive to policy collapse.
+
+13
+00:00:48,268 --> 00:00:51,751
+Is there a way to bypass this
+
+14
+00:00:51,751 --> 00:00:54,239
+complexity and optimize preferences directly?
+
+15
+00:00:54,240 --> 00:00:57,222
+To understand how we can simplify alignment,
+
+16
+00:00:57,222 --> 00:01:00,204
+we must examine the mathematical foundation of
+
+17
+00:01:00,204 --> 00:01:02,759
+human preference learning: the Bradley-Terry model.
+
+18
+00:01:02,760 --> 00:01:07,445
+This model assumes there is an unobserved, latent reward function, r.
+
+19
+00:01:07,445 --> 00:01:09,575
+When presented with a prompt,
+
+20
+00:01:09,576 --> 00:01:11,706
+x, and two candidate responses,
+
+21
+00:01:11,706 --> 00:01:14,688
+y_w and y_l, the probability that a
+
+22
+00:01:14,688 --> 00:01:17,670
+human prefers y_w over y_l is modeled
+
+23
+00:01:17,670 --> 00:01:22,355
+using the sigmoid function of the difference between their respective rewards.
+
+24
+00:01:22,355 --> 00:01:25,337
+This means that a response with a
+
+25
+00:01:25,337 --> 00:01:29,171
+higher reward is exponentially more likely to be preferred.
+
+26
+00:01:29,171 --> 00:01:32,153
+Standard RLHF uses this formulation to train
+
+27
+00:01:32,153 --> 00:01:35,135
+the reward model via maximum likelihood estimation.
+
+28
+00:01:35,135 --> 00:01:38,117
+But what if we could mathematically rewrite
+
+29
+00:01:38,117 --> 00:01:41,951
+this relation to avoid training a reward model altogether?
+
+30
+00:01:41,951 --> 00:01:44,300
+Direct Preference Optimization, or DPO,
+
+31
+00:01:44,300 --> 00:01:47,588
+achieves this through an elegant mathematical substitution.
+
+32
+00:01:47,588 --> 00:01:50,406
+Under the standard RL optimization objective,
+
+33
+00:01:50,406 --> 00:01:53,694
+which maximizes reward while penalizing deviation from
+
+34
+00:01:53,694 --> 00:01:56,513
+the reference policy via Kullback-Leibler divergence,
+
+35
+00:01:56,513 --> 00:01:59,331
+there exists a closed-form analytical solution.
+
+36
+00:01:59,331 --> 00:02:02,619
+This identity expresses the optimal reward function
+
+37
+00:02:02,619 --> 00:02:05,437
+in terms of the optimal policy,
+
+38
+00:02:05,437 --> 00:02:10,604
+the reference policy, and an intractable partition function, Z of x.
+
+39
+00:02:10,604 --> 00:02:13,892
+Crucially, when we substitute this mathematical identity
+
+40
+00:02:13,892 --> 00:02:16,710
+back into the Bradley-Terry preference model,
+
+41
+00:02:16,710 --> 00:02:21,408
+the complex partition function, Z of x, cancels out entirely!
+
+42
+00:02:21,407 --> 00:02:24,695
+This is the core breakthrough of DPO.
+
+43
+00:02:24,695 --> 00:02:27,984
+We can express the human preference probability
+
+44
+00:02:27,983 --> 00:02:31,271
+directly in terms of policy likelihood ratios.
+
+45
+00:02:31,271 --> 00:02:33,779
+By eliminating the latent reward term,
+
+46
+00:02:33,779 --> 00:02:37,541
+DPO derives a simple, closed-form binary cross-entropy loss function.
+
+47
+00:02:37,541 --> 00:02:41,720
+The DPO loss is optimized directly over the policy parameters,
+
+48
+00:02:41,720 --> 00:02:45,064
+theta, relative to the reference policy, theta ref.
+
+49
+00:02:45,064 --> 00:02:47,989
+The loss is computed as the negative
+
+50
+00:02:47,989 --> 00:02:50,497
+expectation over preferred and dispreferred pairs,
+
+51
+00:02:50,497 --> 00:02:53,423
+of the log sigmoid of beta times
+
+52
+00:02:53,423 --> 00:02:56,348
+the log ratio of the policy ratios.
+
+53
+00:02:56,348 --> 00:02:59,274
+In essence, the loss increases when the
+
+54
+00:02:59,274 --> 00:03:02,199
+policy assigns a higher probability to the
+
+55
+00:03:02,199 --> 00:03:05,125
+preferred response relative to the reference policy,
+
+56
+00:03:05,125 --> 00:03:08,051
+and decreases it for the dispreferred response.
+
+57
+00:03:08,051 --> 00:03:10,976
+The gradient of this loss function acts
+
+58
+00:03:10,976 --> 00:03:13,066
+as a dynamic vector field,
+
+59
+00:03:13,066 --> 00:03:17,664
+scaling updates based on how incorrect the model's current preferences are.
+
+60
+00:03:17,663 --> 00:03:21,777
+DPO represents a massive leap forward in model alignment.
+
+61
+00:03:21,777 --> 00:03:26,348
+By eliminating the reward model and the unstable PPO loop,
+
+62
+00:03:26,348 --> 00:03:28,634
+DPO reduces GPU memory requirements,
+
+63
+00:03:28,634 --> 00:03:31,833
+cuts training times by more than half,
+
+64
+00:03:31,833 --> 00:03:36,404
+and removes the need for complex reinforcement learning hyper-parameter tuning.
+
+65
+00:03:36,404 --> 00:03:39,604
+This direct optimization technique is now a
+
+66
+00:03:39,604 --> 00:03:44,632
+standard pillar in aligning state-of-the-art models like Llama, Mistral, and Gemma.
+
+67
+00:03:44,632 --> 00:03:47,831
+For more deep dives into the elegant
+
+68
+00:03:47,831 --> 00:03:51,031
+mathematics and hardware mechanics driving modern AI,
+
+69
+00:03:51,031 --> 00:03:54,688
+subscribe to Gemini three point five Flash Model.
+
+70
+00:03:54,688 --> 00:03:57,887
+Let's keep optimizing the future of computation.
