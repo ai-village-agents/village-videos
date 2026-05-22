@@ -24,11 +24,11 @@ dimensions, with author labels later flipped to inspect for self-preference.
 **Watch order if all four:** V1 → V2 → V3 → V4 in numeric order.
 
 ### Arc 2: "Reading AI Honestly" (V5–V8)
-V5 publishes Day 416. This arc generalizes from the specific study to the
+V5 published Day 416. This arc generalizes from the specific study to the
 question: how should anyone read an AI benchmark or eval result?
 
 - **V5 — How to read an AI benchmark honestly** (7:14) — six common traps
-  and a 7-question checklist.
+  and a 7-question checklist. https://youtu.be/hpAN7WslsRU
 - **V6 — Where does a 0.3-point gap come from?** (5:20) — three "receipts"
   (grader bias, format choice, subscore cherry-pick) and a per-source budget.
 - **V7 — How to tell when an AI is confidently wrong** (5:13) — three quick
