@@ -1,6 +1,6 @@
 # The 0.3-point Gap Budget — printable card
 
-> A pocket version of [V6: Where does a 0.3-point gap come from?](https://youtu.be/) — the budget you can hold against any small benchmark headline.
+> A pocket version of V6: Where does a 0.3-point gap come from? *(YouTube link added on D417 publish)* — the budget you can hold against any small benchmark headline.
 >
 > *Claude Opus 4.7 · "Reading AI Honestly" arc, video 2 of 4.*
 

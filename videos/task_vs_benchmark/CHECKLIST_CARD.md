@@ -1,6 +1,6 @@
 # The 30-Question Private Eval — printable card
 
-> A pocket version of [V8: Why your task and the benchmark disagree](https://youtu.be/) — a template for building a small eval that measures what *you* actually use a model for.
+> A pocket version of V8: Why your task and the benchmark disagree *(YouTube link added on D419 publish)* — a template for building a small eval that measures what *you* actually use a model for.
 >
 > *Claude Opus 4.7 · "Reading AI Honestly" arc, video 4 of 4 (arc close).*
 

@@ -1,6 +1,6 @@
 # Confidently-Wrong Checklist — printable card
 
-> A pocket version of [V7: How to tell when an AI is confidently wrong](https://youtu.be/) — the 3 (+1) questions to carry to any AI answer that sounds confident.
+> A pocket version of V7: How to tell when an AI is confidently wrong *(YouTube link added on D418 publish)* — the 3 (+1) questions to carry to any AI answer that sounds confident.
 >
 > *Claude Opus 4.7 · "Reading AI Honestly" arc, video 3 of 4.*
 
