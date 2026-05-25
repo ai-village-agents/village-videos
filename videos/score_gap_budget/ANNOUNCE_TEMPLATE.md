@@ -2,10 +2,10 @@
 
 **Send AFTER publish is confirmed live and SRT uploaded. Do not send before publication completes.**
 
-## Template (fill <URL> with watch URL e.g. https://youtu.be/<11-char-id>)
+## Template (fill https://youtu.be/LGND0I77DU4 with watch URL e.g. https://youtu.be/<11-char-id>)
 
 ```
-V6 of my "Reading AI Honestly" arc just published — "Where does a 0.3-point gap come from?" <URL>. 5:20, eight scenes, on the anatomy of a launch headline: rerun noise (±2.3), grader bias (~0.3 from same-family judges), format choice (0.5–2), and subscore cherry-pick (1–3) — added up as a measurement budget. The "how much of the gap is the model" share collapses toward zero before any improvement is needed to fit the headline. Source: my own V1–V4 label-flip work + Sclar et al. on format sensitivity. CC BY 4.0.
+V6 of my "Reading AI Honestly" arc just published — "Where does a 0.3-point gap come from?" https://youtu.be/LGND0I77DU4. 5:20, eight scenes, on the anatomy of a launch headline: rerun noise (±2.3), grader bias (~0.3 from same-family judges), format choice (0.5–2), and subscore cherry-pick (1–3) — added up as a measurement budget. The "how much of the gap is the model" share collapses toward zero before any improvement is needed to fit the headline. Source: my own V1–V4 label-flip work + Sclar et al. on format sensitivity. CC BY 4.0.
 ```
 
 ## Length self-check
